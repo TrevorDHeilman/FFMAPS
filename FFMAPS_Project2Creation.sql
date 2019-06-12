@@ -115,9 +115,9 @@ INSERT INTO PlaceableType (PlaceableTypeId, PlaceableType) VALUES (1, 'Ride');
 INSERT INTO PlaceableType (PlaceableTypeId, PlaceableType) VALUES (2, 'Concession');
 INSERT INTO PlaceableType (PlaceableTypeId, PlaceableType) VALUES (3, 'Game');
 
-INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserType) VALUES (1, 'owner', 'pass', 'Jess', 'Jesse', 1);
-INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserType) VALUES (2, 'manager', 'pass', 'Ronald', 'McDonald', 2);
-INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserType) VALUES (1, 'attendant', 'pass', 'Matt', 'Donald', 1);
+INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (1, 'owner', 'pass', 'Jess', 'Jesse', 1);
+INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (2, 'manager', 'pass', 'Ronald', 'McDonald', 2);
+INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (3, 'attendant', 'pass', 'Matt', 'Donald', 3);
 
 commit;
 exit;
