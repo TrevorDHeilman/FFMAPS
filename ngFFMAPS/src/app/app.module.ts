@@ -7,14 +7,16 @@ import { EmployeePortalComponent } from './employee-portal/employee-portal.compo
 import { HomeComponent } from './home/home.component';
 import { FormsModule} from '@angular/forms';
 import { RouterModule, Routes} from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component'
+import { NavbarComponent } from './navbar/navbar.component';
+import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeePortalComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    OwnerDashboardComponent
   ],
   imports: [
     BrowserModule,
