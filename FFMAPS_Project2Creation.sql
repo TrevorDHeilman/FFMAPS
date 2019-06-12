@@ -46,7 +46,7 @@ CREATE TABLE UserInfo
 CREATE TABLE UserType
 (
     UserTypeId NUMBER UNIQUE NOT NULL,
-    UserType VARCHAR(25)
+    UserType VARCHAR2(25) NOT NULL
 );
 
 CREATE TABLE Placeable
@@ -58,7 +58,21 @@ CREATE TABLE Placeable
 CREATE TABLE PlaceableType
 (
     PlaceableTypeId NUMBER UNIQUE NOT NULL,
-    PlaceableType VARCHAR(25)
+    PlaceableType VARCHAR2(25) NOT NULL
+);
+
+CREATE TABLE VendorStocks
+(
+    VendorStockId NUMBER UNIQUE NOT NULL,
+    ItemId NUMBER UNIQUE NOT NULL,
+    PlaceableId NUMBER NOT NULL,
+    StockAvailable NUMBER NOT NULL
+);
+
+CREATE TABLE ItemInfo
+(
+    ItemId NUMBER UNIQUE NOT NULL,
+    ItemName VARCHAR2(25) NOT NULL
 );
 
 CREATE TABLE Event
@@ -73,36 +87,39 @@ CREATE TABLE Event
 CREATE TABLE LocationInfo
 (
     LocationId NUMBER UNIQUE NOT NULL,
-    AddressLine1 VARCHAR(25) NOT NULL,
-    AddressLine2 VARCHAR(25) NOT NULL,
-    City VARCHAR(25) NOT NULL,
-    State VARCHAR(25) NOT NULL,
-    PostalCode VARCHAR(5) NOT NULL
+    AddressLine1 VARCHAR2(25) NOT NULL,
+    AddressLine2 VARCHAR2(25) NOT NULL,
+    City VARCHAR2(25) NOT NULL,
+    State VARCHAR2(25) NOT NULL,
+    PostalCode VARCHAR2(5) NOT NULL
 );
 
 CREATE TABLE Contact
 (
     ContactId NUMBER UNIQUE NOT NULL,
-    FirstName VARCHAR(25) NOT NULL,
-    LastName VARCHAR(25) NOT NULL,
-    Email VARCHAR(50) NOT NULL,
-    PhoneNumber VARCHAR(25)
+    FirstName VARCHAR2(25) NOT NULL,
+    LastName VARCHAR2(25) NOT NULL,
+    Email VARCHAR2(50) NOT NULL,
+    PhoneNumber VARCHAR2(25)
 );
 
 /*******************************************************************************
    Create Foreign Keys
 ********************************************************************************/
 ALTER TABLE UserInfo ADD CONSTRAINT FK_UserTypeId
-    FOREIGN KEY (UserTypeId) REFERENCES UserType (UserTypeId) On Delete Cascade;
+    FOREIGN KEY (UserTypeId) REFERENCES UserType (UserTypeId) ON DELETE CASCADE;
 
 ALTER TABLE Placeable ADD CONSTRAINT FK_PlaceableId
-    FOREIGN KEY (PlaceableTypeId) REFERENCES PlaceableType (PlaceableTypeId) On Delete Cascade; 
+    FOREIGN KEY (PlaceableTypeId) REFERENCES PlaceableType (PlaceableTypeId) ON DELETE CASCADE; 
     
+ALTER TABLE VendorStocks ADD CONSTRAINT FK_ItemId
+    FOREIGN KEY (ItemId) REFERENCES ItemInfo (ItemId) ON DELETE CASCADE;
+
 ALTER TABLE Event ADD CONSTRAINT FK_LocationId
-    FOREIGN KEY (LocationId) REFERENCES LocationInfo (LocationId) On Delete Cascade;    
+    FOREIGN KEY (LocationId) REFERENCES LocationInfo (LocationId) ON DELETE CASCADE;    
 
 ALTER TABLE Event ADD CONSTRAINT FK_ContactId
-    FOREIGN KEY (ContactId) REFERENCES Contact (ContactId) On Delete Cascade;
+    FOREIGN KEY (ContactId) REFERENCES Contact (ContactId) ON DELETE CASCADE;
     
 /*******************************************************************************
    Populate Tables
@@ -115,6 +132,21 @@ INSERT INTO PlaceableType (PlaceableTypeId, PlaceableType) VALUES (1, 'Ride');
 INSERT INTO PlaceableType (PlaceableTypeId, PlaceableType) VALUES (2, 'Concession');
 INSERT INTO PlaceableType (PlaceableTypeId, PlaceableType) VALUES (3, 'Game');
 
-INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserType) VALUES (1, 'owner', 'pass', 'Jess', 'Jesse', 1);
-INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserType) VALUES (2, 'manager', 'pass', 'Ronald', 'McDonald', 2);
-INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserType) VALUES (1, 'attendant', 'pass', 'Matt', 'Donald', 1);
+INSERT INTO ItemInfo (ItemId, ItemName) VALUES (1, 'Cotton Candy');
+INSERT INTO ItemInfo (ItemId, ItemName) VALUES (2, 'Corndog');
+INSERT INTO ItemInfo (ItemId, ItemName) VALUES (3, 'Popsicle');
+INSERT INTO ItemInfo (ItemId, ItemName) VALUES (4, 'Churro');
+
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId) VALUES (1, 2);
+
+INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (1, 1, 1, 10);
+INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (2, 2, 1, 17);
+INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (3, 3, 1, 50);
+INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (4, 4, 1, 22);
+
+INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (1, 'owner', 'pass', 'Jess', 'Jesse', 1);
+INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (2, 'manager', 'pass', 'Ronald', 'McDonald', 2);
+INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (3, 'attendant', 'pass', 'Matt', 'Donald', 3);
+
+commit;
+exit;
