@@ -46,7 +46,7 @@ CREATE TABLE UserInfo
 CREATE TABLE UserType
 (
     UserTypeId NUMBER UNIQUE NOT NULL,
-    UserType VARCHAR2(25)
+    UserType VARCHAR2(25) NOT NULL
 );
 
 CREATE TABLE Placeable
@@ -58,7 +58,21 @@ CREATE TABLE Placeable
 CREATE TABLE PlaceableType
 (
     PlaceableTypeId NUMBER UNIQUE NOT NULL,
-    PlaceableType VARCHAR2(25)
+    PlaceableType VARCHAR2(25) NOT NULL
+);
+
+CREATE TABLE VendorStocks
+(
+    VendorStockId NUMBER UNIQUE NOT NULL,
+    ItemId NUMBER UNIQUE NOT NULL,
+    PlaceableId NUMBER UNIQUE NOT NULL,
+    StockAvailable NUMBER NOT NULL
+);
+
+CREATE TABLE ItemInfo
+(
+    ItemId NUMBER UNIQUE NOT NULL,
+    ItemName VARCHAR2(25) NOT NULL
 );
 
 CREATE TABLE Event
