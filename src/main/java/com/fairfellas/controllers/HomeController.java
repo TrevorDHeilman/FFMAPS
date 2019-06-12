@@ -19,4 +19,5 @@ public class HomeController {
 		System.out.println("Logging out");
 		return "redirect:login";
 	}
+
 }
