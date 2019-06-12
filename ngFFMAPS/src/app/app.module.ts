@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { EmployeePortalComponent } from './employee-portal/employee-portal.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule} from '@angular/forms';
-import { RouterModule, Routes} from '@angular/router'
+import { RouterModule, Routes} from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeePortalComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
