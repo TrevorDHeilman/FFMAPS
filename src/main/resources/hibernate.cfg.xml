@@ -22,6 +22,6 @@
 		
 		<!-- Annotation -->
 		<!-- <mapping class="com.revature.beans.User"/> -->
-		
+		<mapping class="com.fairfellas.beans.User"/>
 	</session-factory>
 </hibernate-configuration>
