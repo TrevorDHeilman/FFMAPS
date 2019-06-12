@@ -65,7 +65,7 @@ CREATE TABLE VendorStocks
 (
     VendorStockId NUMBER UNIQUE NOT NULL,
     ItemId NUMBER UNIQUE NOT NULL,
-    PlaceableId NUMBER UNIQUE NOT NULL,
+    PlaceableId NUMBER NOT NULL,
     StockAvailable NUMBER NOT NULL
 );
 
@@ -107,16 +107,19 @@ CREATE TABLE Contact
    Create Foreign Keys
 ********************************************************************************/
 ALTER TABLE UserInfo ADD CONSTRAINT FK_UserTypeId
-    FOREIGN KEY (UserTypeId) REFERENCES UserType (UserTypeId) On Delete Cascade;
+    FOREIGN KEY (UserTypeId) REFERENCES UserType (UserTypeId) ON DELETE CASCADE;
 
 ALTER TABLE Placeable ADD CONSTRAINT FK_PlaceableId
-    FOREIGN KEY (PlaceableTypeId) REFERENCES PlaceableType (PlaceableTypeId) On Delete Cascade; 
+    FOREIGN KEY (PlaceableTypeId) REFERENCES PlaceableType (PlaceableTypeId) ON DELETE CASCADE; 
     
+ALTER TABLE VendorStocks ADD CONSTRAINT FK_ItemId
+    FOREIGN KEY (ItemId) REFERENCES ItemInfo (ItemId) ON DELETE CASCADE;
+
 ALTER TABLE Event ADD CONSTRAINT FK_LocationId
-    FOREIGN KEY (LocationId) REFERENCES LocationInfo (LocationId) On Delete Cascade;    
+    FOREIGN KEY (LocationId) REFERENCES LocationInfo (LocationId) ON DELETE CASCADE;    
 
 ALTER TABLE Event ADD CONSTRAINT FK_ContactId
-    FOREIGN KEY (ContactId) REFERENCES Contact (ContactId) On Delete Cascade;
+    FOREIGN KEY (ContactId) REFERENCES Contact (ContactId) ON DELETE CASCADE;
     
 /*******************************************************************************
    Populate Tables
@@ -128,6 +131,18 @@ INSERT INTO UserType (UserTypeId, UserType) VALUES (3, 'Attendant');
 INSERT INTO PlaceableType (PlaceableTypeId, PlaceableType) VALUES (1, 'Ride');
 INSERT INTO PlaceableType (PlaceableTypeId, PlaceableType) VALUES (2, 'Concession');
 INSERT INTO PlaceableType (PlaceableTypeId, PlaceableType) VALUES (3, 'Game');
+
+INSERT INTO ItemInfo (ItemId, ItemName) VALUES (1, 'Cotton Candy');
+INSERT INTO ItemInfo (ItemId, ItemName) VALUES (2, 'Corndog');
+INSERT INTO ItemInfo (ItemId, ItemName) VALUES (3, 'Popsicle');
+INSERT INTO ItemInfo (ItemId, ItemName) VALUES (4, 'Churro');
+
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId) VALUES (1, 2);
+
+INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (1, 1, 1, 10);
+INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (2, 2, 1, 17);
+INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (3, 3, 1, 50);
+INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (4, 4, 1, 22);
 
 INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (1, 'owner', 'pass', 'Jess', 'Jesse', 1);
 INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (2, 'manager', 'pass', 'Ronald', 'McDonald', 2);
