@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OwnerDashboardComponent implements OnInit {
 
-  Placeables = [];
+  //Placeables = [];
 
   constructor() { }
 
