@@ -9,6 +9,10 @@ import { FormsModule} from '@angular/forms';
 import { RouterModule, Routes} from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.component'
+import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './user.service';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -16,14 +20,16 @@ import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.compo
     EmployeePortalComponent,
     HomeComponent,
     NavbarComponent,
-    OwnerDashboardComponent
+    OwnerDashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
