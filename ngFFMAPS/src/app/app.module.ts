@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,7 +7,7 @@ import { EmployeePortalComponent } from './employee-portal/employee-portal.compo
 import { HomeComponent } from './home/home.component';
 import { FormsModule} from '@angular/forms';
 import { RouterModule, Routes} from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component'
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
