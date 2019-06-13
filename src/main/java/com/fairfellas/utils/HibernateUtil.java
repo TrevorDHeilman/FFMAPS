@@ -11,11 +11,21 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class HibernateUtil {
+	private static HibernateUtil hu;
 	private SessionFactory sessionFactory;
 
 	public HibernateUtil()
 	{
 		super();
+	}
+	
+	public synchronized static HibernateUtil getInstance()
+	{
+		if(hu==null)
+		{
+			hu= new HibernateUtil();
+		}
+		return hu;
 	}
 	
 	public synchronized SessionFactory getSessionFactory()
