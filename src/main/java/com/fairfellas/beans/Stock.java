@@ -18,7 +18,7 @@ public class Stock {
 	private Integer placeableId;
 	private Integer stockAvailable;
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "itemid", insertable=false, updatable=false)
+	@JoinColumn(name = "itemName")
 	private String itemName;
 	public Stock() {
 		super();
