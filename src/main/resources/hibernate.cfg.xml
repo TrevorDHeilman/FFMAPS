@@ -23,5 +23,8 @@
 		<!-- Annotation -->
 		<!-- <mapping class="com.revature.beans.User"/> -->
 		<mapping class="com.fairfellas.beans.User"/>
+		<mapping class="com.fairfellas.beans.Stock"/>
+		<mapping class="com.fairfellas.beans.Item"/>
+		<mapping class="com.fairfellas.beans.Placeable"/>
 	</session-factory>
 </hibernate-configuration>
