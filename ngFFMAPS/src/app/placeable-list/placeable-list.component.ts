@@ -20,7 +20,6 @@ export class PlaceableListComponent implements OnInit {
     this.placeableService.getPlaceables().subscribe(
       (placeables) => {
         console.log(placeables);
-        console.log(this.placeables);
         this.placeables = placeables;
       });
   }
