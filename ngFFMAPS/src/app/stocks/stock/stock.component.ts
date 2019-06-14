@@ -6,6 +6,7 @@ import { Stock } from '../stock';
   templateUrl: './stock.component.html',
   styleUrls: ['./stock.component.css']
 })
+
 export class StockComponent implements OnInit {
   @Input() public stock: Stock;
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Placeable } from '../placeable';
-import { Placeabletype } from '../placeabletype';
 import { PlaceableService } from '../placeable.service';
+import { Placeable } from '../placeable';
+import { PlaceableType } from '../placeabletype';
 
 @Component({
   selector: 'app-placeable-list',
@@ -9,17 +9,18 @@ import { PlaceableService } from '../placeable.service';
   styleUrls: ['./placeable-list.component.css']
 })
 export class PlaceableListComponent implements OnInit {
-  public placeables: Placeable[];
+  public placeables: Array<Placeable> = new Array<Placeable>();
   public newPlaceable: Placeable;
 
   constructor(private placeableService: PlaceableService) { }
 
   ngOnInit() {
     this.newPlaceable = new Placeable();
-    this.newPlaceable.placeabletype = new Placeabletype();
+    this.newPlaceable.placeableType = new PlaceableType();
     this.placeableService.getPlaceables().subscribe(
-      (placeabless) => {
-        this.placeables = this.placeables;
+      (placeables) => {
+        console.log(placeables);
+        this.placeables = placeables;
       });
   }
 
@@ -28,7 +29,7 @@ export class PlaceableListComponent implements OnInit {
       (placeable) => {
         this.placeables.push(placeable);
         this.newPlaceable = new Placeable();
-        this.newPlaceable.placeabletype = new Placeabletype();
+        this.newPlaceable.placeableType = new PlaceableType();
       });
   }
 }

@@ -18,6 +18,8 @@ import { ItemComponent } from './stocks/item/item.component';
 import { PlaceableComponent } from './placeable/placeable.component';
 import { PlaceableListComponent } from './placeable-list/placeable-list.component';
 import { PlaceableService } from './placeable.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,8 @@ import { PlaceableService } from './placeable.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
 
   providers: [UserService, PlaceableService, StockService],
