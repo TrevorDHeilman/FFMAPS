@@ -1,5 +1,6 @@
 package com.fairfellas.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,39 +20,36 @@ public class Placeable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Placeable")
 	@SequenceGenerator(name="Placeable", sequenceName="placeable_seq", allocationSize=1)
 	private int placeableId;
-	private int placeableTypeId;
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="placeabletype")
-	private int placeableType;
 	
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="PlaceableTypeId")
+	private PlaceableType placeableType;
+
 	public int getPlaceableId() {
 		return placeableId;
 	}
+
 	public void setPlaceableId(int placeableId) {
 		this.placeableId = placeableId;
 	}
-	public int getPlaceableTypeId() {
-		return placeableTypeId;
-	}
-	public void setPlaceableTypeId(int placeableTypeId) {
-		this.placeableTypeId = placeableTypeId;
-	}
-	public int getPlaceableType() {
+
+	public PlaceableType getPlaceableType() {
 		return placeableType;
 	}
-	public void setPlaceableType(int placeableType) {
+
+	public void setPlaceableType(PlaceableType placeableType) {
 		this.placeableType = placeableType;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + placeableId;
-		result = prime * result + placeableType;
-		result = prime * result + placeableTypeId;
+		result = prime * result + ((placeableType == null) ? 0 : placeableType.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -63,15 +61,16 @@ public class Placeable {
 		Placeable other = (Placeable) obj;
 		if (placeableId != other.placeableId)
 			return false;
-		if (placeableType != other.placeableType)
-			return false;
-		if (placeableTypeId != other.placeableTypeId)
+		if (placeableType == null) {
+			if (other.placeableType != null)
+				return false;
+		} else if (!placeableType.equals(other.placeableType))
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
-		return "Placeable [placeableId=" + placeableId + ", placeableTypeId=" + placeableTypeId + ", placeableType="
-				+ placeableType + "]";
+		return "Placeable [placeableId=" + placeableId + ", placeableType=" + placeableType + "]";
 	}
 }
