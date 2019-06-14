@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OwnerDashboardComponent implements OnInit {
 
-  Placeables = [];
-
   constructor() { }
 
   ngOnInit() {
