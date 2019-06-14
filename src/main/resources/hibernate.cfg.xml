@@ -26,5 +26,6 @@
 		<mapping class="com.fairfellas.beans.Stock"/>
 		<mapping class="com.fairfellas.beans.Item"/>
 		<mapping class="com.fairfellas.beans.Placeable"/>
+		<mapping class="com.fairfellas.beans.PlaceableType"/>
 	</session-factory>
 </hibernate-configuration>
