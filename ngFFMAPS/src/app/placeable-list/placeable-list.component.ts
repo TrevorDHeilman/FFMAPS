@@ -9,7 +9,7 @@ import { PlaceableService } from '../placeable.service';
   styleUrls: ['./placeable-list.component.css']
 })
 export class PlaceableListComponent implements OnInit {
-  public placeables: Placeable[];
+  public placeables: Placeable[] = new Array();
   public newPlaceable: Placeable;
 
   constructor(private placeableService: PlaceableService) { }
@@ -18,8 +18,17 @@ export class PlaceableListComponent implements OnInit {
     this.newPlaceable = new Placeable();
     this.newPlaceable.placeabletype = new Placeabletype();
     this.placeableService.getPlaceables().subscribe(
-      (placeabless) => {
-        this.placeables = this.placeables;
+      (placeables) => {5
+        console.log(placeables)
+        let i:number = 0;
+        let placeable:Placeable;
+        for(i; i < placeables.length; i++){
+          placeable = new Placeable();
+          placeable.placeabletype = new Placeabletype();
+          placeable.id = placeables[i].placeableId;
+          placeable.placeabletype.typename = placeables[i].placeableType.placeableType;
+          this.placeables.push(placeable);
+        }
       });
   }
 
