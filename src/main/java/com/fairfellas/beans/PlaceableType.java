@@ -1,5 +1,6 @@
 package com.fairfellas.beans;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,9 +12,11 @@ import javax.persistence.Table;
 @Table(name="PlaceableType")
 public class PlaceableType {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Placeable")
-	@SequenceGenerator(name="Placeable", sequenceName="placeable_seq", allocationSize=1)
+	@Column(name="PlaceableTypeId")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PlaceableType")
+	@SequenceGenerator(name="PlaceableType", sequenceName="placeable_seq", allocationSize=1)
 	private int placeableTypeId;
+	@Column(name="PlaceableType")
 	private String PlaceableType;
 	
 	public int getPlaceableTypeId() {
