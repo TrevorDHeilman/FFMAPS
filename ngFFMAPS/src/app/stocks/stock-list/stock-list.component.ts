@@ -19,6 +19,7 @@ export class StockListComponent implements OnInit {
     this.newStock.item = new Item();
     this.stockService.getStock().subscribe(
       (stocks) => {
+        console.log(stocks)
         this.stocks = stocks;
       });
   }
