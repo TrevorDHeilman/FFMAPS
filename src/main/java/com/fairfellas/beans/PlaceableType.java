@@ -15,32 +15,32 @@ public class PlaceableType {
 	@Column(name="PlaceableTypeId")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PlaceableType")
 	@SequenceGenerator(name="PlaceableType", sequenceName="placeable_seq", allocationSize=1)
-	private int placeableTypeId;
+	private int typeId;
 	@Column(name="PlaceableType")
-	private String PlaceableType;
+	private String typeName;
 	
-	public int getPlaceableTypeId() {
-		return placeableTypeId;
+	public int getTypeId() {
+		return typeId;
 	}
 
-	public void setPlaceableTypeId(int placeableTypeId) {
-		this.placeableTypeId = placeableTypeId;
+	public void setTypeId(int typeId) {
+		this.typeId = typeId;
 	}
 
-	public String getPlaceableType() {
-		return PlaceableType;
+	public String getTypeName() {
+		return typeName;
 	}
 
-	public void setPlaceableType(String placeableType) {
-		PlaceableType = placeableType;
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((PlaceableType == null) ? 0 : PlaceableType.hashCode());
-		result = prime * result + placeableTypeId;
+		result = prime * result + typeId;
+		result = prime * result + ((typeName == null) ? 0 : typeName.hashCode());
 		return result;
 	}
 
@@ -53,18 +53,19 @@ public class PlaceableType {
 		if (getClass() != obj.getClass())
 			return false;
 		PlaceableType other = (PlaceableType) obj;
-		if (PlaceableType == null) {
-			if (other.PlaceableType != null)
-				return false;
-		} else if (!PlaceableType.equals(other.PlaceableType))
+		if (typeId != other.typeId)
 			return false;
-		if (placeableTypeId != other.placeableTypeId)
+		if (typeName == null) {
+			if (other.typeName != null)
+				return false;
+		} else if (!typeName.equals(other.typeName))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "PlaceableType [placeableTypeId=" + placeableTypeId + ", PlaceableType=" + PlaceableType + "]";
+		return "PlaceableType [typeId=" + typeId + ", typeName=" + typeName + "]";
 	}
+
 }

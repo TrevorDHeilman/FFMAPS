@@ -1,6 +1,7 @@
 package com.fairfellas.beans;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,20 +18,22 @@ import javax.persistence.Table;
 public class Placeable {
 
 	@Id
+	@Column(name="placeableId")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Placeable")
 	@SequenceGenerator(name="Placeable", sequenceName="placeable_seq", allocationSize=1)
-	private int placeableId;
+	private int id;
 	
+//	@Column(name="PlaceableTypeId")
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="PlaceableTypeId")
 	private PlaceableType placeableType;
-
-	public int getPlaceableId() {
-		return placeableId;
+	
+	public int getId() {
+		return id;
 	}
 
-	public void setPlaceableId(int placeableId) {
-		this.placeableId = placeableId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public PlaceableType getPlaceableType() {
@@ -45,7 +48,7 @@ public class Placeable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + placeableId;
+		result = prime * result + id;
 		result = prime * result + ((placeableType == null) ? 0 : placeableType.hashCode());
 		return result;
 	}
@@ -59,7 +62,7 @@ public class Placeable {
 		if (getClass() != obj.getClass())
 			return false;
 		Placeable other = (Placeable) obj;
-		if (placeableId != other.placeableId)
+		if (id != other.id)
 			return false;
 		if (placeableType == null) {
 			if (other.placeableType != null)
@@ -71,6 +74,6 @@ public class Placeable {
 
 	@Override
 	public String toString() {
-		return "Placeable [placeableId=" + placeableId + ", placeableType=" + placeableType + "]";
+		return "Placeable [id=" + id + ", placeableType=" + placeableType + "]";
 	}
 }
