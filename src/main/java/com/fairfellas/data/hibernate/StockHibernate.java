@@ -35,6 +35,7 @@ public class StockHibernate implements StockDAO {
 
 	@Override
 	public Stock getStock(Integer id) {
+		System.out.println(hu);
 		Session s = hu.getSession();
 		Stock stock = s.get(Stock.class, id);
 		s.close();

@@ -13,17 +13,24 @@ export class StockService {
 
   constructor(private http: HttpClient) { }
 
-  getStock(): Observable<Stock[]> {
+  public getStock(): Observable<Stock[]> {
     return this.http.get(this.appUrl, {withCredentials: true}).pipe(
       map( resp => resp as Stock[] )
     );
   }
-  addStock(stock: Stock): Observable<Stock> {
+  public updateStock(stock: Stock): Observable<Stock>{
     const body = JSON.stringify(stock);
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post('http://localhost:8080/FFMAPS/stock',
-        body, {headers, withCredentials: true}).pipe(
-          map((resp) => resp as Stock)
-    );
+    if(stock.id) {
+      const url = this.appUrl + '/' + stock.id;
+      return this.http.put(url, body,
+        {headers: this.headers, withCredentials: true}).pipe(
+          map(resp => resp as Stock)
+        );
+    } else {
+      return this.http.post(this.appUrl, body,
+        { headers: this.headers, withCredentials: true}).pipe(
+          map(resp => resp as Stock)
+      );
+    }
   }
 }
