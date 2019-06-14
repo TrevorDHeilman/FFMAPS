@@ -19,6 +19,7 @@ import { PlaceableComponent } from './placeable/placeable.component';
 import { PlaceableListComponent } from './placeable-list/placeable-list.component';
 import { PlaceableService } from './placeable.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
