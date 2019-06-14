@@ -1,4 +1,4 @@
-export class Placeabletype {
-    typeid: number;
-    typename: string;
+export class PlaceableType {
+    typeId: number;
+    typeName: string;
 }

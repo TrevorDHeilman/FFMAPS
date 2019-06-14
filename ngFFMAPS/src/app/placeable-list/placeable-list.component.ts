@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Placeable } from '../placeable';
-import { Placeabletype } from '../placeabletype';
+import { PlaceableType } from '../placeabletype';
 import { PlaceableService } from '../placeable.service';
 
 @Component({
@@ -16,19 +16,20 @@ export class PlaceableListComponent implements OnInit {
 
   ngOnInit() {
     this.newPlaceable = new Placeable();
-    this.newPlaceable.placeabletype = new Placeabletype();
+    this.newPlaceable.placeableType = new PlaceableType();
     this.placeableService.getPlaceables().subscribe(
-      (placeables) => {5
+      (placeables) => {
         console.log(placeables)
-        let i:number = 0;
-        let placeable:Placeable;
-        for(i; i < placeables.length; i++){
-          placeable = new Placeable();
-          placeable.placeabletype = new Placeabletype();
-          placeable.id = placeables[i].placeableId;
-          placeable.placeabletype.typename = placeables[i].placeableType.placeableType;
-          this.placeables.push(placeable);
-        }
+        // let i:number = 0;
+        // let placeable:Placeable;
+        // for(i; i < placeables.length; i++){
+        //   placeable = new Placeable();
+        //   placeable.placeableType = new PlaceableType();
+        //   placeable.id = placeables[i].placeableId;
+        //   placeable.placeableType.typeName = placeables[i].placeableType.placeableType;
+        //   this.placeables.push(placeable);
+        // }
+        this.placeables = placeables;
       });
   }
 
@@ -37,7 +38,7 @@ export class PlaceableListComponent implements OnInit {
       (placeable) => {
         this.placeables.push(placeable);
         this.newPlaceable = new Placeable();
-        this.newPlaceable.placeabletype = new Placeabletype();
+        this.newPlaceable.placeableType = new PlaceableType();
       });
   }
 }
