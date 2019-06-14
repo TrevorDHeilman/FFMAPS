@@ -43,7 +43,6 @@ public class LoginController {
 			log.trace(u);
 			return u;
 		}
-		
 		return null;
 	}
 	

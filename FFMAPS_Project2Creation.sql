@@ -172,6 +172,3 @@ INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeI
 
 commit;
 exit;
-
-
-select * from placeabletype;

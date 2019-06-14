@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { NgModule, Component } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeePortalComponent } from './employee-portal/employee-portal.component';
@@ -15,6 +14,9 @@ import { LoginComponent } from './login/login.component';
 import { PlaceableComponent } from './placeable/placeable.component';
 import { PlaceableListComponent } from './placeable-list/placeable-list.component';
 import { PlaceableService } from './placeable.service';
+import { StockComponent } from './stocks/stock/stock.component';
+import { StockListComponent } from './stocks/stock-list/stock-list.component';
+import { StockService } from './stocks/stock.service';
 
 
 @NgModule({
@@ -26,15 +28,20 @@ import { PlaceableService } from './placeable.service';
     OwnerDashboardComponent,
     LoginComponent,
     PlaceableComponent,
-    PlaceableListComponent
+    PlaceableListComponent,
+    StockComponent,
+    StockListComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService, PlaceableService],
+
+  providers: [UserService, PlaceableService, StockService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
