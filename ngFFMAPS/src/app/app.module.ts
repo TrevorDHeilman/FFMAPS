@@ -12,6 +12,9 @@ import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.compo
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
 import { LoginComponent } from './login/login.component';
+import { StockComponent } from './stocks/stock/stock.component';
+import { StockListComponent } from './stocks/stock-list/stock-list.component';
+import { StockService } from './stocks/stock.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     NavbarComponent,
     OwnerDashboardComponent,
-    LoginComponent
+    LoginComponent,
+    StockComponent,
+    StockListComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,7 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService, StockService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

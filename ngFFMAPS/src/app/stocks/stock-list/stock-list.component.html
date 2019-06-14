@@ -1,0 +1,6 @@
+<app-stock *ngFor="let s of stocks" [stock]="s"></app-stock>
+<br>
+Order more stock <br>
+Id: <input type="number" [(ngModel)]="newStock.id"/> <br>
+Placeable Id: <input type="number" [(ngModel)]="newStock.placeableId"/> <br>
+Available Stock: <input type="number" [(ngModel)]="newStock.stockAvailable"/> <br>
