@@ -12,6 +12,8 @@ import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.compo
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
 import { LoginComponent } from './login/login.component';
+import { PurchaseComponent } from './purchase/purchase.component';
+import {PurchaseService} from './purchase.service';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     NavbarComponent,
     OwnerDashboardComponent,
-    LoginComponent
+    LoginComponent,
+    PurchaseComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,10 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [
+    UserService,
+    PurchaseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

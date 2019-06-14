@@ -4,7 +4,7 @@
 	<session-factory>
 		<!-- Configure our database -->
 		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
-		<property name="hibernate.connection.url">jdbc:oracle:thin:@trevorheilman-revature.cstd3k3wevbm.us-east-2.rds.amazonaws.com:1521:ORCL</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@jvasquezi.cscwjyqjrmml.us-east-2.rds.amazonaws.com:1521:ORCL</property>
 		<property name="hibernate.connection.username">project2</property>
 		<property name="hibernate.connection.password">p4ssw0rd</property>
 		<property name="hibernate.connection.pool_size">35</property>
@@ -23,5 +23,6 @@
 		<!-- Annotation -->
 		<!-- <mapping class="com.revature.beans.User"/> -->
 		<mapping class="com.fairfellas.beans.User"/>
+		<mapping class="com.fairfellas.beans.Purchase"/>
 	</session-factory>
 </hibernate-configuration>
