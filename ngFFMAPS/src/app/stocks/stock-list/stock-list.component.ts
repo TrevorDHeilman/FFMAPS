@@ -11,6 +11,8 @@ import { Item } from '../item';
 export class StockListComponent implements OnInit {
   public stocks: Stock[];
   public newStock: Stock;
+  public identity: number;
+  public addedStock: number;
   
   constructor(private stockService: StockService) { }
 
@@ -23,5 +25,15 @@ export class StockListComponent implements OnInit {
         this.stocks = stocks;
       });
   }
-
+  submit(): void {
+    this.newStock = this.stocks[this.identity-1];
+    console.log(this.newStock);
+    console.log(this.addedStock);
+    this.newStock.stockAvailable = this.newStock.stockAvailable + this.addedStock;
+    this.stockService.updateStock(this.newStock).subscribe(
+      newStock => {
+        this.newStock = newStock;
+      }
+    );
+  }
 }

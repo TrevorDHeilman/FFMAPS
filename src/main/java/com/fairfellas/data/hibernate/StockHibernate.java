@@ -1,8 +1,7 @@
 package com.fairfellas.data.hibernate;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -39,15 +38,35 @@ public class StockHibernate implements StockDAO {
 	}
 
 	@Override
-	public Set<Stock> getStock() {
+	public List<Stock> getStock() {
 		Session s = hu.getSession();
-		String query = "FROM Stock";
+		String query = "FROM Stock s ORDER BY s.id ASC";
 		Query<Stock> q = s.createQuery(query, Stock.class);
 		List<Stock> stockList = q.getResultList();
-		Set<Stock> stockSet = new HashSet<Stock>();
+		List<Stock> stockSet = new ArrayList<Stock>();
 		stockSet.addAll(stockList);
 		System.out.println(stockSet);
 		return stockSet;
 	}
 
+	@Override
+	public void updateStock(Stock stock) {
+		System.out.println("ay yo we about update");
+		System.out.println(stock);
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.update(stock);
+			tx.commit();
+		} catch(Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			LogUtil.logException(e, StockHibernate.class);
+		} finally {
+			s.close();
+		}
+	}
+	
 }
