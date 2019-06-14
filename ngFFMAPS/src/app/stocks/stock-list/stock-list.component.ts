@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Stock } from '../stock';
 import { StockService } from '../stock.service';
+import { Item } from '../item';
 
 @Component({
   selector: 'app-stock-list',
@@ -15,6 +16,7 @@ export class StockListComponent implements OnInit {
 
   ngOnInit() {
     this.newStock = new Stock();
+    this.newStock.item = new Item();
     this.stockService.getStock().subscribe(
       (stocks) => {
         this.stocks = stocks;

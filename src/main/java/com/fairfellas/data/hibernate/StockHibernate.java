@@ -1,7 +1,12 @@
 package com.fairfellas.data.hibernate;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -34,12 +39,15 @@ public class StockHibernate implements StockDAO {
 	}
 
 	@Override
-	public Stock getStock(Integer id) {
-		System.out.println(hu);
+	public Set<Stock> getStock() {
 		Session s = hu.getSession();
-		Stock stock = s.get(Stock.class, id);
-		s.close();
-		return stock;
+		String query = "FROM Stock";
+		Query<Stock> q = s.createQuery(query, Stock.class);
+		List<Stock> stockList = q.getResultList();
+		Set<Stock> stockSet = new HashSet<Stock>();
+		stockSet.addAll(stockList);
+		System.out.println(stockSet);
+		return stockSet;
 	}
 
 }

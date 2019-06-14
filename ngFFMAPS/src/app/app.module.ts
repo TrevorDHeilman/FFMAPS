@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { StockComponent } from './stocks/stock/stock.component';
 import { StockListComponent } from './stocks/stock-list/stock-list.component';
 import { StockService } from './stocks/stock.service';
+import { ItemComponent } from './stocks/item/item.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { StockService } from './stocks/stock.service';
     OwnerDashboardComponent,
     LoginComponent,
     StockComponent,
-    StockListComponent
+    StockListComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,

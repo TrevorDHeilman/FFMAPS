@@ -1,4 +1,6 @@
 <div>
-  Hi
-  {{stock.id}}: {{stock.itemName}}
+  Stock ID: {{stock.id}} <br>
+  Stock Available: {{stock.stockAvailable}} <br>
+  Placeable ID: {{stock.placeableid}} <br>
+  <app-item [item]="stock.item"></app-item>
 </div>
