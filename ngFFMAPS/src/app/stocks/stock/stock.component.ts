@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Stock } from '../stock';
 import { StockService } from '../stock.service';
 
@@ -8,6 +8,7 @@ import { StockService } from '../stock.service';
   styleUrls: ['./stock.component.css']
 })
 export class StockComponent implements OnInit {
+  @Input() stock: Stock;
   public stocks: Stock[];
   public newStock: Stock;
 
