@@ -12,6 +12,9 @@ import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.compo
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
 import { LoginComponent } from './login/login.component';
+import { PlaceableComponent } from './placeable/placeable.component';
+import { PlaceableListComponent } from './placeable-list/placeable-list.component';
+import { PlaceableService } from './placeable.service';
 
 
 @NgModule({
@@ -21,7 +24,9 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     NavbarComponent,
     OwnerDashboardComponent,
-    LoginComponent
+    LoginComponent,
+    PlaceableComponent,
+    PlaceableListComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,7 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService, PlaceableService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

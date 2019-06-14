@@ -12,7 +12,6 @@
 ********************************************************************************/
 DROP USER project2 CASCADE;
 
-
 /*******************************************************************************
    Create database
 ********************************************************************************/
@@ -31,11 +30,24 @@ GRANT create view TO project2;
 conn project2/p4ssw0rd
 
 /*******************************************************************************
+   Drop Tables
+********************************************************************************/
+--drop table UserInfo cascade constraints;
+--drop table UserType cascade constraints;
+--drop table Placeable cascade constraints;
+--drop table PlaceableType cascade constraints;
+--drop table VendorStocks cascade constraints;
+--drop table ItemInfo cascade constraints;
+--drop table LocationInfo cascade constraints;
+--drop table ItemInfo cascade constraints;
+--drop table Contact cascade constraints;
+
+/*******************************************************************************
    Create Tables
 ********************************************************************************/
 CREATE TABLE UserInfo
 (
-    UserId NUMBER UNIQUE NOT NULL,
+    UserId NUMBER PRIMARY KEY NOT NULL,
     Username VARCHAR2(25) UNIQUE NOT NULL,
     Password VARCHAR2(25) NOT NULL,
     FirstName VARCHAR2(25) NOT NULL,
@@ -45,25 +57,25 @@ CREATE TABLE UserInfo
 
 CREATE TABLE UserType
 (
-    UserTypeId NUMBER UNIQUE NOT NULL,
+    UserTypeId NUMBER PRIMARY KEY NOT NULL,
     UserType VARCHAR2(25) NOT NULL
 );
 
 CREATE TABLE Placeable
 (
-    PlaceableId NUMBER UNIQUE NOT NULL,
+    PlaceableId NUMBER PRIMARY KEY NOT NULL,
     PlaceableTypeId NUMBER NOT NULL
 );
 
 CREATE TABLE PlaceableType
 (
-    PlaceableTypeId NUMBER UNIQUE NOT NULL,
+    PlaceableTypeId NUMBER PRIMARY KEY NOT NULL,
     PlaceableType VARCHAR2(25) NOT NULL
 );
 
 CREATE TABLE VendorStocks
 (
-    VendorStockId NUMBER UNIQUE NOT NULL,
+    VendorStockId NUMBER PRIMARY KEY NOT NULL,
     ItemId NUMBER UNIQUE NOT NULL,
     PlaceableId NUMBER NOT NULL,
     StockAvailable NUMBER NOT NULL
@@ -71,13 +83,13 @@ CREATE TABLE VendorStocks
 
 CREATE TABLE ItemInfo
 (
-    ItemId NUMBER UNIQUE NOT NULL,
+    ItemId NUMBER PRIMARY KEY NOT NULL,
     ItemName VARCHAR2(25) NOT NULL
 );
 
 CREATE TABLE Event
 (
-    EventId NUMBER UNIQUE NOT NULL,
+    EventId NUMBER PRIMARY KEY NOT NULL,
     StartDate DATE NOT NULL,
     EndDate DATE NOT NULL,
     LocationId NUMBER NOT NULL,
@@ -86,7 +98,7 @@ CREATE TABLE Event
 
 CREATE TABLE LocationInfo
 (
-    LocationId NUMBER UNIQUE NOT NULL,
+    LocationId NUMBER PRIMARY KEY NOT NULL,
     AddressLine1 VARCHAR2(25) NOT NULL,
     AddressLine2 VARCHAR2(25) NOT NULL,
     City VARCHAR2(25) NOT NULL,
@@ -96,13 +108,23 @@ CREATE TABLE LocationInfo
 
 CREATE TABLE Contact
 (
-    ContactId NUMBER UNIQUE NOT NULL,
+    ContactId NUMBER PRIMARY KEY NOT NULL,
     FirstName VARCHAR2(25) NOT NULL,
     LastName VARCHAR2(25) NOT NULL,
     Email VARCHAR2(50) NOT NULL,
     PhoneNumber VARCHAR2(25)
 );
 
+CREATE TABLE Receipt
+(
+    ReceiptId VARCHAR(10) PRIMARY KEY NOT NULL,
+    FirstName VARCHAR2(25) NOT NULL,
+    LastName VARCHAR2(25) NOT NULL,
+    NumberofTickets NUMBER NOT NULL,
+    LocationId NUMBER NOT NULL,
+    EventId NUMBER NOT NULL,
+    DateofPurchase DATE NOT NULL
+)
 /*******************************************************************************
    Create Foreign Keys
 ********************************************************************************/
@@ -150,3 +172,6 @@ INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeI
 
 commit;
 exit;
+
+
+select * from placeabletype;

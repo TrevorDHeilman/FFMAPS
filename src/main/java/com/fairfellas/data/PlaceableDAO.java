@@ -9,4 +9,5 @@ public interface PlaceableDAO {
 	public Placeable getPlaceableById(int id);
 	public Set<Placeable> getPlaceableByType(String type);
 	public void removePlaceable(Placeable placeable);
+	Set<Placeable> getPlaceables();
 }
