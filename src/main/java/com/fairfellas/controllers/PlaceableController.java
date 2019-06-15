@@ -1,6 +1,7 @@
 package com.fairfellas.controllers;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,12 +24,12 @@ public class PlaceableController {
 	private Logger log;
 	
 	@GetMapping
-	public Set<Placeable> getLayout(HttpSession session) {
+	public List<Placeable> getLayout(HttpSession session) {
 		
 		log = Logger.getLogger(PlaceableController.class);
 		log.trace("Inside Getter for Placeables");
 		if(session.getAttribute("user")!=null) {
-			Set<Placeable> placeableSet = ph.getPlaceables();
+			List<Placeable> placeableSet = ph.getPlaceables();
 			log.trace(placeableSet);
 			return placeableSet;
 		}

@@ -8,5 +8,10 @@
 }
 
 .tableWidth{
-    width:350px;
+    /* width:350px; */
+}
+
+.td{
+    padding-left: 0px;
+
 }
