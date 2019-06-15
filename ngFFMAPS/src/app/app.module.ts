@@ -21,6 +21,7 @@ import { PlaceableComponent } from './placeable/placeable.component';
 import { PlaceableListComponent } from './placeable-list/placeable-list.component';
 import { PlaceableService } from './placeable.service';
 import { ReceiptComponent } from './receipt/receipt.component';
+import { ScheduleComponent } from './schedules/schedule/schedule.component';
 
 
 @NgModule({
@@ -37,7 +38,11 @@ import { ReceiptComponent } from './receipt/receipt.component';
     ItemComponent,
     PlaceableComponent,
     PlaceableListComponent,
+<<<<<<< HEAD
     ReceiptComponent
+=======
+    ScheduleComponent
+>>>>>>> eaffd1b9261ae1148c37beec63745d92c7d7ddf8
   ],
 
   imports: [
@@ -47,10 +52,14 @@ import { ReceiptComponent } from './receipt/receipt.component';
     HttpClientModule,
     RouterModule
   ],
+
   providers: [
     UserService,
     PurchaseService,
-  UserService, PlaceableService, StockService],
+    UserService,
+    PlaceableService,
+    StockService
+  ],
 
   bootstrap: [AppComponent]
 })

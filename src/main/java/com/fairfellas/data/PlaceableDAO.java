@@ -1,13 +1,13 @@
 package com.fairfellas.data;
 
-import java.util.Set;
+import java.util.List;
 import com.fairfellas.beans.Placeable;
 
 public interface PlaceableDAO {
 
 	public int addPlaceable(Placeable newPlaceable);
-	public Placeable getPlaceableById(int id);
-	public Set<Placeable> getPlaceableByType(String type);
 	public void removePlaceable(Placeable placeable);
-	Set<Placeable> getPlaceables();
+	public Placeable getPlaceableById(int id);
+	public List<Placeable> getPlaceableByType(String type);
+	public List<Placeable> getPlaceables();
 }
