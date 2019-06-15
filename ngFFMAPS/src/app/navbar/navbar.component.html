@@ -9,9 +9,22 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/portal" routerLinkActive="active" (click)="pushPortal()">Portal </a>
           </li>
+          <li class="nav-item" *ngIf="loggedUser != null">
+              <a class="nav-link" routerLink="#">Time Sheets</a>
+            </li>
+            <li class="nav-item" *ngIf="loggedUser != null">
+              <a class="nav-link" routerLink="#">Training and Logs</a>
+            </li>
+            <li class="nav-item" *ngIf="loggedUser != null">
+              <a class="nav-link" routerLink="#">HR</a>
+            </li>
+            <!--  -->
+            <li class="nav-item" *ngIf="loggedUser != null && loggedUser.userType.id == 1"> 
+              <a class="nav-link" routerLink="/portal/layout">Layout</a>
+            </li>
         </ul>
       </div>
-      <app-login [urlString]="onHome"></app-login>
+      <app-login [urlString]="onHome" (onloggedUser)="updateUser($event)"></app-login>
     </nav>
 
 <router-outlet></router-outlet>
