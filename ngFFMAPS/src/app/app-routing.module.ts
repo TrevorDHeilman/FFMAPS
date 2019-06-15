@@ -21,7 +21,7 @@ const routes: Routes = [
     component: OwnerDashboardComponent
   },
   {
-    path: 'purchase',
+    path: 'home/purchase',
     component: PurchaseComponent,
   },
 ];
