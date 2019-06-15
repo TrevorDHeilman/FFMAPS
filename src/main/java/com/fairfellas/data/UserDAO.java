@@ -1,5 +1,7 @@
 package com.fairfellas.data;
 
+import java.util.List;
+
 import com.fairfellas.beans.User;
 
 public interface UserDAO {
