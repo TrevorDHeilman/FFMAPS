@@ -64,7 +64,8 @@ CREATE TABLE UserType
 CREATE TABLE Placeable
 (
     PlaceableId NUMBER PRIMARY KEY NOT NULL,
-    PlaceableTypeId NUMBER NOT NULL
+    PlaceableTypeId NUMBER NOT NULL,
+    EmployeeCapacity NUMBER NOT NULL 
 );
 
 CREATE TABLE PlaceableType
@@ -115,6 +116,15 @@ CREATE TABLE Contact
     PhoneNumber VARCHAR2(25)
 );
 
+CREATE TABLE Schedule
+(
+    ScheduleItemId NUMBER PRIMARY KEY NOT NULL,
+    EventId NUMBER NOT NULL,
+    UserId NUMBER NOT NULL,
+    ScheduleDate VARCHAR(25) NOT NULL,
+    PlaceableId NUMBER NOT NULL
+);
+
 CREATE TABLE Receipt
 (
     ReceiptId VARCHAR(10) PRIMARY KEY NOT NULL,
@@ -160,11 +170,11 @@ INSERT INTO ItemInfo (ItemId, ItemName) VALUES (2, 'Corndog');
 INSERT INTO ItemInfo (ItemId, ItemName) VALUES (3, 'Popsicle');
 INSERT INTO ItemInfo (ItemId, ItemName) VALUES (4, 'Churro');
 
-INSERT INTO Placeable (PlaceableId, PlaceableTypeId) VALUES (1, 2);
-INSERT INTO Placeable (PlaceableId, PlaceableTypeId) VALUES (2, 2);
-INSERT INTO Placeable (PlaceableId, PlaceableTypeId) VALUES (3, 1);
-INSERT INTO Placeable (PlaceableId, PlaceableTypeId) VALUES (4, 1);
-INSERT INTO Placeable (PlaceableId, PlaceableTypeId) VALUES (5, 3);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (1, 2, 2);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (2, 2, 2);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (3, 1, 1);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (4, 1, 1);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (5, 3, 1);
 
 INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (1, 1, 1, 10);
 INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (2, 2, 1, 17);
@@ -179,6 +189,10 @@ INSERT INTO LocationInfo (LocationId, AddressLine1, City, State, PostalCode) VAL
 INSERT INTO LocationInfo (LocationId, AddressLine1, City, State, PostalCode) VALUES (2, '222 Second Blvd', 'Atlantis', 'N/A', '62442');
 INSERT INTO LocationInfo (LocationId, AddressLine1, City, State, PostalCode) VALUES (3, '333 Third Ave', 'Hogwarts', 'Europe', '32416');
 INSERT INTO LocationInfo (LocationId, AddressLine1, City, State, PostalCode) VALUES (4, '496 High St', 'Morgantown', 'West Virginia', '26505');
+
+INSERT INTO Contact (ContactId, FirstName, LastName, Email, PhoneNumber) VALUES (1, Bruce, Wayne, 'notbatman@wayne.com', '203-555-4242');
+
+INSERT INTO Event (EventId, StartDate, EndDate, LocationId, ContactId) VALUES (1, '2019-06-14', '2019-06-17', 1, 1);
 
 commit;
 exit;
