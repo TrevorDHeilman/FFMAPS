@@ -20,6 +20,7 @@ import { ItemComponent } from './stocks/item/item.component';
 import { PlaceableComponent } from './placeable/placeable.component';
 import { PlaceableListComponent } from './placeable-list/placeable-list.component';
 import { PlaceableService } from './placeable.service';
+import { ReceiptComponent } from './receipt/receipt.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { PlaceableService } from './placeable.service';
     StockListComponent,
     ItemComponent,
     PlaceableComponent,
-    PlaceableListComponent
+    PlaceableListComponent,
+    ReceiptComponent
   ],
 
   imports: [
