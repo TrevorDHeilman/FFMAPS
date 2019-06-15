@@ -1,6 +1,5 @@
 package com.fairfellas.data.hibernate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -8,7 +7,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.fairfellas.beans.Stock;
 import com.fairfellas.beans.User;
 import com.fairfellas.data.UserDAO;
 import com.fairfellas.utils.HibernateUtil;
@@ -28,4 +26,15 @@ public class UserHibernate implements UserDAO {
 		s.close();
 		return u;
 	}
+
+	@Override
+	public List<User> getAttendants() {
+		Session s = hu.getSession();
+		String query = "from userinfo u where u.usertypeid=3";
+		Query<User> q = s.createQuery(query, User.class);
+		List<User> attendants = q.getResultList();
+		System.out.println(attendants);
+		return attendants;
+	}
+
 }
