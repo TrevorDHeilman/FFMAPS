@@ -20,17 +20,17 @@ export class StockService {
   }
   public updateStock(stock: Stock): Observable<Stock>{
     const body = JSON.stringify(stock);
-    if(stock.id) {
-      const url = this.appUrl + '/' + stock.id;
-      return this.http.put(url, body,
+    // if(stock.id) {
+      const url = this.appUrl + '/' + stock;
+      return this.http.put(this.appUrl, body,
         {headers: this.headers, withCredentials: true}).pipe(
           map(resp => resp as Stock)
         );
-    } else {
-      return this.http.post(this.appUrl, body,
-        { headers: this.headers, withCredentials: true}).pipe(
-          map(resp => resp as Stock)
-      );
-    }
+    // } else {
+    //   return this.http.post(this.appUrl, body,
+    //     { headers: this.headers, withCredentials: true}).pipe(
+    //       map(resp => resp as Stock)
+    //   );
+    // }
   }
 }
