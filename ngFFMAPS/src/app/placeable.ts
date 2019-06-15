@@ -1,6 +1,6 @@
-import { Placeabletype } from './placeabletype';
+import { PlaceableType } from './placeabletype';
 
 export class Placeable {
     id: number;
-    placeabletype: Placeabletype;
+    placeableType: PlaceableType;
 }

@@ -1,7 +1,7 @@
-import { Placeabletype } from './placeabletype';
+import { PlaceableType } from './placeabletype';
 
 describe('Placeabletype', () => {
   it('should create an instance', () => {
-    expect(new Placeabletype()).toBeTruthy();
+    expect(new PlaceableType()).toBeTruthy();
   });
 });
