@@ -1,5 +1,5 @@
 
-<ng-container *ngIf="urlString != 'home'">
+<ng-container *ngIf="urlString != 'home' || loggedUser">
 <ng-container *ngIf="(!loggedUser); else display">
   <form class="form-inline my-2 my-lg-0" name="loginForm">
     <input class="form-control mr-sm-2" type="text" [(ngModel)]="username" name="username" placeholder="Login" aria-label="">
@@ -11,13 +11,13 @@
 
 <ng-template #display>
   <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
+    <li class="nav-item">
       <a class="nav-link" routerLink="#">Today<span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
       <a class="nav-link" routerLink="#">Time Sheets</a>
     </li>
-    <li class="nav-item dropdown">
+    <li class="nav-item">
       <a class="nav-link" routerLink="#">Training and Logs</a>
     </li>
     <li class="nav-item">
@@ -27,7 +27,7 @@
       <a class="nav-link" routerLink="portal/layout">Layout</a>
     </li>
     <li class="nav-item">
-        <span class="nav-link">Welcome {{ loggedUser.firstName + " " + loggedUser.lastName + "  " }}</span>
+        <span class="nav-link disabled">Welcome {{ loggedUser.firstName + " " + loggedUser.lastName + "    " }}</span>
     </li>
     <li class="nav-item">
       <button class="btn btn-danger" (click)="logout()">Logout</button>
