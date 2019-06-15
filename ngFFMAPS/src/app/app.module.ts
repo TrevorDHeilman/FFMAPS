@@ -38,11 +38,8 @@ import { ScheduleComponent } from './schedules/schedule/schedule.component';
     ItemComponent,
     PlaceableComponent,
     PlaceableListComponent,
-<<<<<<< HEAD
-    ReceiptComponent
-=======
+    ReceiptComponent,
     ScheduleComponent
->>>>>>> eaffd1b9261ae1148c37beec63745d92c7d7ddf8
   ],
 
   imports: [
