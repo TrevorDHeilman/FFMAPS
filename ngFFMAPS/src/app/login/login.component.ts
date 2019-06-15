@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { Router} from '@angular/router';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,8 @@ import { Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public loggedUser: User;
+ public loggedUser: User; 
+ @Output() onloggedUser: EventEmitter<User> = new EventEmitter();
   public username: string;
   public password: string;
   @Input() public urlString :string;
@@ -19,6 +21,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(null, null).subscribe(
       resp => {
         this.loggedUser = resp;
+        this.onloggedUser.emit(this.loggedUser);
       }
     );
   }
@@ -30,6 +33,7 @@ export class LoginComponent implements OnInit {
         console.log(resp);
 
         this.loggedUser = resp;
+        this.onloggedUser.emit(this.loggedUser);
       }
     );
   }
@@ -40,6 +44,7 @@ export class LoginComponent implements OnInit {
     this.loggedUser = null;
     this.username = null;
     this.password = null;
+    this.onloggedUser.emit(this.loggedUser);
   }
 
 }
