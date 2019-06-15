@@ -1,17 +1,33 @@
-<ng-container *ngIf="!loggedUser; else display">
+
+<ng-container *ngIf="urlString != 'home'">
+<ng-container *ngIf="(!loggedUser); else display">
   <form class="form-inline my-2 my-lg-0" name="loginForm">
     <input class="form-control mr-sm-2" type="text" [(ngModel)]="username" name="username" placeholder="Login" aria-label="">
     <input class="form-control mr-sm-2" type="password" [(ngModel)]="password" name="password" (keyup.enter)="login()" placeholder="Password" aria-label="">
     <button class="btn btn-outline-success my-2 my-sm-0" (click)="login()">Login</button>
   </form>
 </ng-container>
+</ng-container>
 
 <ng-template #display>
   <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="#">Today<span class="sr-only">(current)</span></a>
+    </li>
     <li class="nav-item">
-      <div *ngIf="loggedUser.employee; else customer">
-        <span>Welcome {{ loggedUser.employee.firstname + " " + loggedUser.employee.lastname }}</span>
-      </div>
+      <a class="nav-link" routerLink="#">Time Sheets</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link" routerLink="#">Training and Logs</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="#">HR</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="portal/layout">Layout</a>
+    </li>
+    <li class="nav-item">
+        <span class="nav-link">Welcome {{ loggedUser.firstName + " " + loggedUser.lastName + "  " }}</span>
     </li>
     <li class="nav-item">
       <button class="btn btn-danger" (click)="logout()">Logout</button>
