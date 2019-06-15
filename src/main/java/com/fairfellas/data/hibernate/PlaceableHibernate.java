@@ -1,5 +1,6 @@
 package com.fairfellas.data.hibernate;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -48,25 +49,25 @@ public class PlaceableHibernate implements PlaceableDAO{
 
 	//FIX LATER
 	@Override
-	public Set<Placeable> getPlaceableByType(String type) {
+	public List<Placeable> getPlaceableByType(String type) {
 		Session s = hu.getSession();
 		String query = "FROM Placeable";
 		Query<Placeable> q = s.createQuery(query, Placeable.class);
 		List<Placeable> placeableList = q.getResultList();
-		Set<Placeable> placeableSet = new HashSet<Placeable>();
-		placeableSet.addAll(placeableList);
-		return placeableSet;
+		List<Placeable> placeableAList = new ArrayList<Placeable>();
+		placeableAList.addAll(placeableList);
+		return placeableAList;
 	}
 
 	@Override
-	public Set<Placeable> getPlaceables() {
+	public List<Placeable> getPlaceables() {
 		Session s = hu.getSession();
 		String query = "FROM Placeable";
 		Query<Placeable> q = s.createQuery(query, Placeable.class);
 		List<Placeable> placeableList = q.getResultList();
-		Set<Placeable> placeableSet = new HashSet<Placeable>();
-		placeableSet.addAll(placeableList);
-		return placeableSet;
+		List<Placeable> placeableAList = new ArrayList<Placeable>();
+		placeableAList.addAll(placeableList);
+		return placeableAList;
 	}
 	
 	@Override
