@@ -7,10 +7,11 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule} from '@angular/forms';
 import { RouterModule, Routes} from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
-import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.component'
+import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
 import { LoginComponent } from './login/login.component';
+import { PurchaseComponent } from './purchase/purchase.component';
 import { StockComponent } from './stocks/stock/stock.component';
 import { StockListComponent } from './stocks/stock-list/stock-list.component';
 import { StockService } from './stocks/stock.service';
@@ -18,6 +19,7 @@ import { ItemComponent } from './stocks/item/item.component';
 import { PlaceableComponent } from './placeable/placeable.component';
 import { PlaceableListComponent } from './placeable-list/placeable-list.component';
 import { PlaceableService } from './placeable.service';
+import { PurchaseService } from './purchase.service';
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { PlaceableService } from './placeable.service';
     NavbarComponent,
     OwnerDashboardComponent,
     LoginComponent,
+    PurchaseComponent,
     StockComponent,
     StockListComponent,
     ItemComponent,
@@ -43,7 +46,13 @@ import { PlaceableService } from './placeable.service';
     RouterModule
   ],
 
-  providers: [UserService, PlaceableService, StockService],
+  providers: [
+    UserService,
+    PurchaseService,
+    UserService,
+    PlaceableService,
+    StockService
+  ],
 
   bootstrap: [AppComponent]
 })
