@@ -26,6 +26,9 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.userService.login(this.username, this.password).subscribe(
       resp => {
+        console.log("logging in: ");
+        console.log(resp);
+
         this.loggedUser = resp;
       }
     );
@@ -33,6 +36,7 @@ export class LoginComponent implements OnInit {
 
   logout(): void {
     this.userService.logout().subscribe();
+    console.log("logging out!")
     this.loggedUser = null;
     this.username = null;
     this.password = null;
