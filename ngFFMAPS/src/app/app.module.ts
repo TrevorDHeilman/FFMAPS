@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
 import { LoginComponent } from './login/login.component';
 import { PurchaseComponent } from './purchase/purchase.component';
-import {PurchaseService} from './purchase.service';
+import {PurchaseService} from './services/purchase.service';
 import { StockComponent } from './stocks/stock/stock.component';
 import { StockListComponent } from './stocks/stock-list/stock-list.component';
 import { StockService } from './stocks/stock.service';

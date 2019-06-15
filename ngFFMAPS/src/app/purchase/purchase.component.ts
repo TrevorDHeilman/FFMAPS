@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PurchaseService} from '../purchase.service';
-import {Purchase} from '../purchase';
+import {PurchaseService} from '../services/purchase.service';
+import {Purchase} from '../classfolder/purchase';
 
 @Component({
   selector: 'app-purchase',
