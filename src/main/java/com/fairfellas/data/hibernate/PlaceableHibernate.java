@@ -34,7 +34,7 @@ public class PlaceableHibernate implements PlaceableDAO{
 		} finally {
 			s.close();
 		}
-		return newPlaceable.getPlaceableId();
+		return newPlaceable.getId();
 	}
 
 	@Override
