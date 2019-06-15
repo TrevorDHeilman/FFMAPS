@@ -33,7 +33,7 @@ export class PurchaseComponent implements OnInit {
       this.purchase.lastName = null;
       this.purchase.locationId = 0;
       this.purchase.eventId = 0;
-      this.purchase.dateOfPurchase = null;
+      this.purchase.dateOfPurchase = new Date();
       this.purchase.email = null;
     }
   }
@@ -47,6 +47,8 @@ export class PurchaseComponent implements OnInit {
     this.purchase.eventId = this.eventId;
     this.purchase.dateOfPurchase = this.dateOfPurchase;
     this.purchase.email = this.email;
+
+    this.cleanInputFields();
     console.log(this.dateOfPurchase);
     this.purchaseService.makePurchase(this.purchase).subscribe(
       purchase => {
@@ -56,6 +58,15 @@ export class PurchaseComponent implements OnInit {
     );
   }
 
+  cleanInputFields(): void {
+    this.email = null;
+    this.dateOfPurchase = new Date();
+    this.lastName = null;
+    this.firstName = null;
+    this.numberOfTickets = 0;
+    this.eventId = 0;
+    this.locationId = 0;
+  }
   putDateOfPurchase($event: any) {
     this.purchase.dateOfPurchase = $event;
 
