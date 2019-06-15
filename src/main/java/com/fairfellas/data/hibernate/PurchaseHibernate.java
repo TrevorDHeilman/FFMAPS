@@ -14,24 +14,24 @@ import com.fairfellas.utils.HibernateUtil;
 public class PurchaseHibernate implements PurchaseDAO {
 	@Autowired
 	private HibernateUtil hibernateUtil = HibernateUtil.getInstance();
-	
+
 	@Override
 	public int addPurchase(Purchase purchase) {
 		Session session = hibernateUtil.getSession();
 		Transaction transaction = null;
-		
+
 		try {
 			transaction = session.beginTransaction();
 			session.save(purchase);
 			transaction.commit();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			if (null != transaction) {
 				transaction.rollback();
 			}
 		} finally {
 			session.close();
 		}
-		
+
 		return 1;
 	}
 }

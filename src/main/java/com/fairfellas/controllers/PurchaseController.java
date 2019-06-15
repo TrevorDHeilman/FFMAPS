@@ -16,21 +16,25 @@ import com.fairfellas.data.PurchaseDAO;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value="/purchase")
+@RequestMapping(value = "/purchase")
 public class PurchaseController {
+
 	@Autowired
 	private PurchaseDAO purchaseDAO;
 	private Logger log;
+
 	@PostMapping
 	public int makePurchase(@RequestBody Purchase purchase, HttpSession session) {
 		purchaseDAO.addPurchase(purchase);
 		log = Logger.getLogger(this.getClass());
 		log.trace(purchase);
 		log.trace("We made it");
+
 		return 1;
+
 	}
-	
-	@RequestMapping(method=RequestMethod.GET)
+
+	@RequestMapping(method = RequestMethod.GET)
 	public String goPurchase(HttpSession session) {
 		return "static/purchase.html";
 	}

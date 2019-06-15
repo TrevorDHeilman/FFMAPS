@@ -1,3 +1,99 @@
-<div>
-  <button class="btn btn-primary" (click)="makePurchase()">Purchase</button>
+<div style="">
+  <div class="wrapper">
+    <div class="one">
+      <div class="purchase">
+        <input style="align-content: center" class="form-control mr-sm-2" type="number" [(ngModel)]="numberOfTickets" name="numberOfTickets" placeholder="# of tickets" aria-label="">
+        <input id="firstName" name="firstName" placeholder="First name" class="form-control mr-sm-2"
+               required minlength="4" appForbiddenName="xxxx"
+               [(ngModel)]="firstName" #fname="ngModel" >
+        <!--    <input class="form-control mr-sm-2" type="text" [(ngModel)]="firstName" name="firstName" placeholder="First name" aria-label="">-->
+        <input class="form-control mr-sm-2" type="text" [(ngModel)]="lastName" name="lastName" placeholder="Last name" aria-label="">
+        <input class="form-control mr-sm-2" type="email" [(ngModel)]="email" name="email" placeholder="email@me.com" aria-label="">
+        <input style="align-content: center" class="form-control mr-sm-2" type="number" [(ngModel)]="locationId" name="locationId" placeholder="Location ID" aria-label="">
+        <input style="align-content: center" class="form-control mr-sm-2" type="number" [(ngModel)]="eventId" name="eventId" placeholder="Event ID" aria-label="">
+<!--        <input style="align-content: center" class="form-control mr-sm-2" type="date" [(ngModel)]="dateOfPurchase" name="dateOfPurchase" placeholder="Date of purchase" aria-label="">-->
+        <input style="align-content: center" class="form-control mr-sm-2" [ngModel] ="dateOfPurchase | date:'yyyy-MM-dd'" type="date" (ngModelChange)="putDateOfPurchase($event)" name="dateOfPurchase" placeholder="Date of purchase" aria-label="">
+<!--        <input type="date" [ngModel] ="dt | date:'yyyy-MM-dd'" (ngModelChange)="dt = $event">-->
+        <div *ngIf="fname.invalid && (fname.dirty || fname.touched)" class="alert alert-danger">
+          <div *ngIf="fname.errors.required">
+            Name is required.
+          </div>
+        </div>
+
+        <br><button class="btn btn-primary" (click)="makePurchase()">Purchase</button>
+
+      </div>
+
+    </div>
+    <div class="two">
+
+      <div class="receipt">
+        <div *ngIf="showCurrentReceipt" class="showReceipt">
+          <table class="receiptTable">
+            <tr>
+              <th style="text-align: left;">
+                # of tickets:
+              </th>
+              <th style="text-align: right;">
+
+                {{ numberOfTickets }}
+              </th>
+            </tr>
+            <tr>
+              <th style="text-align: left;">
+                Name:
+              </th>
+              <th *ngIf="firstName && lastName" style="text-align: right;">
+
+                {{ firstName + ' ' + lastName || ''}}
+              </th>
+            </tr>
+            <tr>
+              <th style="text-align: left;">
+                Email:
+              </th>
+              <th style="text-align: right;">
+
+                {{ email }}
+              </th>
+            </tr>
+            <tr>
+              <th style="text-align: left;">
+                Location ID:
+              </th>
+              <th style="text-align: right;">
+
+                {{ locationId }}
+              </th>
+            </tr>
+            <tr>
+              <th style="text-align: left;">
+                Event ID:
+              </th>
+              <th style="text-align: right;">
+
+                {{ eventId }}
+              </th>
+            </tr>
+            <tr>
+              <th style="text-align: left;">
+                Date of purchase:
+              </th>
+              <th style="text-align: right;">
+                {{ dateOfPurchase }}
+              </th>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+      <br style="clear: left;"/>
+    </div>
+    <div class="three">
+      <br><button class="btn btn-dark" (click)="showCurrentReceipt = !showCurrentReceipt">Preview receipt </button>
+    </div>
+
+  <br>
+
+
 </div>
