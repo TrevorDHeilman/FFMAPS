@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { EmployeePortalComponent } from './employee-portal/employee-portal.component';
 import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.component';
 import {PurchaseComponent} from './purchase/purchase.component';
+import { StockListComponent } from './stocks/stock-list/stock-list.component';
 
 const routes: Routes = [
   {
@@ -21,8 +22,12 @@ const routes: Routes = [
     component: OwnerDashboardComponent
   },
   {
+    path: 'portal/inventory',
+    component: StockListComponent
+  },
+  {
     path: 'home/purchase',
-    component: PurchaseComponent,
+    component: PurchaseComponent
   },
 ];
 

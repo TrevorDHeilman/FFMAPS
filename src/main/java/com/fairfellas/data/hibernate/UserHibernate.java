@@ -1,5 +1,7 @@
 package com.fairfellas.data.hibernate;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,16 @@ public class UserHibernate implements UserDAO {
 		User u = q.getSingleResult();
 		s.close();
 		return u;
+	}
+
+	@Override
+	public List<User> getAttendants() {
+		Session s = hu.getSession();
+		String query = "from userinfo u where u.usertypeid=3";
+		Query<User> q = s.createQuery(query, User.class);
+		List<User> attendants = q.getResultList();
+		System.out.println(attendants);
+		return attendants;
 	}
 
 }
