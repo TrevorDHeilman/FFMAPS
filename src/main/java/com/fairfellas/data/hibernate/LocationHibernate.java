@@ -9,7 +9,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.fairfellas.beans.Event;
 import com.fairfellas.beans.Location;
 import com.fairfellas.data.LocationDAO;
 import com.fairfellas.utils.HibernateUtil;
