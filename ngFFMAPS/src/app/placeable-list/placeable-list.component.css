@@ -1,0 +1,17 @@
+.bottomLine{
+    padding: 1px;
+    background-color: darkgray;
+}
+
+.tableBack{
+    background-color: lightgray;
+}
+
+.tableWidth{
+    /* width:350px; */
+}
+
+.td{
+    padding-left: 0px;
+
+}

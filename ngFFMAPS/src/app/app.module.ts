@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
 import { LoginComponent } from './login/login.component';
 import { PurchaseComponent } from './purchase/purchase.component';
-import {PurchaseService} from './purchase.service';
+import {PurchaseService} from './services/purchase.service';
 import { StockComponent } from './stocks/stock/stock.component';
 import { StockListComponent } from './stocks/stock-list/stock-list.component';
 import { StockService } from './stocks/stock.service';
@@ -20,6 +20,8 @@ import { ItemComponent } from './stocks/item/item.component';
 import { PlaceableComponent } from './placeable/placeable.component';
 import { PlaceableListComponent } from './placeable-list/placeable-list.component';
 import { PlaceableService } from './placeable.service';
+import { ReceiptComponent } from './receipt/receipt.component';
+import { ScheduleComponent } from './schedules/schedule/schedule.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { PlaceableService } from './placeable.service';
     StockListComponent,
     ItemComponent,
     PlaceableComponent,
-    PlaceableListComponent
+    PlaceableListComponent,
+    ReceiptComponent,
+    ScheduleComponent
   ],
 
   imports: [
@@ -45,10 +49,14 @@ import { PlaceableService } from './placeable.service';
     HttpClientModule,
     RouterModule
   ],
+
   providers: [
     UserService,
     PurchaseService,
-  UserService, PlaceableService, StockService],
+    UserService,
+    PlaceableService,
+    StockService
+  ],
 
   bootstrap: [AppComponent]
 })

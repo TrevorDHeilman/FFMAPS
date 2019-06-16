@@ -1,0 +1,38 @@
+
+button.btn.btn-dark {
+  margin-left: 30%;
+  margin-right: 30%;
+}
+.wrapper {
+  justify-items: stretch;
+  justify-content: space-between;
+  align-content: space-between;
+  grid-auto-flow: row;
+  display: grid;
+  /* 	| inline-grid;
+ */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: auto;
+  /* grid-template-rows: repeat( auto-fill, minmax(250px, 1fr) ); */
+  grid-gap: 1rem;
+}
+.one {
+  place-self: center;
+  grid-area: header;
+  grid-row: 2/6;
+  grid-column: 1/2;
+}
+
+.two {
+  place-self: center;
+  grid-area: main;
+  grid-column: 2/3;
+  grid-row: 2;
+  font-family: "Monaco";
+}
+
+.three {
+  grid-area: sidebar;
+  grid-column: 2/3;
+  grid-row: 1;
+}
