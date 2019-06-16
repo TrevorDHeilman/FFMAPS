@@ -25,13 +25,10 @@ public class EventController {
 	@GetMapping
 	public List<Event> getLayout(HttpSession session) {	
 		log = Logger.getLogger(PlaceableController.class);
-		log.trace("Inside Getter for Location");
-		if(session.getAttribute("user")!=null) {
-			List<Event> eventList = eh.getEvents();
-			log.trace(eventList);
-			return eventList;
-		}
-		return null;
+		log.trace("Inside Getter for Event");
+		List<Event> eventList = eh.getEvents();
+		log.trace(eventList);
+		return eventList;
 	}
 	
 }

@@ -31,84 +31,61 @@ public class Event {
 	@JoinColumn(name="LocationId")
 	private Location location;
 	
-	@Column(name="ContactId")
-	private int contactId;
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="ContactId")
+	private Contact contact;
 
-	
-	
 	public int getId() {
 		return id;
 	}
-
-
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-
 	public String getStartDate() {
 		return startDate;
 	}
-
-
 
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
-
-
 	public String getEndDate() {
 		return endDate;
 	}
-
-
 
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 
-
-
 	public Location getLocation() {
 		return location;
 	}
-
-
 
 	public void setLocation(Location location) {
 		this.location = location;
 	}
 
-
-
-	public int getContactId() {
-		return contactId;
+	public Contact getContact() {
+		return contact;
 	}
 
-
-
-	public void setContactId(int contactId) {
-		this.contactId = contactId;
+	public void setContact(Contact contact) {
+		this.contact = contact;
 	}
-
-
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + contactId;
+		result = prime * result + ((contact == null) ? 0 : contact.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -119,7 +96,10 @@ public class Event {
 		if (getClass() != obj.getClass())
 			return false;
 		Event other = (Event) obj;
-		if (contactId != other.contactId)
+		if (contact == null) {
+			if (other.contact != null)
+				return false;
+		} else if (!contact.equals(other.contact))
 			return false;
 		if (endDate == null) {
 			if (other.endDate != null)
@@ -141,11 +121,9 @@ public class Event {
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Event [id=" + id + ", startDate=" + startDate + ", endDate=" + endDate + ", location=" + location
-				+ ", contactId=" + contactId + "]";
+				+ ", contact=" + contact + "]";
 	}
 }
