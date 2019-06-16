@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fairfellas.beans.Receipt;
 import com.fairfellas.data.ReceiptDAO;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -21,20 +23,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @CrossOrigin
 @RequestMapping(value = "/receipt")
 public class ReceiptController {
-	
+
 	@Autowired
 	private ReceiptDAO receiptDAO;
 	private Logger log;
-	
-//	@GetMapping("{email}")
-//	@RequestMapping(method = RequestMethod.GET)
+
 	@PostMapping
-	public Receipt getReceipt(@RequestBody Receipt receipt, HttpSession session) {
+	public List<Receipt> getReceipt(@RequestBody Receipt receipt, HttpSession session) {
 		log = Logger.getLogger(this.getClass());
 		log.trace(receipt);
-		receipt = receiptDAO.getReceipt(receipt.email);
-		log.trace(receipt);
-		return receipt;
+		List<Receipt> receipts = receiptDAO.getReceipt(receipt.getEmail());
+
+		log.trace(receipts);
+		return receipts;
 	}
-	
+
 }

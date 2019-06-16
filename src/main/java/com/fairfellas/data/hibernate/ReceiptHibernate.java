@@ -1,5 +1,8 @@
 package com.fairfellas.data.hibernate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -23,35 +26,27 @@ public class ReceiptHibernate implements ReceiptDAO {
 	private Logger log;
 
 	@Override
-	public Receipt getReceipt(String email) {
+	public List<Receipt> getReceipt(String email) {
 		log = Logger.getLogger(this.getClass());
 		log.trace(email);
-		/**
-		 * Using a criteria builder to get Receipt based on email
-		 */
+
 		Session session = hibernateUtil.getSession();
 
-//		Criteria criteria = createEntityCriteria();
-//		criteria.add(Restrictions.eq("email", email));
-//		return (Receipt) criteria.uniqueResult();
+		Query query = session.createQuery("FROM Receipt r WHERE r.email IN (:email)");
 
-//		String query = "FROM Receipt";
-//		Query<Receipt> q = session.createQuery(query, Receipt.class);
-//		
-//		Receipt r = (Receipt) session.load(Receipt.class, )
-//		return q.getResultList().get(0);
-		
-		Criteria criteria = session.createCriteria(Receipt.class).add(Restrictions.eq("email", email));
-		
-		Object result = criteria.uniqueResult();
-		if (null != result) {
-			Receipt r = (Receipt) result;
-			return r;
+		List<String> emails = new ArrayList<String>();
+		emails.add(email);
+
+		query.setParameterList("email", emails);
+
+		List<Receipt> receipts = (List<Receipt>) query.getResultList();
+
+		if (null != receipts && receipts.isEmpty() == false) {
+			log.trace(receipts);
+			Receipt r = (Receipt) receipts.get(0);
+
+			return receipts;
 		}
 		return null;
 	}
-
-//	protected Criteria createEntityCriteria() {
-//		return session.createCriteria(persistentClass);
-//	}
 }
