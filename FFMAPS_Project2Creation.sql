@@ -145,6 +145,9 @@ ALTER TABLE UserInfo ADD CONSTRAINT FK_UserTypeId
 ALTER TABLE Placeable ADD CONSTRAINT FK_PlaceableId
     FOREIGN KEY (PlaceableTypeId) REFERENCES PlaceableType (PlaceableTypeId) ON DELETE CASCADE; 
     
+ALTER TABLE VendorStocks ADD CONSTRAINT FK_VendorStocksPlaceableId
+    FOREIGN KEY (PlaceableId) REFERENCES Placeable (PlaceableId) ON DELETE CASCADE;    
+    
 ALTER TABLE VendorStocks ADD CONSTRAINT FK_ItemId
     FOREIGN KEY (ItemId) REFERENCES ItemInfo (ItemId) ON DELETE CASCADE;
 
@@ -154,6 +157,21 @@ ALTER TABLE Event ADD CONSTRAINT FK_LocationId
 ALTER TABLE Event ADD CONSTRAINT FK_ContactId
     FOREIGN KEY (ContactId) REFERENCES Contact (ContactId) ON DELETE CASCADE;
     
+ALTER TABLE Schedule ADD CONSTRAINT FK_ScheduleEventId
+    FOREIGN KEY (EventId) REFERENCES Event (EventId) ON DELETE CASCADE;    
+    
+ALTER TABLE Schedule ADD CONSTRAINT FK_ScheduleUserId
+    FOREIGN KEY (UserId) REFERENCES UserInfo (UserId) ON DELETE CASCADE; 
+
+ALTER TABLE Schedule ADD CONSTRAINT FK_SchedulePlaceableId
+    FOREIGN KEY (PlaceableId) REFERENCES Placeable (PlaceableId) ON DELETE CASCADE; 
+    
+ALTER TABLE Receipt ADD CONSTRAINT FK_ReceiptLocationId
+    FOREIGN KEY (LocationId) REFERENCES LocationInfo (LocationId) ON DELETE CASCADE;    
+ 
+ALTER TABLE Receipt ADD CONSTRAINT FK_ReceiptEventId
+    FOREIGN KEY (EventId) REFERENCES Event (EventId) ON DELETE CASCADE;    
+        
 /*******************************************************************************
    Populate Tables
 ********************************************************************************/
@@ -190,7 +208,7 @@ INSERT INTO LocationInfo (LocationId, AddressLine1, City, State, PostalCode) VAL
 INSERT INTO LocationInfo (LocationId, AddressLine1, City, State, PostalCode) VALUES (3, '333 Third Ave', 'Hogwarts', 'Europe', '32416');
 INSERT INTO LocationInfo (LocationId, AddressLine1, City, State, PostalCode) VALUES (4, '496 High St', 'Morgantown', 'West Virginia', '26505');
 
-INSERT INTO Contact (ContactId, FirstName, LastName, Email, PhoneNumber) VALUES (1, Bruce, Wayne, 'notbatman@wayne.com', '203-555-4242');
+INSERT INTO Contact (ContactId, FirstName, LastName, Email, PhoneNumber) VALUES (1, 'Bruce', 'Wayne', 'notbatman@wayne.com', '203-555-4242');
 
 INSERT INTO Event (EventId, StartDate, EndDate, LocationId, ContactId) VALUES (1, '2019-06-14', '2019-06-17', 1, 1);
 
