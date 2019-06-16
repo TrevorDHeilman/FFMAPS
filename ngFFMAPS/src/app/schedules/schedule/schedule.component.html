@@ -1,3 +1,7 @@
-<p>
-  schedule works!
-</p>
+<div class="col-md-12 row p-0 m-0 pb-2"> 
+  <div class="col-md-6 p-0 td text-center">{{schedule.id}}</div>
+  <!-- <div class="col-md-6 p-0 pr-5 td text-center">{{schedule.event.id}}</div> -->
+  <div class="col-md-6 p-0 pr-5 td text-center">ID {{schedule.user.id}}: {{schedule.user.firstName}} {{schedule.user.lastName}} </div>
+  <div class="col-md-6 p-0 pr-5 td text-center">{{schedule.scheduleDate}}</div>
+  <div class="col-md-6 p-0 pr-5 td text-center">{{schedule.placeable.id}}</div>
+</div>

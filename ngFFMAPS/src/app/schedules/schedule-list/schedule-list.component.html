@@ -1,0 +1,13 @@
+<div class="pt-2 ml-3 tableBack tableWidth rounded">
+  <div class=row>
+      <div class="col-md-12 row p-0"> 
+          <div class="col-md-6 p-0 pl-4">Schedule ID</div>
+          <div class="col-md-6 p-0">Event ID</div>
+          <div class="col-md-6 p-0">User</div>
+          <div class="col-md-6 p-0">Schedule Date</div>
+          <div class="col-md-6 p-0">Placeable ID</div>
+      </div>
+  <div class="col-md-10 ml-4 bottomLine"> </div>
+      <app-schedule *ngFor="let s of schedule" [schedule]="s" class="w-100"> </app-schedule>
+  </div>
+</div>
