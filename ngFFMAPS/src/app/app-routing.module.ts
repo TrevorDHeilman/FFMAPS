@@ -5,6 +5,7 @@ import { EmployeePortalComponent } from './employee-portal/employee-portal.compo
 import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.component';
 import {PurchaseComponent} from './purchase/purchase.component';
 import { StockListComponent } from './stocks/stock-list/stock-list.component';
+import {ReceiptComponent} from './receipt/receipt.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'home/purchase',
     component: PurchaseComponent
+  },
+  {
+    path: 'home/receipt',
+    component: ReceiptComponent
   },
 ];
 

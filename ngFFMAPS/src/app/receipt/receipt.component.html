@@ -1,18 +1,18 @@
 
 <div class="one">
-  <input class="" [(ngModel)]="email" type="email">
+  <input class="" [ngModel]="email" (ngModelChange)="getReceipt($event)" type="email" placeholder="Search by email">
 </div>
 <div class="two">
   <div class="two">
 
     <div class="receipt">
-      <div  class="showReceipt">
+      <div *ngFor="let receipt of receipts" class="showReceipt">
         <table class="receiptTable">
           <tr>
             <th style="text-align: left;">
               # of tickets:
             </th>
-            <th style="text-align: right;">
+            <th *ngIf="receipt && receipt.numberOfTickets" style="text-align: right;">
 
               {{ receipt.numberOfTickets }}
             </th>
@@ -21,47 +21,48 @@
             <th style="text-align: left;">
               Name:
             </th>
-            <th *ngIf="firstName && lastName" style="text-align: right;">
+            <th *ngIf="receipt && receipt.firstName && receipt.lastName" style="text-align: right;">
 
-              {{ firstName + ' ' + lastName || ''}}
+              {{ receipt.firstName + ' ' + receipt.lastName || ''}}
             </th>
           </tr>
           <tr>
             <th style="text-align: left;">
               Email:
             </th>
-            <th style="text-align: right;">
+            <th *ngIf="receipt && receipt.email" style="text-align: right;">
 
-              {{ email }}
+              {{ receipt.email }}
             </th>
           </tr>
           <tr>
             <th style="text-align: left;">
               Location ID:
             </th>
-            <th style="text-align: right;">
+            <th *ngIf="receipt && receipt.locationId" style="text-align: right;">
 
-              {{ locationId }}
+              {{ receipt.locationId }}
             </th>
           </tr>
           <tr>
             <th style="text-align: left;">
               Event ID:
             </th>
-            <th style="text-align: right;">
+            <th *ngIf="receipt && receipt.eventId" style="text-align: right;">
 
-              {{ eventId }}
+              {{ receipt.eventId }}
             </th>
           </tr>
           <tr>
             <th style="text-align: left;">
               Date of purchase:
             </th>
-            <th style="text-align: right;">
+            <th *ngIf="receipt && receipt.dateOfPurchase" style="text-align: right;">
               {{ receipt.dateOfPurchase }}
             </th>
           </tr>
         </table>
+        <br>
       </div>
 
     </div>

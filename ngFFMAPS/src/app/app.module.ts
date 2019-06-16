@@ -22,6 +22,7 @@ import { PlaceableListComponent } from './placeable-list/placeable-list.componen
 import { PlaceableService } from './placeable.service';
 import { ReceiptComponent } from './receipt/receipt.component';
 import { ScheduleComponent } from './schedules/schedule/schedule.component';
+import {ReceiptService} from './services/receipt.service';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { ScheduleComponent } from './schedules/schedule/schedule.component';
     PurchaseService,
     UserService,
     PlaceableService,
-    StockService
+    StockService,
+    ReceiptService,
   ],
 
   bootstrap: [AppComponent]
