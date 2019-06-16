@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PurchaseService} from '../purchase.service';
-import {Purchase} from '../purchase';
+import {PurchaseService} from '../services/purchase.service';
+import {Purchase} from '../classfolder/purchase';
 
 @Component({
   selector: 'app-purchase',
@@ -49,7 +49,7 @@ export class PurchaseComponent implements OnInit {
     this.purchase.email = this.email;
 
     this.cleanInputFields();
-    console.log(this.dateOfPurchase);
+    console.log(this.purchase.dateOfPurchase);
     this.purchaseService.makePurchase(this.purchase).subscribe(
       purchase => {
         this.purchase = purchase;
@@ -60,15 +60,13 @@ export class PurchaseComponent implements OnInit {
 
   cleanInputFields(): void {
     this.email = null;
-    this.dateOfPurchase = new Date();
     this.lastName = null;
     this.firstName = null;
-    this.numberOfTickets = 0;
-    this.eventId = 0;
-    this.locationId = 0;
+    this.numberOfTickets = NaN;
+    this.eventId = NaN;
+    this.locationId = NaN;
   }
   putDateOfPurchase($event: any) {
-    this.purchase.dateOfPurchase = $event;
 
     this.dateOfPurchase = $event;
     console.log($event);

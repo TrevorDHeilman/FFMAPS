@@ -1,0 +1,72 @@
+
+<div class="one">
+  <input class="" [ngModel]="email" (ngModelChange)="getReceipt($event)" type="email" placeholder="Search by email">
+</div>
+<div class="two">
+  <div class="two">
+
+    <div class="receipt">
+      <div *ngFor="let receipt of receipts" class="showReceipt">
+        <table class="receiptTable">
+          <tr>
+            <th style="text-align: left;">
+              # of tickets:
+            </th>
+            <th *ngIf="receipt && receipt.numberOfTickets" style="text-align: right;">
+
+              {{ receipt.numberOfTickets }}
+            </th>
+          </tr>
+          <tr>
+            <th style="text-align: left;">
+              Name:
+            </th>
+            <th *ngIf="receipt && receipt.firstName && receipt.lastName" style="text-align: right;">
+
+              {{ receipt.firstName + ' ' + receipt.lastName || ''}}
+            </th>
+          </tr>
+          <tr>
+            <th style="text-align: left;">
+              Email:
+            </th>
+            <th *ngIf="receipt && receipt.email" style="text-align: right;">
+
+              {{ receipt.email }}
+            </th>
+          </tr>
+          <tr>
+            <th style="text-align: left;">
+              Location ID:
+            </th>
+            <th *ngIf="receipt && receipt.locationId" style="text-align: right;">
+
+              {{ receipt.locationId }}
+            </th>
+          </tr>
+          <tr>
+            <th style="text-align: left;">
+              Event ID:
+            </th>
+            <th *ngIf="receipt && receipt.eventId" style="text-align: right;">
+
+              {{ receipt.eventId }}
+            </th>
+          </tr>
+          <tr>
+            <th style="text-align: left;">
+              Date of purchase:
+            </th>
+            <th *ngIf="receipt && receipt.dateOfPurchase" style="text-align: right;">
+              {{ receipt.dateOfPurchase }}
+            </th>
+          </tr>
+        </table>
+        <br>
+      </div>
+
+    </div>
+    <br style="clear: left;"/>
+  </div>
+</div>
+<div class="three"></div>

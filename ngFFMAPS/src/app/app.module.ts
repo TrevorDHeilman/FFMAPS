@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
 import { LoginComponent } from './login/login.component';
 import { PurchaseComponent } from './purchase/purchase.component';
+import {PurchaseService} from './services/purchase.service';
 import { StockComponent } from './stocks/stock/stock.component';
 import { StockListComponent } from './stocks/stock-list/stock-list.component';
 import { StockService } from './stocks/stock.service';
@@ -19,10 +20,10 @@ import { ItemComponent } from './stocks/item/item.component';
 import { PlaceableComponent } from './placeable/placeable.component';
 import { PlaceableListComponent } from './placeable-list/placeable-list.component';
 import { PlaceableService } from './placeable.service';
-import { PurchaseService } from './purchase.service';
+import { ReceiptComponent } from './receipt/receipt.component';
 import { ScheduleComponent } from './schedules/schedule/schedule.component';
 import { ScheduleListComponent } from './schedules/schedule-list/schedule-list.component';
-
+import {ReceiptService} from './services/receipt.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,9 @@ import { ScheduleListComponent } from './schedules/schedule-list/schedule-list.c
     PlaceableComponent,
     PlaceableListComponent,
     ScheduleComponent,
-    ScheduleListComponent
+    ScheduleListComponent,
+    ReceiptComponent,
+    ScheduleComponent
   ],
 
   imports: [
@@ -55,7 +58,8 @@ import { ScheduleListComponent } from './schedules/schedule-list/schedule-list.c
     PurchaseService,
     UserService,
     PlaceableService,
-    StockService
+    StockService,
+    ReceiptService,
   ],
 
   bootstrap: [AppComponent]
