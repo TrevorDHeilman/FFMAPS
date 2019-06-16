@@ -7,12 +7,14 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.fairfellas.beans.Event;
 import com.fairfellas.data.EventDAO;
 import com.fairfellas.utils.HibernateUtil;
 import com.fairfellas.utils.LogUtil;
 
+@Component
 public class EventHibernate implements EventDAO{
 	@Autowired
 	private HibernateUtil hu;
