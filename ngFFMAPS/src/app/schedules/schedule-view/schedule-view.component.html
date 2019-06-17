@@ -24,6 +24,7 @@
       </div>
   </div>
 </div>
+<app-event-list></app-event-list>
 <br>
 <h1>Attendant Designation</h1><br>
     <table>
@@ -40,12 +41,12 @@
         <tr>
             <td>
                 <div>
-                    <input class="form-control " type="text" [(ngModel)]="empID" name="empID" />
+                    <input class="form-control " type="number" [(ngModel)]="schedule.user.id" name="empID" />
                 </div>
             </td>
             <td>
               <div>
-                  <input class="form-control" type="text" [(ngModel)]="eventID" name="eventID" />
+                  <input class="form-control" type="number" [(ngModel)]="schedule.event.id" name="eventID" />
               </div>
           </td>
             <td>
@@ -60,17 +61,17 @@
             </td>
             <td>
                 <div>
-                    <input class="form-control" type="text" [(ngModel)]="schDay" name="schDay" />
+                    <input class="form-control" type="number" [(ngModel)]="schedule.scheduleDay" name="schDay" />
                 </div>
             </td>
             <td>
                 <div>
-                    <input class="form-control" type="text" [(ngModel)]="placeable" name="placeable" />
+                    <input class="form-control" type="number" [(ngModel)]="schedule.placeable.id" name="placeable" />
                 </div>
             </td>
             <td></td>
             <td>
-              <button type="submit" class="btn btn-primary" id="s_submitbtn">Assign</button>
+              <button type="submit" class="btn btn-primary" (click)="submit()">Assign</button>
             </td>
         </tr>
     </table>
