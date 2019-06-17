@@ -1,5 +1,6 @@
 package com.fairfellas.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fairfellas.beans.Event;
@@ -22,18 +24,26 @@ public class EventController {
 	private EventHibernate eh;
 	private Logger log;
 	
+//	@RequestParam(defaultValue = "test") String id
 	@GetMapping
-	public List<Event> getLayout(HttpSession session) {	
-		log = Logger.getLogger(PlaceableController.class);
+	public List<Event> getEvents(HttpSession session , @RequestParam(defaultValue = "0") String status) {
+		
+		log = Logger.getLogger(EventController.class);
 		log.trace("Inside Getter for Event");
+		List<Event> eventListFilter = null;
 		List<Event> eventList = eh.getEvents();
+		if(!status.equals("0")) {
+			log.trace("Searching by Event Status: " +status);
+			eventListFilter = new ArrayList<Event>();
+			for(Event e : eventList) {
+				if(e.getEventStatus()!= null && status.equals(e.getEventStatus().getStatus())) {
+					eventListFilter.add(e);
+				}
+			}
+			log.trace(eventListFilter);
+			return eventListFilter;
+		}
 		log.trace(eventList);
 		return eventList;
 	}
-	
 }
-
-
-	
-	
-	

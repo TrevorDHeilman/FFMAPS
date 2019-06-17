@@ -12,7 +12,7 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   public getEvents(): Observable<Event[]> {
-    return this.http.get('http://localhost:8080/FFMAPS/event', {}).pipe(
+    return this.http.get('http://localhost:8080/FFMAPS/event?status=Accepted', {}).pipe(
       map( (resp) => resp as Event[] )
     );
   }
