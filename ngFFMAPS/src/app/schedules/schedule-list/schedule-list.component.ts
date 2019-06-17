@@ -11,8 +11,8 @@ import { Event } from 'src/app/classfolder/event';
   styleUrls: ['./schedule-list.component.css']
 })
 export class ScheduleListComponent implements OnInit {
-  private schedules: Schedule[];
-  private newSchedule: Schedule;
+  public schedules: Schedule[];
+  public newSchedule: Schedule;
   
   constructor(private scheduleService: ScheduleService) { }
 

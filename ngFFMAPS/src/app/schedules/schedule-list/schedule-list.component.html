@@ -2,12 +2,12 @@
     <div class=row>
         <div class="col-md-12 row p-0">
             <div class="col-md-2 p-0 pl-4">Schedule ID</div>
-            <div class="col-md-2 p-0">Event ID</div>
-            <div class="col-md-3 p-0">User</div>
-            <div class="col-md-3 p-0">Schedule Day</div>
+            <div class="col-md-1 p-0">Event ID</div>
+            <div class="col-md-5 p-0">User</div>
+            <div class="col-md-2 p-0">Schedule Day</div>
             <div class="col-md-2 p-0">Placeable ID</div>
         </div>
         <div class="col-md-11 ml-4 bottomLine"> </div>
-        <app-schedule *ngFor="let s of schedule" [schedule]="s" class="w-100"> </app-schedule>
+        <app-schedule *ngFor="let s of schedules" [schedule]="s" class="w-100"> </app-schedule>
     </div>
 </div>
