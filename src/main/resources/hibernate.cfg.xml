@@ -32,5 +32,6 @@
 		<mapping class="com.fairfellas.beans.Placeable"/>
 		<mapping class="com.fairfellas.beans.PlaceableType"/>
 		<mapping class="com.fairfellas.beans.Receipt"/>
+		<mapping class="com.fairfellas.beans.Schedule"/>
 	</session-factory>
 </hibernate-configuration>

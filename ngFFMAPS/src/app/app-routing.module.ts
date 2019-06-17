@@ -1,3 +1,4 @@
+import { ScheduleViewComponent } from './schedules/schedule-view/schedule-view.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -12,13 +13,20 @@ const routes: Routes = [
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
-  }, {
+  }, 
+  {
     path: 'home',
     component: HomeComponent
-  }, {
+  }, 
+  {
     path: 'portal',
     component: EmployeePortalComponent
-  }, {
+  },
+  {
+    path: 'portal/timesheets',
+    component: ScheduleViewComponent
+  }, 
+  {
     path: 'portal/layout',
     component: OwnerDashboardComponent
   },

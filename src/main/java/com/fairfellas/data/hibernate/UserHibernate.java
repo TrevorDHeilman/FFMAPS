@@ -30,7 +30,7 @@ public class UserHibernate implements UserDAO {
 	@Override
 	public List<User> getAttendants() {
 		Session s = hu.getSession();
-		String query = "from userinfo u where u.usertypeid=3";
+		String query = "from User u where u.userType.id=3";
 		Query<User> q = s.createQuery(query, User.class);
 		List<User> attendants = q.getResultList();
 		System.out.println(attendants);

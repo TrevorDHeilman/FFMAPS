@@ -24,6 +24,7 @@ public class ScheduleController {
 	
 	@GetMapping
 	public List<Schedule> getSchedule(HttpSession session) {
+		System.out.println("schedule controller!!!");
 		if(session.getAttribute("user")!=null) {
 			return sd.getSchedule();
 		}

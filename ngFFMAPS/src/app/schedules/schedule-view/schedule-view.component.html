@@ -1,0 +1,76 @@
+<div class="col-md-10">
+  <div class="card" style="">
+      <div class="card-body text-center pl-1">
+          <h4 class="ml-4">Schedules</h4>
+          <app-schedule-list></app-schedule-list>
+      </div>
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="card" style="">
+        <div class="card-body text-center pl-1">
+            <h4 class="ml-4">Available Placeables</h4>
+            <app-placeable-list class=""></app-placeable-list>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card" style="">
+        <div class="card-body text-center pl-1">
+            <h4 class="ml-4">Attendants</h4>
+            <app-attendant-list class=""></app-attendant-list>
+        </div>
+      </div>
+  </div>
+</div>
+<br>
+<h1>Attendant Designation</h1><br>
+    <table>
+        <tr>
+          <th class="text-center">Employee ID</th>
+          <th class="text-center">Event ID</th>
+          <th class="text-center">First Name</th>
+          <th class="text-center">Last Name</th>
+          <th class="text-center">Event Day</th>
+          <th class="text-center">Designation</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    <input class="form-control " type="text" [(ngModel)]="empID" name="empID" />
+                </div>
+            </td>
+            <td>
+              <div>
+                  <input class="form-control" type="text" [(ngModel)]="eventID" name="eventID" />
+              </div>
+          </td>
+            <td>
+                <div>
+                    <input class="form-control" type="text" [(ngModel)]="first" name="first" />
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input class="form-control" type="text" [(ngModel)]="last" name="last" />
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input class="form-control" type="text" [(ngModel)]="schDay" name="schDay" />
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input class="form-control" type="text" [(ngModel)]="placeable" name="placeable" />
+                </div>
+            </td>
+            <td></td>
+            <td>
+              <button type="submit" class="btn btn-primary" id="s_submitbtn">Assign</button>
+            </td>
+        </tr>
+    </table>

@@ -20,8 +20,9 @@ public class ScheduleHibernate implements ScheduleDAO {
 	
 	@Override
 	public List<Schedule> getSchedule() {
+		System.out.println("scheudle hibernate!!!");
 		Session s = hu.getSession();
-		String query = "from schedule";
+		String query = "FROM Schedule";
 		Query<Schedule> q = s.createQuery(query, Schedule.class);
 		List<Schedule> schedule = q.getResultList();
 		System.out.println(schedule);
