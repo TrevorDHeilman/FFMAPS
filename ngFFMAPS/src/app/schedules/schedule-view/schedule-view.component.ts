@@ -1,6 +1,6 @@
 import { Event } from 'src/app/classfolder/event';
 import { ScheduleService } from './../schedule.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'src/app/user';
 import { Placeable } from 'src/app/placeable';
 import { Schedule } from '../schedule';
@@ -11,6 +11,7 @@ import { Schedule } from '../schedule';
   styleUrls: ['./schedule-view.component.css']
 })
 export class ScheduleViewComponent implements OnInit {
+  @Input() public schedule: Schedule;
   private schedules: Schedule[];
   private newSchedule: Schedule;
 
@@ -23,11 +24,6 @@ export class ScheduleViewComponent implements OnInit {
     this.newSchedule.event = new Event();
     this.newSchedule.user = new User();
     this.newSchedule.placeable = new Placeable();
-    this.scheduleService.getSchedule().subscribe(
-      (schedules) => {
-        console.log(schedules)
-        this.schedules = schedules;
-      });
   }
   submit(): void {
     this.scheduleService.addSchedule(this.newSchedule).subscribe(

@@ -20,16 +20,19 @@ public class Schedule {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="schedule")
 	@SequenceGenerator(name="schedule", sequenceName="schedule_seq", allocationSize=1)
 	private Integer id;
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="eventid")
 	private Event event;
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="userid")
 	private User user;
 	private String scheduleDay;
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="placeableid")
 	private Placeable placeable;
+	public Schedule() {
+		super();
+	}
 	public Schedule(Integer id, Event event, User user, String scheduleDay, Placeable placeable) {
 		super();
 		this.id = id;
