@@ -23,6 +23,9 @@ public class Placeable {
 	@SequenceGenerator(name="Placeable", sequenceName="placeable_seq", allocationSize=1)
 	private int id;
 	
+	@Column(name="EmployeeCapacity")
+	private int employeeCapacity;
+	
 //	@Column(name="PlaceableTypeId")
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="PlaceableTypeId")
@@ -34,6 +37,14 @@ public class Placeable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getEmployeeCapacity() {
+		return employeeCapacity;
+	}
+
+	public void setEmployeeCapacity(int employeeCapacity) {
+		this.employeeCapacity = employeeCapacity;
 	}
 
 	public PlaceableType getPlaceableType() {
@@ -48,6 +59,7 @@ public class Placeable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + employeeCapacity;
 		result = prime * result + id;
 		result = prime * result + ((placeableType == null) ? 0 : placeableType.hashCode());
 		return result;
@@ -62,6 +74,8 @@ public class Placeable {
 		if (getClass() != obj.getClass())
 			return false;
 		Placeable other = (Placeable) obj;
+		if (employeeCapacity != other.employeeCapacity)
+			return false;
 		if (id != other.id)
 			return false;
 		if (placeableType == null) {
@@ -74,6 +88,7 @@ public class Placeable {
 
 	@Override
 	public String toString() {
-		return "Placeable [id=" + id + ", placeableType=" + placeableType + "]";
+		return "Placeable [id=" + id + ", employeeCapacity=" + employeeCapacity + ", placeableType=" + placeableType
+				+ "]";
 	}
 }
