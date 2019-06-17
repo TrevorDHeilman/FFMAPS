@@ -8,6 +8,7 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.fairfellas.beans.Placeable;
@@ -17,7 +18,8 @@ import com.fairfellas.utils.LogUtil;
 
 @Component
 public class PlaceableHibernate implements PlaceableDAO{
-	private HibernateUtil hu = HibernateUtil.getInstance();
+	@Autowired
+	private HibernateUtil hu;
 	
 	@Override
 	public int addPlaceable(Placeable newPlaceable) {
