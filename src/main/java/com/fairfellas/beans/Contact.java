@@ -2,7 +2,10 @@ package com.fairfellas.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -10,6 +13,8 @@ import javax.persistence.Table;
 public class Contact {
 	@Id
 	@Column(name="ContactId")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="contact")
+	@SequenceGenerator(name="contact", sequenceName="contact_seq", allocationSize=1)
 	private int id;
 	
 	@Column(name="FirstName")

@@ -9,52 +9,41 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="UserType")
-public class UserType {
+@Table(name="EventStatusInfo")
+public class EventStatus {
 	@Id
-	@Column(name="UserTypeId")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="usertype")
-	@SequenceGenerator(name="usertype", sequenceName="usertype_seq", allocationSize=1)
+	@Column(name="StatusId")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EventStatus")
+	@SequenceGenerator(name="EventStatus", sequenceName="eventStatus_seq", allocationSize=1)
 	private int id;
-	@Column(name="UserType")
-	private String type;
 	
-	
+	@Column(name="Status")
+	private String status;
 	
 	public int getId() {
 		return id;
 	}
 
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-
-	public String getType() {
-		return type;
+	public String getStatus() {
+		return status;
 	}
 
-
-
-	public void setType(String type) {
-		this.type = type;
+	public void setStatus(String status) {
+		this.status = status;
 	}
-
-
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -64,22 +53,19 @@ public class UserType {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserType other = (UserType) obj;
+		EventStatus other = (EventStatus) obj;
 		if (id != other.id)
 			return false;
-		if (type == null) {
-			if (other.type != null)
+		if (status == null) {
+			if (other.status != null)
 				return false;
-		} else if (!type.equals(other.type))
+		} else if (!status.equals(other.status))
 			return false;
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "UserType [id=" + id + ", type=" + type + "]";
+		return "EventStatus [id=" + id + ", status=" + status + "]";
 	}
-	
 }

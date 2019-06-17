@@ -14,8 +14,8 @@ public class Location {
 
 	@Id
 	@Column(name="LocationId")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Placeable")
-	@SequenceGenerator(name="Placeable", sequenceName="placeable_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="location")
+	@SequenceGenerator(name="location", sequenceName="location_seq", allocationSize=1)
 	private int id;
 	
 	@Column(name="AddressLine1")
