@@ -94,7 +94,8 @@ CREATE TABLE Event
     StartDate VARCHAR(25) NOT NULL,
     EndDate VARCHAR(25) NOT NULL,
     LocationId NUMBER NOT NULL,
-    ContactId NUMBER NOT NULL
+    ContactId NUMBER NOT NULL,
+    StatusId NUMBER NOT NULL
 );
 
 CREATE TABLE LocationInfo
@@ -114,6 +115,12 @@ CREATE TABLE Contact
     LastName VARCHAR2(25) NOT NULL,
     Email VARCHAR2(50) NOT NULL,
     PhoneNumber VARCHAR2(25)
+);
+
+CREATE TABLE EventStatusInfo
+(
+    StatusId NUMBER PRIMARY KEY NOT NULL,
+    Status VARCHAR(25) NOT NULL
 );
 
 CREATE TABLE Schedule
@@ -156,6 +163,9 @@ ALTER TABLE Event ADD CONSTRAINT FK_LocationId
 
 ALTER TABLE Event ADD CONSTRAINT FK_ContactId
     FOREIGN KEY (ContactId) REFERENCES Contact (ContactId) ON DELETE CASCADE;
+
+ALTER TABLE Event ADD CONSTRAINT FK_EventStatusId
+    FOREIGN KEY (StatusId) REFERENCES EventStatusInfo (StatusId) ON DELETE CASCADE; 
     
 ALTER TABLE Schedule ADD CONSTRAINT FK_ScheduleEventId
     FOREIGN KEY (EventId) REFERENCES Event (EventId) ON DELETE CASCADE;    
@@ -171,7 +181,7 @@ ALTER TABLE Receipt ADD CONSTRAINT FK_ReceiptLocationId
  
 ALTER TABLE Receipt ADD CONSTRAINT FK_ReceiptEventId
     FOREIGN KEY (EventId) REFERENCES Event (EventId) ON DELETE CASCADE;    
-        
+           
 /*******************************************************************************
    Populate Tables
 ********************************************************************************/
@@ -188,6 +198,11 @@ INSERT INTO ItemInfo (ItemId, ItemName) VALUES (2, 'Corndog');
 INSERT INTO ItemInfo (ItemId, ItemName) VALUES (3, 'Popsicle');
 INSERT INTO ItemInfo (ItemId, ItemName) VALUES (4, 'Churro');
 
+INSERT INTO EventStatusInfo (StatusId, Status) VALUES (1, 'Pending');
+INSERT INTO EventStatusInfo (StatusId, Status) VALUES (2, 'Accepted');
+INSERT INTO EventStatusInfo (StatusId, Status) VALUES (3, 'Declined');
+INSERT INTO EventStatusInfo (StatusId, Status) VALUES (4, 'Completed');
+
 INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (1, 2, 2);
 INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (2, 2, 2);
 INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (3, 1, 1);
@@ -202,6 +217,12 @@ INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VA
 INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (1, 'owner', 'pass', 'Jess', 'Jesse', 1);
 INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (2, 'manager', 'pass', 'Ronald', 'McDonald', 2);
 INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (3, 'attendant', 'pass', 'Matt', 'Donald', 3);
+INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (4, 'at1', 'pass', 'Vinn', 'Disel', 3);
+INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (5, 'at2', 'pass', 'Arnold', 'Schwarzenegger', 3);
+INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (6, 'at3', 'pass', 'Lucy', 'Lawless', 3);
+INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (7, 'at4', 'pass', 'Beck', 'Hansen', 3);
+INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (8, 'at5', 'pass', 'Alice', 'InChains', 3);
+INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (9, 'at6', 'pass', 'Brandy', 'McDonald', 3);
 
 INSERT INTO LocationInfo (LocationId, AddressLine1, City, State, PostalCode) VALUES (1, '111 First St', 'Gotham', 'New York', '64591');
 INSERT INTO LocationInfo (LocationId, AddressLine1, City, State, PostalCode) VALUES (2, '222 Second Blvd', 'Atlantis', 'N/A', '62442');
@@ -209,8 +230,10 @@ INSERT INTO LocationInfo (LocationId, AddressLine1, City, State, PostalCode) VAL
 INSERT INTO LocationInfo (LocationId, AddressLine1, City, State, PostalCode) VALUES (4, '496 High St', 'Morgantown', 'West Virginia', '26505');
 
 INSERT INTO Contact (ContactId, FirstName, LastName, Email, PhoneNumber) VALUES (1, 'Bruce', 'Wayne', 'notbatman@wayne.com', '203-555-4242');
+INSERT INTO Contact (ContactId, FirstName, LastName, Email, PhoneNumber) VALUES (2, 'Clark', 'Kent', 'notsuperman@kent.com', '302-555-2424');
+INSERT INTO Contact (ContactId, FirstName, LastName, Email, PhoneNumber) VALUES (3, 'Tony', 'Stark', 'iloveyou3000@endgame.com', '222-555-3000');
 
-INSERT INTO Event (EventId, StartDate, EndDate, LocationId, ContactId) VALUES (1, '2019-06-14', '2019-06-17', 1, 1);
+INSERT INTO Event (EventId, StartDate, EndDate, LocationId, ContactId, StatusId) VALUES (1, '2019-06-28', '2019-06-30', 1, 1, 2);
 
 commit;
 exit;
