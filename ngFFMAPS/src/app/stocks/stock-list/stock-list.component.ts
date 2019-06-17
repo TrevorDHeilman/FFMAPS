@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Stock } from '../stock';
 import { StockService } from '../stock.service';
 import { Item } from '../item';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'app-stock-list',
@@ -14,7 +15,10 @@ export class StockListComponent implements OnInit {
   public identity: number;
   public addedStock: number;
   
-  constructor(private stockService: StockService) { }
+  constructor(
+    private stockService: StockService,
+    private userService: UserService
+    ) { }
 
   ngOnInit() {
     this.newStock = new Stock();
@@ -27,8 +31,6 @@ export class StockListComponent implements OnInit {
   }
   submit(): void {
     this.newStock = this.stocks[this.identity-1];
-    console.log(this.newStock);
-    console.log(this.addedStock);
     this.newStock.stockAvailable = this.newStock.stockAvailable + this.addedStock;
     this.stockService.updateStock(this.newStock).subscribe(
       newStock => {

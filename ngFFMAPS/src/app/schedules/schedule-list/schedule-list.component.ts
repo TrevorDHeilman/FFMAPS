@@ -1,0 +1,30 @@
+import { Placeable } from './../../placeable';
+import { ScheduleService } from './../schedule.service';
+import { Component, OnInit } from '@angular/core';
+import { Schedule } from '../schedule';
+import { User } from 'src/app/user';
+import { Event } from 'src/app/classfolder/event';
+
+@Component({
+  selector: 'app-schedule-list',
+  templateUrl: './schedule-list.component.html',
+  styleUrls: ['./schedule-list.component.css']
+})
+export class ScheduleListComponent implements OnInit {
+  private schedules: Schedule[];
+  private newSchedule: Schedule;
+  
+  constructor(private scheduleService: ScheduleService) { }
+
+  ngOnInit() {
+    this.newSchedule = new Schedule();
+    this.newSchedule.event = new Event();
+    this.newSchedule.user = new User();
+    this.newSchedule.placeable = new Placeable();
+    this.scheduleService.getSchedule().subscribe(
+      (schedules) => {
+        console.log(schedules)
+        this.schedules = schedules;
+      });
+  }
+}
