@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -17,8 +18,8 @@ import javax.persistence.Table;
 public class Event {
 	@Id
 	@Column(name="EventId")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Location")
-	@SequenceGenerator(name="Location", sequenceName="placeable_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Event")
+	@SequenceGenerator(name="Event", sequenceName="event_seq", allocationSize=1)
 	private int id;
 	
 	@Column(name="StartDate")
@@ -34,7 +35,11 @@ public class Event {
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="ContactId")
 	private Contact contact;
-
+	
+	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="StatusId")
+	private EventStatus eventStatus;
+	
 	public int getId() {
 		return id;
 	}
@@ -75,12 +80,21 @@ public class Event {
 		this.contact = contact;
 	}
 
+	public EventStatus getEventStatus() {
+		return eventStatus;
+	}
+
+	public void setEventStatus(EventStatus eventStatus) {
+		this.eventStatus = eventStatus;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((contact == null) ? 0 : contact.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
+		result = prime * result + ((eventStatus == null) ? 0 : eventStatus.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
@@ -106,6 +120,11 @@ public class Event {
 				return false;
 		} else if (!endDate.equals(other.endDate))
 			return false;
+		if (eventStatus == null) {
+			if (other.eventStatus != null)
+				return false;
+		} else if (!eventStatus.equals(other.eventStatus))
+			return false;
 		if (id != other.id)
 			return false;
 		if (location == null) {
@@ -124,6 +143,6 @@ public class Event {
 	@Override
 	public String toString() {
 		return "Event [id=" + id + ", startDate=" + startDate + ", endDate=" + endDate + ", location=" + location
-				+ ", contact=" + contact + "]";
+				+ ", contact=" + contact + ", eventStatus=" + eventStatus + "]";
 	}
 }
