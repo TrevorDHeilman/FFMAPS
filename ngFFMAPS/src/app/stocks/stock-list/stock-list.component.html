@@ -1,0 +1,6 @@
+<app-stock *ngFor="let s of stocks" [stock]="s"></app-stock>
+<br>
+Order more stock <br>
+Id: <input type="number" [(ngModel)]="identity" name="identity"/> <br>
+Amount of Stock: <input type="number" [(ngModel)]="addedStock" name="addedStock"/> <br>
+<button class="btn btn-outline-primary"  (click)="submit()">Submit</button>

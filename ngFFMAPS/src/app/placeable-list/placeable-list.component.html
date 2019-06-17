@@ -1,0 +1,10 @@
+<div class="pt-2 ml-3 tableBack tableWidth rounded">
+    <div class=row>
+        <div class="col-md-12 row p-0"> 
+            <div class="col-md-6 p-0 pl-4">Placeable Id</div>
+            <div class="col-md-6 p-0">Placeable Type</div>
+        </div>
+    <div class="col-md-10 ml-4 bottomLine"> </div>
+        <app-placeable *ngFor="let p of placeables" [placeable]="p" class="w-100"> </app-placeable>
+    </div>
+</div>

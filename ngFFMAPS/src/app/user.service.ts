@@ -11,6 +11,7 @@ export class UserService {
 private currentUser: User;
 private appUrl = 'http://localhost:8080/FFMAPS/login';
 private headers = new HttpHeaders({'Content-Type': 'application/json'});
+private onHome :string = "home";
 //private urlSource: UrlService, private http: HttpClient 
   constructor(private http: HttpClient) { }
 
@@ -72,5 +73,13 @@ private headers = new HttpHeaders({'Content-Type': 'application/json'});
   
   getCurrentUser(): User {
     return this.currentUser;
+  }
+
+  hitHome():string{
+    return this.onHome = "home";
+  }
+
+  hitPortal():string{
+    return this.onHome = "portal";
   }
 }

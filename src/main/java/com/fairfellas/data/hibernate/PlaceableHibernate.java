@@ -1,5 +1,6 @@
 package com.fairfellas.data.hibernate;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -7,13 +8,14 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Component;
 
 import com.fairfellas.beans.Placeable;
 import com.fairfellas.data.PlaceableDAO;
 import com.fairfellas.utils.HibernateUtil;
 import com.fairfellas.utils.LogUtil;
 
-
+@Component
 public class PlaceableHibernate implements PlaceableDAO{
 	private HibernateUtil hu = HibernateUtil.getInstance();
 	
@@ -33,7 +35,7 @@ public class PlaceableHibernate implements PlaceableDAO{
 		} finally {
 			s.close();
 		}
-		return newPlaceable.getPlaceableId();
+		return newPlaceable.getId();
 	}
 
 	@Override
@@ -45,17 +47,29 @@ public class PlaceableHibernate implements PlaceableDAO{
 		return placeable;
 	}
 
+	//FIX LATER
 	@Override
-	public Set<Placeable> getPlaceableByType(String type) {
+	public List<Placeable> getPlaceableByType(String type) {
 		Session s = hu.getSession();
 		String query = "FROM Placeable";
 		Query<Placeable> q = s.createQuery(query, Placeable.class);
 		List<Placeable> placeableList = q.getResultList();
-		Set<Placeable> placeableSet = new HashSet<Placeable>();
-		placeableSet.addAll(placeableList);
-		return placeableSet;
+		List<Placeable> placeableAList = new ArrayList<Placeable>();
+		placeableAList.addAll(placeableList);
+		return placeableAList;
 	}
 
+	@Override
+	public List<Placeable> getPlaceables() {
+		Session s = hu.getSession();
+		String query = "FROM Placeable";
+		Query<Placeable> q = s.createQuery(query, Placeable.class);
+		List<Placeable> placeableList = q.getResultList();
+		List<Placeable> placeableAList = new ArrayList<Placeable>();
+		placeableAList.addAll(placeableList);
+		return placeableAList;
+	}
+	
 	@Override
 	public void removePlaceable(Placeable placeable) {
 		Session s = hu.getSession();

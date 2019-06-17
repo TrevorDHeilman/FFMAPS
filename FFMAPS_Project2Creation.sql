@@ -47,7 +47,7 @@ conn project2/p4ssw0rd
 ********************************************************************************/
 CREATE TABLE UserInfo
 (
-    UserId NUMBER primary key UNIQUE NOT NULL,
+    UserId NUMBER PRIMARY KEY NOT NULL,
     Username VARCHAR2(25) UNIQUE NOT NULL,
     Password VARCHAR2(25) NOT NULL,
     FirstName VARCHAR2(25) NOT NULL,
@@ -57,25 +57,26 @@ CREATE TABLE UserInfo
 
 CREATE TABLE UserType
 (
-    UserTypeId NUMBER primary key UNIQUE NOT NULL,
+    UserTypeId NUMBER PRIMARY KEY NOT NULL,
     UserType VARCHAR2(25) NOT NULL
 );
 
 CREATE TABLE Placeable
 (
-    PlaceableId NUMBER primary key UNIQUE NOT NULL,
-    PlaceableTypeId NUMBER NOT NULL
+    PlaceableId NUMBER PRIMARY KEY NOT NULL,
+    PlaceableTypeId NUMBER NOT NULL,
+    EmployeeCapacity NUMBER NOT NULL 
 );
 
 CREATE TABLE PlaceableType
 (
-    PlaceableTypeId NUMBER primary key UNIQUE NOT NULL,
+    PlaceableTypeId NUMBER PRIMARY KEY NOT NULL,
     PlaceableType VARCHAR2(25) NOT NULL
 );
 
 CREATE TABLE VendorStocks
 (
-    VendorStockId NUMBER primary key UNIQUE NOT NULL,
+    VendorStockId NUMBER PRIMARY KEY NOT NULL,
     ItemId NUMBER UNIQUE NOT NULL,
     PlaceableId NUMBER NOT NULL,
     StockAvailable NUMBER NOT NULL
@@ -83,24 +84,24 @@ CREATE TABLE VendorStocks
 
 CREATE TABLE ItemInfo
 (
-    ItemId NUMBER primary key UNIQUE NOT NULL,
+    ItemId NUMBER PRIMARY KEY NOT NULL,
     ItemName VARCHAR2(25) NOT NULL
 );
 
 CREATE TABLE Event
 (
-    EventId NUMBER primary key UNIQUE NOT NULL,
-    StartDate DATE NOT NULL,
-    EndDate DATE NOT NULL,
+    EventId NUMBER PRIMARY KEY NOT NULL,
+    StartDate VARCHAR(25) NOT NULL,
+    EndDate VARCHAR(25) NOT NULL,
     LocationId NUMBER NOT NULL,
     ContactId NUMBER NOT NULL
 );
 
 CREATE TABLE LocationInfo
 (
-    LocationId NUMBER primary key UNIQUE NOT NULL,
+    LocationId NUMBER PRIMARY KEY NOT NULL,
     AddressLine1 VARCHAR2(25) NOT NULL,
-    AddressLine2 VARCHAR2(25) NOT NULL,
+    AddressLine2 VARCHAR2(25),
     City VARCHAR2(25) NOT NULL,
     State VARCHAR2(25) NOT NULL,
     PostalCode VARCHAR2(5) NOT NULL
@@ -108,11 +109,33 @@ CREATE TABLE LocationInfo
 
 CREATE TABLE Contact
 (
-    ContactId NUMBER primary key UNIQUE NOT NULL,
+    ContactId NUMBER PRIMARY KEY NOT NULL,
     FirstName VARCHAR2(25) NOT NULL,
     LastName VARCHAR2(25) NOT NULL,
     Email VARCHAR2(50) NOT NULL,
     PhoneNumber VARCHAR2(25)
+);
+
+CREATE TABLE Schedule
+(
+    ScheduleItemId NUMBER PRIMARY KEY NOT NULL,
+    EventId NUMBER NOT NULL,
+    UserId NUMBER NOT NULL,
+    ScheduleDate VARCHAR(25) NOT NULL,
+    PlaceableId NUMBER NOT NULL
+);
+
+create sequence receipt_seq;
+
+CREATE TABLE Receipt
+(
+    ReceiptId VARCHAR(10) PRIMARY KEY NOT NULL,
+    FirstName VARCHAR2(25) NOT NULL,
+    LastName VARCHAR2(25) NOT NULL,
+    NumberofTickets NUMBER NOT NULL,
+    LocationId NUMBER NOT NULL,
+    EventId NUMBER NOT NULL,
+    DateofPurchase VARCHAR(25) NOT NULL
 );
 
 /*******************************************************************************
@@ -149,7 +172,11 @@ INSERT INTO ItemInfo (ItemId, ItemName) VALUES (2, 'Corndog');
 INSERT INTO ItemInfo (ItemId, ItemName) VALUES (3, 'Popsicle');
 INSERT INTO ItemInfo (ItemId, ItemName) VALUES (4, 'Churro');
 
-INSERT INTO Placeable (PlaceableId, PlaceableTypeId) VALUES (1, 2);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (1, 2, 2);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (2, 2, 2);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (3, 1, 1);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (4, 1, 1);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (5, 3, 1);
 
 INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (1, 1, 1, 10);
 INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (2, 2, 1, 17);
@@ -160,8 +187,14 @@ INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeI
 INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (2, 'manager', 'pass', 'Ronald', 'McDonald', 2);
 INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (3, 'attendant', 'pass', 'Matt', 'Donald', 3);
 
+INSERT INTO LocationInfo (LocationId, AddressLine1, City, State, PostalCode) VALUES (1, '111 First St', 'Gotham', 'New York', '64591');
+INSERT INTO LocationInfo (LocationId, AddressLine1, City, State, PostalCode) VALUES (2, '222 Second Blvd', 'Atlantis', 'N/A', '62442');
+INSERT INTO LocationInfo (LocationId, AddressLine1, City, State, PostalCode) VALUES (3, '333 Third Ave', 'Hogwarts', 'Europe', '32416');
+INSERT INTO LocationInfo (LocationId, AddressLine1, City, State, PostalCode) VALUES (4, '496 High St', 'Morgantown', 'West Virginia', '26505');
+
+INSERT INTO Contact (ContactId, FirstName, LastName, Email, PhoneNumber) VALUES (1, Bruce, Wayne, 'notbatman@wayne.com', '203-555-4242');
+
+INSERT INTO Event (EventId, StartDate, EndDate, LocationId, ContactId) VALUES (1, '2019-06-14', '2019-06-17', 1, 1);
+
 commit;
 exit;
-
-
-select * from placeabletype;
