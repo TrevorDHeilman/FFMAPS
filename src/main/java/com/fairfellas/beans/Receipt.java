@@ -124,8 +124,8 @@ public class Receipt {
 
 	@Id
 	@Column(name = "receiptId")
-//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="receipt")
-//	@SequenceGenerator(name = "receipt", sequenceName = "receipt_seq", allocationSize = 1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="receipt")
+	@SequenceGenerator(name = "receipt", sequenceName = "receipt_seq", allocationSize = 1)
 	private Integer id;
 	public Integer getId() {
 		return id;

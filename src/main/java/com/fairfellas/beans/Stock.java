@@ -4,9 +4,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +17,8 @@ import javax.persistence.Table;
 public class Stock {
 	@Id
 	@Column(name = "vendorstockid")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Stock")
+	@SequenceGenerator(name="Stock", sequenceName="vendorstock_seq", allocationSize=1)
 	private Integer id;
 	private Integer placeableId;
 	private Integer stockAvailable;

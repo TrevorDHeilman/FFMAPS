@@ -14,7 +14,7 @@ public class PlaceableType {
 	@Id
 	@Column(name="PlaceableTypeId")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PlaceableType")
-	@SequenceGenerator(name="PlaceableType", sequenceName="placeable_seq", allocationSize=1)
+	@SequenceGenerator(name="PlaceableType", sequenceName="placeabletype_seq", allocationSize=1)
 	private int typeId;
 	@Column(name="PlaceableType")
 	private String typeName;
