@@ -53,10 +53,10 @@ public class EventHibernate implements EventDAO{
 		String query = "FROM Event e ORDER BY e.id ASC";
 		Query<Event> q = s.createQuery(query, Event.class);
 		List<Event> eventList = q.getResultList();
-		List<Event> eventSet = new ArrayList<Event>();
-		eventSet.addAll(eventList);
-		System.out.println(eventSet);
-		return eventSet;
+		List<Event> eventAList = new ArrayList<Event>();
+		eventAList.addAll(eventList);
+		System.out.println(eventAList);
+		return eventAList;
 	}
 	
 	public void updateEvent(Event event) {
