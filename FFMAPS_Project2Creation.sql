@@ -128,7 +128,7 @@ CREATE TABLE Schedule
     ScheduleItemId NUMBER PRIMARY KEY NOT NULL,
     EventId NUMBER NOT NULL,
     UserId NUMBER NOT NULL,
-    ScheduleDate VARCHAR(25) NOT NULL,
+    ScheduleDay VARCHAR(25) NOT NULL,
     PlaceableId NUMBER NOT NULL
 );
 
@@ -137,10 +137,11 @@ CREATE TABLE Receipt
     ReceiptId VARCHAR(10) PRIMARY KEY NOT NULL,
     FirstName VARCHAR2(25) NOT NULL,
     LastName VARCHAR2(25) NOT NULL,
+    Email VARCHAR2(50) NOT NULL,
     NumberofTickets NUMBER NOT NULL,
     LocationId NUMBER NOT NULL,
     EventId NUMBER NOT NULL,
-    DateofPurchase VARCHAR(25) NOT NULL
+    DateofPurchase VARCHAR2(25) NOT NULL
 );
 
 /*******************************************************************************
@@ -182,6 +183,22 @@ ALTER TABLE Receipt ADD CONSTRAINT FK_ReceiptLocationId
 ALTER TABLE Receipt ADD CONSTRAINT FK_ReceiptEventId
     FOREIGN KEY (EventId) REFERENCES Event (EventId) ON DELETE CASCADE;    
            
+/*******************************************************************************
+   Create Sequences
+********************************************************************************/           
+CREATE SEQUENCE userinfo_seq START WITH 10 INCREMENT BY 1;    
+CREATE SEQUENCE usertype_seq START WITH 10 INCREMENT BY 1;  
+CREATE SEQUENCE userinfo_seq START WITH 10 INCREMENT BY 1;  
+CREATE SEQUENCE userinfo_seq START WITH 10 INCREMENT BY 1;  
+CREATE SEQUENCE userinfo_seq START WITH 10 INCREMENT BY 1;  
+CREATE SEQUENCE userinfo_seq START WITH 10 INCREMENT BY 1;  
+CREATE SEQUENCE userinfo_seq START WITH 10 INCREMENT BY 1;  
+CREATE SEQUENCE userinfo_seq START WITH 10 INCREMENT BY 1;  
+CREATE SEQUENCE userinfo_seq START WITH 10 INCREMENT BY 1;  
+CREATE SEQUENCE userinfo_seq START WITH 10 INCREMENT BY 1;  
+CREATE SEQUENCE userinfo_seq START WITH 10 INCREMENT BY 1;  
+CREATE SEQUENCE userinfo_seq START WITH 10 INCREMENT BY 1;  
+
 /*******************************************************************************
    Populate Tables
 ********************************************************************************/
@@ -234,6 +251,12 @@ INSERT INTO Contact (ContactId, FirstName, LastName, Email, PhoneNumber) VALUES 
 INSERT INTO Contact (ContactId, FirstName, LastName, Email, PhoneNumber) VALUES (3, 'Tony', 'Stark', 'iloveyou3000@endgame.com', '222-555-3000');
 
 INSERT INTO Event (EventId, StartDate, EndDate, LocationId, ContactId, StatusId) VALUES (1, '2019-06-28', '2019-06-30', 1, 1, 2);
+INSERT INTO Event (EventId, StartDate, EndDate, LocationId, ContactId, StatusId) VALUES (2, '2019-07-05', '2019-07-07', 2, 2, 2);
+INSERT INTO Event (EventId, StartDate, EndDate, LocationId, ContactId, StatusId) VALUES (3, '2019-06-28', '2019-06-30', 3, 3, 1);
+
+INSERT INTO Receipt (ReceiptId, FirstName, LastName, Email, NumberofTickets, LocationId, EventId, DateofPurchase) VALUES (1, 'Ed', 'Ted', 'edted@yahoo.com', 62, 1, 1, '2019-06-17');
+INSERT INTO Receipt (ReceiptId, FirstName, LastName, Email, NumberofTickets, LocationId, EventId, DateofPurchase) VALUES (2, 'Jack', 'Jill', 'jackjill@hill.com', 2, 1, 1, '2019-06-16');
+INSERT INTO Receipt (ReceiptId, FirstName, LastName, Email, NumberofTickets, LocationId, EventId, DateofPurchase) VALUES (3, 'Mitch', 'Miller', 'mitchmiller@yahoo.com', 1, 1, 1, '2019-06-15');
 
 commit;
 exit;

@@ -17,7 +17,8 @@ export class PlaceableService {
     );
   }
 
-  public addPlaceable(placeable: Placeable): Observable<Placeable> {
+  public addPlaceable(): Observable<Placeable> {
+    var placeable: Placeable;
     const body = JSON.stringify(placeable);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post('http://localhost:8080/FFMAPS/layout',
