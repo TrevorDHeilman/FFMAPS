@@ -7,6 +7,7 @@ import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.compo
 import {PurchaseComponent} from './purchase/purchase.component';
 import { StockListComponent } from './stocks/stock-list/stock-list.component';
 import {ReceiptComponent} from './receipt/receipt.component';
+import { AttendantViewComponent } from './attendants/attendant-view/attendant-view.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
     path: 'portal/timesheets',
     component: ScheduleViewComponent
   }, 
+  {
+    path: 'portal/attendanttimesheet',
+    component: AttendantViewComponent
+  },
   {
     path: 'portal/layout',
     component: OwnerDashboardComponent

@@ -9,8 +9,11 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/portal" routerLinkActive="active" (click)="pushPortal()">Portal </a>
           </li>
-          <li class="nav-item" *ngIf="loggedUser != null">
+          <li class="nav-item" *ngIf="loggedUser != null && loggedUser.userType.id <=2">
             <a class="nav-link" routerLink="/portal/timesheets">Time Sheets</a>
+          </li>
+          <li class="nav-item" *ngIf="loggedUser != null && loggedUser.userType.id ==3">
+            <a class="nav-link" routerLink="/portal/attendanttimesheet">Time Sheets</a>
           </li>
           <li class="nav-item" *ngIf="loggedUser != null">
             <a class="nav-link" routerLink="#">Training and Logs</a>
