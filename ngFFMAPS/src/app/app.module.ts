@@ -32,6 +32,7 @@ import { AttendantListComponent } from './attendants/attendant-list/attendant-li
 import { ScheduleService } from './schedules/schedule.service';
 import { AttendantService } from './attendants/attendant.service';
 import { ReceiptService } from './services/receipt.service';
+import { AttendantViewComponent } from './attendants/attendant-view/attendant-view.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ReceiptService } from './services/receipt.service';
     AttendantComponent,
     AttendantListComponent,
     EventComponent,
-    EventListComponent
+    EventListComponent,
+    AttendantViewComponent
   ],
 
   imports: [
