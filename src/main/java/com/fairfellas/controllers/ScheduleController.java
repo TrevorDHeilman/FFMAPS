@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,9 +33,17 @@ public class ScheduleController {
 	}
 	
 	@PostMapping
-	public void addStock(@RequestBody Schedule s, HttpSession session) {
+	public void addSchedule(@RequestBody Schedule s, HttpSession session) {
 		if(session.getAttribute("user")!=null) {	
 			sd.addSchedule(s);
+		}
+	}
+	
+	@PutMapping
+	public void updateStock(@RequestBody Schedule s, HttpSession session) {
+		System.out.println("Schedule Controller "+s);
+		if(session.getAttribute("user")!=null) {
+			sd.updateSchedule(s);
 		}
 	}
 }
