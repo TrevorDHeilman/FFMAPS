@@ -11,18 +11,18 @@ import { Contact } from '../classfolder/contact';
 })
 
 export class EventListComponent implements OnInit {
-  public newEvent :Event;
+  public newEvent: Event;
   public events: Array<Event> = new Array<Event>();
 
-  constructor(private eventService : EventService) { }
+  constructor(private eventService: EventService, ) { }
 
   ngOnInit() {
     this.newEvent = new Event();
     this.newEvent.location = new Location();
     this.newEvent.contact = new Contact();
     this.eventService.getEvents().subscribe(
-      (events) =>{
-        console.log(events)
+      (events) => {
+        console.log(events);
         this.events = events;
       }
     );

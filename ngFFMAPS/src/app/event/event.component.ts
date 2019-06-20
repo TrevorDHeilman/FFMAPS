@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Event } from '@angular/router';
+import { Event } from '../classfolder/event';
+import {DialogOverviewPurchaseComponent} from '../dialog-overview-purchase/dialog-overview-purchase.component';
 
 @Component({
   selector: 'app-event',
@@ -7,9 +8,13 @@ import { Event } from '@angular/router';
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
-  @Input() public event: Event
-  constructor() { }
-  
+  @Input() public event: Event;
+  constructor(private dialogOverviewPurchase: DialogOverviewPurchaseComponent) {}
+
+  openDialog() {
+    this.dialogOverviewPurchase.openPurchaseDialogForEvent(this.event);
+  }
+
   ngOnInit() {
   }
 }
