@@ -51,8 +51,6 @@ public class StockHibernate implements StockDAO {
 
 	@Override
 	public void updateStock(Stock stock) {
-		System.out.println("ay yo we about update");
-		System.out.println(stock);
 		Session s = hu.getSession();
 		Transaction tx = null;
 		try {

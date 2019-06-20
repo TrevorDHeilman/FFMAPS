@@ -1,7 +1,7 @@
 import { UserService } from './../../user.service';
 import { Placeable } from './../../placeable';
 import { ScheduleService } from './../schedule.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Schedule } from '../schedule';
 import { User } from 'src/app/user';
 import { Event } from 'src/app/classfolder/event';
@@ -12,6 +12,7 @@ import { Event } from 'src/app/classfolder/event';
   styleUrls: ['./schedule-list.component.css']
 })
 export class ScheduleListComponent implements OnInit {
+  @Output() emittedSchedule: EventEmitter<Schedule[]> = new EventEmitter();
   public schedules: Schedule[];
   public attendantSchedule: Schedule[];
   public newSchedule: Schedule;
@@ -31,6 +32,7 @@ export class ScheduleListComponent implements OnInit {
         console.log(schedules) 
           if (this.loggedUser.id < 3){
             this.schedules = schedules;
+            this.emittedSchedule.emit(this.schedules);
           }
           if(this.loggedUser.userType.id == 3){
             for(let sche of schedules){

@@ -2,7 +2,7 @@
     <div class="card schBack " style="">
         <div class="card-body text-center pl-1">
             <h4 class="ml-4">Schedules</h4>
-            <app-schedule-list></app-schedule-list>
+            <app-schedule-list (emittedSchedule)="emittedSchedule($event)"></app-schedule-list>
         </div>
     </div>
 </div>
