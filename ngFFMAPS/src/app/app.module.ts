@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeePortalComponent } from './employee-portal/employee-portal.component';
 import { HomeComponent } from './home/home.component';
-import { FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule, Routes} from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.component';
@@ -32,6 +32,9 @@ import { AttendantListComponent } from './attendants/attendant-list/attendant-li
 import { ScheduleService } from './schedules/schedule.service';
 import { AttendantService } from './attendants/attendant.service';
 import { ReceiptService } from './services/receipt.service';
+import {MatDialogModule, MatFormFieldModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { DialogOverviewPurchaseComponent } from './dialog-overview-purchase/dialog-overview-purchase.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,8 @@ import { ReceiptService } from './services/receipt.service';
     AttendantComponent,
     AttendantListComponent,
     EventComponent,
-    EventListComponent
+    EventListComponent,
+    DialogOverviewPurchaseComponent,
   ],
 
   imports: [
@@ -63,7 +67,11 @@ import { ReceiptService } from './services/receipt.service';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
   ],
 
   providers: [
@@ -75,9 +83,14 @@ import { ReceiptService } from './services/receipt.service';
     ReceiptService,
     ScheduleService,
     AttendantService,
-    EventService
+    EventService,
+    DialogOverviewPurchaseComponent,
   ],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    PurchaseComponent,
+    DialogOverviewPurchaseComponent,
+  ],
 })
 export class AppModule { }
