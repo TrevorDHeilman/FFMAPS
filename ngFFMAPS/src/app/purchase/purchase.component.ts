@@ -1,6 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PurchaseService} from '../services/purchase.service';
 import {Purchase} from '../classfolder/purchase';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material/dialog';
+import { Inject } from '@angular/core';
+
+
+export interface DialogData {
+  locationId: number;
+  eventId: number;
+}
 
 @Component({
   selector: 'app-purchase',
@@ -21,7 +29,16 @@ export class PurchaseComponent implements OnInit {
   showCurrentReceipt: boolean;
 
   private toggleReceiptView: boolean;
-  constructor(private purchaseService: PurchaseService) { }
+
+  constructor(private purchaseService: PurchaseService, public dialogRef: MatDialogRef<PurchaseComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    this.eventId = data.eventId;
+    this.locationId = data.locationId;
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
   ngOnInit() {
     if (!this.purchase) {
