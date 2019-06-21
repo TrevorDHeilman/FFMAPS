@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from '../event.service';
+import { Map } from '../map';
+import { Event } from '../classfolder/event';
+import { Placeable } from '../placeable';
 //import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 @Component({
@@ -8,10 +12,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DragDropEventComponent implements OnInit {
 
-  constructor() { }
+  public newMap : Map;
+  public maps : Map[];
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
+    this.newMap = new Map();
+    this.newMap.event = new Event();
+    this.newMap.placeable = new Placeable();
+
+    this.eventService.getEventMapById(1).subscribe(
+      (maps) => {
+        console.log(maps);
+        this.maps = maps;
+      }
+    );
   }
+
 
   fireEvent(e){
     // console.log(e)
