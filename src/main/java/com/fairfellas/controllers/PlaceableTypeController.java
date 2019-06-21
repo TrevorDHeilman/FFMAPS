@@ -16,7 +16,7 @@ import com.fairfellas.data.hibernate.PlaceableTypeHibernate;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value="/layouttype")
+@RequestMapping(value="/typelayout")
 public class PlaceableTypeController {
 
 	@Autowired
