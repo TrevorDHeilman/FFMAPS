@@ -30,7 +30,7 @@ public class ScheduleHibernate implements ScheduleDAO {
 	}
 
 	@Override
-	public void addSchedule(Schedule sch) {
+	public int addSchedule(Schedule sch) {
 		Session s = hu.getSession();
 		Transaction tx = null;
 		try {
@@ -45,6 +45,7 @@ public class ScheduleHibernate implements ScheduleDAO {
 		} finally {
 			s.close();
 		}
+		return sch.getId();
 	}
 
 	@Override
@@ -63,6 +64,14 @@ public class ScheduleHibernate implements ScheduleDAO {
 		} finally {
 			s.close();
 		}
-		
+	}
+	
+	@Override
+	public Schedule getScheduleById(int id) {
+		Schedule sch;
+		Session s = hu.getSession();
+		sch = s.get(Schedule.class, id);
+		s.close();
+		return sch;
 	}
 }

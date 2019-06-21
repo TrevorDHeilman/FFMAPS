@@ -25,7 +25,6 @@ public class ScheduleController {
 	
 	@GetMapping
 	public List<Schedule> getSchedule(HttpSession session) {
-		System.out.println("schedule controller!!!");
 		if(session.getAttribute("user")!=null) {
 			return sd.getSchedule();
 		}
@@ -33,15 +32,18 @@ public class ScheduleController {
 	}
 	
 	@PostMapping
-	public void addSchedule(@RequestBody Schedule s, HttpSession session) {
+	public Schedule addSchedule(@RequestBody Schedule s, HttpSession session) {
+		System.out.println("addSchedule Controller");
+		System.out.println(s);
 		if(session.getAttribute("user")!=null) {	
-			sd.addSchedule(s);
+			int id = sd.addSchedule(s);
+			return sd.getScheduleById(id);
 		}
+		return null;
 	}
 	
 	@PutMapping
 	public void updateStock(@RequestBody Schedule s, HttpSession session) {
-		System.out.println("Schedule Controller "+s);
 		if(session.getAttribute("user")!=null) {
 			sd.updateSchedule(s);
 		}
