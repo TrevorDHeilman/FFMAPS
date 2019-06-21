@@ -1,5 +1,12 @@
 package com.fairfellas.data;
 
-public interface MapDAO {
+import java.util.List;
 
+import com.fairfellas.beans.Map;
+
+public interface MapDAO {
+	public int addMap(Map newMap);
+	public List<Map> getMapsByMapId(int id);
+	public List<Map> getMaps();
+	public void removeMap(int id);
 }
