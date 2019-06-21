@@ -7,13 +7,14 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import com.fairfellas.beans.Placeable;
 import com.fairfellas.beans.PlaceableType;
 import com.fairfellas.data.PlaceableTypeDAO;
 import com.fairfellas.utils.HibernateUtil;
 import com.fairfellas.utils.LogUtil;
 
+@Component
 public class PlaceableTypeHibernate implements PlaceableTypeDAO{
 	@Autowired
 	private HibernateUtil hu;
