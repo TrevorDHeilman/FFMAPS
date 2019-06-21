@@ -9,7 +9,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.fairfellas.beans.Placeable;
 import com.fairfellas.beans.PlaceableType;
 import com.fairfellas.data.PlaceableTypeDAO;
 import com.fairfellas.utils.HibernateUtil;
