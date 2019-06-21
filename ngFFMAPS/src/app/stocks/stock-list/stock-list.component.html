@@ -1,6 +1,48 @@
-<app-stock *ngFor="let s of stocks" [stock]="s"></app-stock>
 <br>
-Order more stock <br>
-Id: <input type="number" [(ngModel)]="identity" name="identity"/> <br>
-Amount of Stock: <input type="number" [(ngModel)]="addedStock" name="addedStock"/> <br>
-<button class="btn btn-outline-primary"  (click)="submit()">Submit</button>
+<div class="container">
+    <div class="font-weight-bold text-center">Inventory</div><br>
+    <div class="table stock tableBack rounded w-50">
+        <div class=row>
+            <div class="col-md-12 row p-0">
+                <div class="col-md th text-center">Stock ID</div>
+                <div class="col-md-5 th text-center">Item</div>
+                <div class="col-md th text-center">Stock Available</div>
+            </div>
+            <div class="col-md-11 ml-4 bottomLine"> </div>
+            <app-stock *ngFor="let s of stocks" [stock]="s" class="w-100"></app-stock>
+        </div>
+    </div>
+</div>
+<br>
+<table class="container">
+
+    <th class="text-center success">Order More Stock</th>
+</table>
+<table class="table container col-sm-3">
+    <tr class="danger">
+        <td class="text-center">
+            ID
+        </td>
+        <td class="text-center">
+            Amount
+        </td>
+    </tr>
+    <tr class="info">
+        <td>
+            <input type="number" [(ngModel)]="identity" name="identity" />
+        </td>
+        <td>
+            <input type="number" [(ngModel)]="addedStock" name="addedStock" />
+        </td>
+    </tr>
+</table>
+<table class="container">
+    <tr class="warning">
+        <td class="text-center w-100">
+            <button class="btn btn-outline-primary button1" (click)="submit()">Order</button>
+        </td>
+    </tr>
+</table>
+<!-- Order more stock <br>
+Id: <input type="number" [(ngModel)]="identity" name="identity" /> <br>
+Amount of Stock: <input type="number" [(ngModel)]="addedStock" name="addedStock" /> <br> -->

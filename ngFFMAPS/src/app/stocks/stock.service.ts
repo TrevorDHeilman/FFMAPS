@@ -21,9 +21,8 @@ export class StockService {
   public updateStock(stock: Stock): Observable<Stock>{
     const body = JSON.stringify(stock);
     const url = this.appUrl + '/' + stock;
-    return this.http.put(this.appUrl, body,
-      {headers: this.headers, withCredentials: true}).pipe(
-        map(resp => resp as Stock)
-      );
+    return this.http
+    .put(this.appUrl, body, {headers: this.headers, withCredentials: true})
+    .pipe(map(resp => resp as Stock));
   }
 }

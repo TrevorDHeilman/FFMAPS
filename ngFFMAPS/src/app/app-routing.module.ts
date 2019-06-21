@@ -8,17 +8,19 @@ import {PurchaseComponent} from './purchase/purchase.component';
 import { StockListComponent } from './stocks/stock-list/stock-list.component';
 import { DragDropEventComponent } from './drag-drop-event/drag-drop-event.component';
 import {ReceiptComponent} from './receipt/receipt.component';
+import { AttendantViewComponent } from './attendants/attendant-view/attendant-view.component';
+import {DialogOverviewPurchaseComponent} from './dialog-overview-purchase/dialog-overview-purchase.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
-  }, 
+  },
   {
     path: 'home',
     component: HomeComponent
-  }, 
+  },
   {
     path: 'portal',
     component: EmployeePortalComponent
@@ -26,7 +28,11 @@ const routes: Routes = [
   {
     path: 'portal/timesheets',
     component: ScheduleViewComponent
-  }, 
+  },
+  {
+    path: 'portal/attendanttimesheet',
+    component: AttendantViewComponent
+  },
   {
     path: 'portal/layout',
     component: OwnerDashboardComponent
@@ -46,6 +52,10 @@ const routes: Routes = [
   {
     path: 'home/receipt',
     component: ReceiptComponent
+  },
+  {
+    path: 'home/dialog-overview-purchase',
+    component: DialogOverviewPurchaseComponent
   },
 ];
 

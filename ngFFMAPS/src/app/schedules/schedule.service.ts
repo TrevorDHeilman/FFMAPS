@@ -21,14 +21,14 @@ export class ScheduleService {
   
   public addSchedule(schedule: Schedule): Observable<Schedule> {
     const body = JSON.stringify(schedule);
-    // if(!schedule.id) {
+    if(!schedule.user.id && !schedule.scheduleDay) {
       return this.http
       .post(this.appUrl, body, {headers: this.headers, withCredentials: true})
       .pipe(map(resp => resp as Schedule));
-  //   }
-  //   const url = this.appUrl + '/' + schedule.id;
-  //   return this.http
-  //   .put(this.appUrl, body, {headers: this.headers, withCredentials:true})
-  //   .pipe(map(resp => resp as Schedule));
+    }
+    const url = this.appUrl + '/' + schedule.id;
+    return this.http
+    .put(this.appUrl, body, {headers: this.headers, withCredentials: true})
+    .pipe(map(resp => resp as Schedule));
   }
 }

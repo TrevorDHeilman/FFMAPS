@@ -44,6 +44,9 @@ import { AttendantListComponent } from './attendants/attendant-list/attendant-li
 import { ScheduleService } from './schedules/schedule.service';
 import { AttendantService } from './attendants/attendant.service';
 import { ReceiptService } from './services/receipt.service';
+import { AttendantViewComponent } from './attendants/attendant-view/attendant-view.component';
+import {MatDialogModule, MatFormFieldModule} from '@angular/material';
+import { DialogOverviewPurchaseComponent } from './dialog-overview-purchase/dialog-overview-purchase.component';
 
 
 @NgModule({
@@ -69,7 +72,10 @@ import { ReceiptService } from './services/receipt.service';
     AttendantListComponent,
     EventComponent,
     EventListComponent,
-    DragDropEventComponent
+    DragDropEventComponent,
+    AttendantViewComponent,
+    EventListComponent,
+    DialogOverviewPurchaseComponent,
   ],
 
   imports: [
@@ -82,6 +88,8 @@ import { ReceiptService } from './services/receipt.service';
     DemoMaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
   ],
 
   providers: [
@@ -93,9 +101,14 @@ import { ReceiptService } from './services/receipt.service';
     ReceiptService,
     ScheduleService,
     AttendantService,
-    EventService
+    EventService,
+    DialogOverviewPurchaseComponent,
   ],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    PurchaseComponent,
+    DialogOverviewPurchaseComponent,
+  ],
 })
 export class AppModule { }

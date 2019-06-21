@@ -22,7 +22,7 @@ public class ScheduleHibernate implements ScheduleDAO {
 	public List<Schedule> getSchedule() {
 		System.out.println("scheudle hibernate!!!");
 		Session s = hu.getSession();
-		String query = "FROM Schedule";
+		String query = "FROM Schedule s order by s.id asc";
 		Query<Schedule> q = s.createQuery(query, Schedule.class);
 		List<Schedule> schedule = q.getResultList();
 		System.out.println(schedule);
@@ -45,5 +45,24 @@ public class ScheduleHibernate implements ScheduleDAO {
 		} finally {
 			s.close();
 		}
+	}
+
+	@Override
+	public void updateSchedule(Schedule sch) {
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.update(sch);
+			tx.commit();
+		} catch(Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			LogUtil.logException(e, ScheduleHibernate.class);
+		} finally {
+			s.close();
+		}
+		
 	}
 }

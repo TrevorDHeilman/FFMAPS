@@ -7,4 +7,5 @@ import com.fairfellas.beans.Schedule;
 public interface ScheduleDAO {
 	public List<Schedule> getSchedule();
 	public void addSchedule(Schedule sch);
+	public void updateSchedule(Schedule sch);
 }
