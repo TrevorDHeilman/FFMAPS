@@ -1,65 +1,69 @@
 <br>
-<div class="text-center">Fantastic Fair is a fabulous three day event.</div><br>
+<div class="bgdiv container">
+  <br>
+  <div class="text-center">Fantastic Fair is a fabulous three day event.</div><br>
 
-<div class="container text-center">
-  Want to employ our services?<br><br>
-</div>
-<div class=container>
-  <div class="row">
-    <div class="col-md">
-      Enter when and where:
-      <div>
-        Start Date (YYYY-MM-DD):
-        <input class="form-control " type="number" [(ngModel)]="newEvent.startDate" />
+  <div class="container text-center">
+    Want to employ our services?<br><br>
+  </div>
+  <div class=container>
+    <div class="row">
+      <div class="col-md">
+        Enter when and where:
+        <div>
+          Start Date (YYYY-MM-DD):
+          <input class="form-control " type="text" [(ngModel)]="newEvent.startDate" />
+        </div>
+        <div>
+          Address:
+          <input class="form-control " type="text" [(ngModel)]="newEvent.location.addressLine1" />
+        </div>
+        <div>
+          Address 2:
+          <input class="form-control " type="text" [(ngModel)]="newEvent.location.addressLine2" />
+        </div>
+        <div>
+          City:
+          <input class="form-control " type="text" [(ngModel)]="newEvent.location.city" />
+        </div>
+        <div>
+          State:
+          <input class="form-control " type="text" [(ngModel)]="newEvent.location.state" />
+        </div>
+        <div>
+          Postal Code:
+          <input class="form-control " type="number" [(ngModel)]="newEvent.location.postalCode" />
+        </div>
       </div>
-      <div>
-        Address:
-        <input class="form-control " type="number" [(ngModel)]="newLocation.addressLine1" />
-      </div>
-      <div>
-        Address 2:
-        <input class="form-control " type="number" [(ngModel)]="newLocation.addressLine2" />
-      </div>
-      <div>
-        City:
-        <input class="form-control " type="number" [(ngModel)]="newLocation.city" />
-      </div>
-      <div>
-        State:
-        <input class="form-control " type="number" [(ngModel)]="newLocation.state" />
-      </div>
-      <div>
-        Postal Code:
-        <input class="form-control " type="number" [(ngModel)]="newLocation.postalCode" />
-      </div>
-    </div>
-    <br><br>
-    <div class="col-md">
-      Enter your contact info:
-      <div>
-        First Name:
-        <input class="form-control " type="number" [(ngModel)]="newContact.firstName" />
-      </div>
-      <div>
-        Last Name:
-        <input class="form-control " type="number" [(ngModel)]="newContact.lastName" />
-      </div>
-      <div>
-        Email:
-        <input class="form-control " type="number" [(ngModel)]="newContact.email" />
-      </div>
-      <div>
-        Phone Number:
-        <input class="form-control " type="number" [(ngModel)]="newContact.phoneNumber" />
-      </div>
-      <div class="">
-        <br>
-        <button type="submit" class="btn btn-light btn-block" (click)="submit()">Apply!</button>
-      </div>
-      <div class="">
-        <br>
-        <button type="button" class="btn btn-light btn-block" routerLink="/home">Home</button>
+      <br><br>
+      <div class="col-md">
+        Enter your contact info:
+        <div>
+          First Name:
+          <input class="form-control " type="text" [(ngModel)]="newEvent.contact.firstName" />
+        </div>
+        <div>
+          Last Name:
+          <input class="form-control " type="text" [(ngModel)]="newEvent.contact.lastName" />
+        </div>
+        <div>
+          Email:
+          <input class="form-control " type="text" [(ngModel)]="newEvent.contact.email" />
+        </div>
+        <div>
+          Phone Number:
+          <input class="form-control " type="number" [(ngModel)]="newEvent.contact.phoneNumber" />
+        </div>
+        <div>
+          <br>
+          <button type="submit" class="btn btn-light btn-block button1" (click)="apply()">Apply!</button>
+        </div>
+        <div>
+          <br>
+          <button type="button" class="btn btn-light btn-block button1" routerLink="/home">Home</button>
+        </div>
       </div>
     </div>
   </div>
+  <br><br><br><br><br><br><br><br>
 </div>
