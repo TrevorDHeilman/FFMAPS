@@ -26,6 +26,7 @@
 		<mapping class="com.fairfellas.beans.UserType"/>
 		<mapping class="com.fairfellas.beans.Contact"/>
 		<mapping class="com.fairfellas.beans.Event"/>
+		<mapping class="com.fairfellas.beans.Map"/>
 		<mapping class="com.fairfellas.beans.EventStatus"/>
 		<mapping class="com.fairfellas.beans.Location"/>
 		<mapping class="com.fairfellas.beans.Purchase"/>
