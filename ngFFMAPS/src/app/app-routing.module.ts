@@ -9,6 +9,7 @@ import { StockListComponent } from './stocks/stock-list/stock-list.component';
 import {ReceiptComponent} from './receipt/receipt.component';
 import { AttendantViewComponent } from './attendants/attendant-view/attendant-view.component';
 import {DialogOverviewPurchaseComponent} from './dialog-overview-purchase/dialog-overview-purchase.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
     path: 'home/dialog-overview-purchase',
     component: DialogOverviewPurchaseComponent
   },
+  {
+    path: 'aboutus',
+    component: AboutUsComponent
+  }
 ];
 
 @NgModule({

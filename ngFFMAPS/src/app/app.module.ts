@@ -36,6 +36,7 @@ import { AttendantViewComponent } from './attendants/attendant-view/attendant-vi
 import {MatDialogModule, MatFormFieldModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DialogOverviewPurchaseComponent } from './dialog-overview-purchase/dialog-overview-purchase.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { DialogOverviewPurchaseComponent } from './dialog-overview-purchase/dial
     AttendantViewComponent,
     EventListComponent,
     DialogOverviewPurchaseComponent,
+    AboutUsComponent,
   ],
 
   imports: [
