@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
+//import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 @Component({
   selector: 'app-drag-drop-event',
@@ -29,6 +29,7 @@ export class DragDropEventComponent implements OnInit {
   processLayout(){
     console.log(document.getElementById("layoutAction").children);
     let actionTags = document.getElementById("layoutAction").children;
+    actionTags = actionTags;
     let reactionTags = document.getElementById("layoutReaction").children;
     let transformList = document.getElementById("transforms");
     transformList.innerHTML=""

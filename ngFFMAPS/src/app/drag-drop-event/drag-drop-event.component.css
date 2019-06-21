@@ -166,5 +166,9 @@ body {
     height: 500px;
     max-width: 100%;
     border: dotted #ccc 2px;
+    
   }
   
+  .white{
+    background-color: white;
+  }
