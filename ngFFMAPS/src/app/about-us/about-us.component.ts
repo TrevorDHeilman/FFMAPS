@@ -11,8 +11,8 @@ import { Contact } from '../classfolder/contact';
 export class AboutUsComponent implements OnInit {
   private newEvent: Event;
   private newLocation: Location;
-  private newContatct: Contact;
-  
+  private newContact: Contact;
+
   constructor() { }
 
   ngOnInit() {
