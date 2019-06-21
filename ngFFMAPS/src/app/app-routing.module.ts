@@ -5,6 +5,7 @@ import { EmployeePortalComponent } from './employee-portal/employee-portal.compo
 import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.component';
 import {PurchaseComponent} from './purchase/purchase.component';
 import { StockListComponent } from './stocks/stock-list/stock-list.component';
+import { DragDropEventComponent } from './drag-drop-event/drag-drop-event.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
     path: 'home/purchase',
     component: PurchaseComponent
   },
+  { //app-drag-drop-event
+    path: 'drag',
+    component: DragDropEventComponent
+  }
 ];
 
 @NgModule({
