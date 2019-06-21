@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeePortalComponent } from './employee-portal/employee-portal.component';
 import { HomeComponent } from './home/home.component';
-import { FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule, Routes} from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.component';
@@ -36,7 +36,10 @@ import { PlaceableAddComponent } from './placeable-add/placeable-add.component';
 // import { PlaceableTypeComponent } from './placeable-type/placeable-type.component';
 // import { PlaceableTypeListComponent } from './placeable-type-list/placeable-type-list.component';
 import { PlaceableTypeService } from './placeable-type.service';
-
+import { AttendantViewComponent } from './attendants/attendant-view/attendant-view.component';
+import {MatDialogModule, MatFormFieldModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { DialogOverviewPurchaseComponent } from './dialog-overview-purchase/dialog-overview-purchase.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +67,9 @@ import { PlaceableTypeService } from './placeable-type.service';
     PlaceableAddComponent,
     // PlaceableTypeComponent,
     // PlaceableTypeListComponent
+    AttendantViewComponent,
+    EventListComponent,
+    DialogOverviewPurchaseComponent,
   ],
 
   imports: [
@@ -71,7 +77,11 @@ import { PlaceableTypeService } from './placeable-type.service';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
   ],
 
   providers: [
@@ -84,9 +94,14 @@ import { PlaceableTypeService } from './placeable-type.service';
     ScheduleService,
     AttendantService,
     EventService,
-    PlaceableTypeService
+    PlaceableTypeService,
+    DialogOverviewPurchaseComponent
   ],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    PurchaseComponent,
+    DialogOverviewPurchaseComponent,
+  ],
 })
 export class AppModule { }

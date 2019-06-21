@@ -15,6 +15,7 @@ export class PlaceableAddComponent implements OnInit {
   public newPlaceableType: PlaceableType;
   public placeableTypes: Array<PlaceableType> = new Array<PlaceableType>();
   public placeableValues : number;
+  public sizeValues : number;
   public indexInt: number;
   //public employeeCapacity: number;
 
@@ -27,8 +28,7 @@ export class PlaceableAddComponent implements OnInit {
 
   optionClicked(){
     console.log(this.placeableValues);
-    // console.log(this.placeableValues.typeId);
-    // console.log(this.placeableValues.typeName);
+    console.log(this.sizeValues);
   }
 
   submit() {
@@ -44,14 +44,13 @@ export class PlaceableAddComponent implements OnInit {
     //console.log('Employee Capacity ' + this.employeeCapacity);
     let capacityInput: number = +(<HTMLInputElement>document.getElementById("capacityInput")).value;
     let nameInput: string = (<HTMLInputElement>document.getElementById("nameInput")).value;
-    let sizeInput: number = +(<HTMLInputElement>document.getElementById("capacityInput")).value;
+    let sizeInput: number = +(<HTMLInputElement>document.getElementById("sizeList")).value;
     console.log("Capacity Test " + capacityInput)
     this.placeableService.addPlaceable(newType, capacityInput, sizeInput, nameInput).subscribe(
       (placeable) => {
         console.log(placeable);
         this.newPlaceable = placeable;
         console.log(this.newPlaceable);
-        //this.newPlaceable.placeableType = new PlaceableType();
     });
   }
 
