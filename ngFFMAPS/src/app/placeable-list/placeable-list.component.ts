@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PlaceableService } from '../placeable.service';
 import { Placeable } from '../placeable';
 import { PlaceableType } from '../placeabletype';
+import { PlaceableService } from '../placeable.service';
 
 @Component({
   selector: 'app-placeable-list',
@@ -23,13 +23,4 @@ export class PlaceableListComponent implements OnInit {
         this.placeables = placeables;
       });
   }
-
-  // submit() {
-  //   this.placeableService.addPlaceable().subscribe(
-  //     (placeable) => {
-  //       this.placeables.push(placeable);
-  //       this.newPlaceable = new Placeable();
-  //       this.newPlaceable.placeableType = new PlaceableType();
-  //     });
-  // }
 }

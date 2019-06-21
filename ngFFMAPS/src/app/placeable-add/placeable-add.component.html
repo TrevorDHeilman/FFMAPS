@@ -1,0 +1,35 @@
+<div class="container p-0">
+
+  <div class="mt-1">
+    <span>Name:</span>
+  </div>
+  <div class="mb-2">
+    <input type="text" id="nameInput" [(ngModel)]="PlaceableName">
+  </div>
+   
+  <div class="">
+    <span>Type:</span>
+  </div>
+  <select id="placeableTypeList" (click)="optionClicked()" [(ngModel)]="placeableValues" class="mb-2">
+    <option *ngFor="let p of placeableTypes" value="{{p.typeId}}"> {{p.typeName}} </option> 
+  </select>
+
+  <div class="">
+    <span>Employee Capacity:</span>
+  </div>
+  <div class="mb-2">
+    <input type="number" id="capacityInput" [(ngModel)]="employeeCapacity">
+  </div>
+ 
+  <div class="">
+    <span>Size:</span>
+  </div>
+  <select id="sizeList" (click)="optionClicked()" [(ngModel)]="placeableValues" class="mb-3">
+    <option *ngFor="let p of placeableTypes" value="{{p.typeId}}"> {{p.typeName}} </option> 
+  </select>
+
+  <div class="mb-1" align="right">
+    <a class="btn btn-primary" (click)="submit()">Submit</a>
+  </div>
+  
+</div>

@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.fairfellas.beans.Placeable;
+
 import com.fairfellas.beans.PlaceableType;
-import com.fairfellas.data.hibernate.PlaceableHibernate;
+import com.fairfellas.data.hibernate.PlaceableTypeHibernate;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value="/layout")
+@RequestMapping(value="/typelayout")
 public class PlaceableTypeController {
 
 	@Autowired

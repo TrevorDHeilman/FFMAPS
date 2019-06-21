@@ -32,6 +32,11 @@ import { AttendantListComponent } from './attendants/attendant-list/attendant-li
 import { ScheduleService } from './schedules/schedule.service';
 import { AttendantService } from './attendants/attendant.service';
 import { ReceiptService } from './services/receipt.service';
+import { PlaceableAddComponent } from './placeable-add/placeable-add.component';
+// import { PlaceableTypeComponent } from './placeable-type/placeable-type.component';
+// import { PlaceableTypeListComponent } from './placeable-type-list/placeable-type-list.component';
+import { PlaceableTypeService } from './placeable-type.service';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +60,10 @@ import { ReceiptService } from './services/receipt.service';
     AttendantComponent,
     AttendantListComponent,
     EventComponent,
-    EventListComponent
+    EventListComponent,
+    PlaceableAddComponent,
+    // PlaceableTypeComponent,
+    // PlaceableTypeListComponent
   ],
 
   imports: [
@@ -75,7 +83,8 @@ import { ReceiptService } from './services/receipt.service';
     ReceiptService,
     ScheduleService,
     AttendantService,
-    EventService
+    EventService,
+    PlaceableTypeService
   ],
 
   bootstrap: [AppComponent]
