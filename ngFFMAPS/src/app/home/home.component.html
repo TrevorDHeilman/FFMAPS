@@ -6,8 +6,12 @@
   <div class="col-md-5">
   <app-dialog-overview-purchase></app-dialog-overview-purchase>
 
-    <app-event-list [initString]="initString">
+    <app-event-list [initString]="acceptString">
     </app-event-list>
+
+    <app-event-list [initString]="pendString">
+    </app-event-list>
+
     <a routerLink="receipt" class="btn btn-dark">View your receipt(s)</a>
 
   </div>

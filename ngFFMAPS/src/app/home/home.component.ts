@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public initString = "Accept";
+  public acceptString = "Accept";
+  public pendString = "Accept";
 
   constructor() { }
 
