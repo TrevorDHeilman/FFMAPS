@@ -47,6 +47,7 @@ import { ReceiptService } from './services/receipt.service';
 import { AttendantViewComponent } from './attendants/attendant-view/attendant-view.component';
 import {MatDialogModule, MatFormFieldModule} from '@angular/material';
 import { DialogOverviewPurchaseComponent } from './dialog-overview-purchase/dialog-overview-purchase.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { DialogOverviewPurchaseComponent } from './dialog-overview-purchase/dial
     AttendantViewComponent,
     EventListComponent,
     DialogOverviewPurchaseComponent,
+    AboutUsComponent,
   ],
 
   imports: [
