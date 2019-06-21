@@ -24,12 +24,12 @@ export class PlaceableListComponent implements OnInit {
       });
   }
 
-  submit() {
-    this.placeableService.addPlaceable(this.newPlaceable).subscribe(
-      (placeable) => {
-        this.placeables.push(placeable);
-        this.newPlaceable = new Placeable();
-        this.newPlaceable.placeableType = new PlaceableType();
-      });
-  }
+  // submit() {
+  //   this.placeableService.addPlaceable().subscribe(
+  //     (placeable) => {
+  //       this.placeables.push(placeable);
+  //       this.newPlaceable = new Placeable();
+  //       this.newPlaceable.placeableType = new PlaceableType();
+  //     });
+  // }
 }

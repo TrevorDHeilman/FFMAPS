@@ -6,6 +6,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.fairfellas.beans.Placeable;
@@ -30,5 +32,14 @@ public class PlaceableController {
 			return placeableSet;
 		}
 		return null;
+	}
+	
+	@PostMapping
+	public void addPlaceable(@RequestBody Placeable placeable, HttpSession session) {
+		
+		log = Logger.getLogger(PlaceableController.class);
+		if(session.getAttribute("user")!=null) {
+			ph.addPlaceable(placeable);
+		}
 	}
 }

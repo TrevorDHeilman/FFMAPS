@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,7 @@ public class EmployeeController {
 	private UserDAO ud;
 	
 	@GetMapping
-	public List<User> getStock(HttpSession session) {
+	public List<User> getAttendants(HttpSession session) {
 		if(session.getAttribute("user")!=null) {
 			return ud.getAttendants();
 		}

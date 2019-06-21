@@ -7,7 +7,7 @@ import 'web-animations-js';
 
 
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule, Component } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
 import { LoginComponent } from './login/login.component';
 import { PurchaseComponent } from './purchase/purchase.component';
-import {PurchaseService} from './services/purchase.service';
+import { PurchaseService} from './services/purchase.service';
 import { StockComponent } from './stocks/stock/stock.component';
 import { StockListComponent } from './stocks/stock-list/stock-list.component';
 import { StockService } from './stocks/stock.service';
@@ -37,6 +37,14 @@ import { EventService } from './event.service';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DragDropEventComponent } from './drag-drop-event/drag-drop-event.component';
 import { DemoMaterialModule } from './material-module/material-module.module';
+import { ScheduleListComponent } from './schedules/schedule-list/schedule-list.component';
+import { ScheduleViewComponent } from './schedules/schedule-view/schedule-view.component';
+import { AttendantComponent } from './attendants/attendant/attendant.component';
+import { AttendantListComponent } from './attendants/attendant-list/attendant-list.component';
+import { ScheduleService } from './schedules/schedule.service';
+import { AttendantService } from './attendants/attendant.service';
+import { ReceiptService } from './services/receipt.service';
+
 
 @NgModule({
   declarations: [
@@ -52,8 +60,13 @@ import { DemoMaterialModule } from './material-module/material-module.module';
     ItemComponent,
     PlaceableComponent,
     PlaceableListComponent,
+    ScheduleComponent,
+    ScheduleListComponent,
     ReceiptComponent,
     ScheduleComponent,
+    ScheduleViewComponent,
+    AttendantComponent,
+    AttendantListComponent,
     EventComponent,
     EventListComponent,
     DragDropEventComponent
@@ -77,6 +90,9 @@ import { DemoMaterialModule } from './material-module/material-module.module';
     UserService,
     PlaceableService,
     StockService,
+    ReceiptService,
+    ScheduleService,
+    AttendantService,
     EventService
   ],
 

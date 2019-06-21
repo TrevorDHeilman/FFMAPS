@@ -1,3 +1,4 @@
+import { ScheduleViewComponent } from './schedules/schedule-view/schedule-view.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -6,19 +7,27 @@ import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.compo
 import {PurchaseComponent} from './purchase/purchase.component';
 import { StockListComponent } from './stocks/stock-list/stock-list.component';
 import { DragDropEventComponent } from './drag-drop-event/drag-drop-event.component';
+import {ReceiptComponent} from './receipt/receipt.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
-  }, {
+  }, 
+  {
     path: 'home',
     component: HomeComponent
-  }, {
+  }, 
+  {
     path: 'portal',
     component: EmployeePortalComponent
-  }, {
+  },
+  {
+    path: 'portal/timesheets',
+    component: ScheduleViewComponent
+  }, 
+  {
     path: 'portal/layout',
     component: OwnerDashboardComponent
   },
@@ -33,7 +42,11 @@ const routes: Routes = [
   { //app-drag-drop-event
     path: 'drag',
     component: DragDropEventComponent
-  }
+  },
+  {
+    path: 'home/receipt',
+    component: ReceiptComponent
+  },
 ];
 
 @NgModule({

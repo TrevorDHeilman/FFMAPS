@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.fairfellas.beans.Contact;
-import com.fairfellas.beans.Event;
 import com.fairfellas.data.ContactDAO;
 import com.fairfellas.utils.HibernateUtil;
 import com.fairfellas.utils.LogUtil;
