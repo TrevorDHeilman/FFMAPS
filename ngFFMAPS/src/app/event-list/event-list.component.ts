@@ -30,7 +30,12 @@ export class EventListComponent implements OnInit {
       );
     }
     else if(this.initString.indexOf("ending") > 0 ){
-      
+      this.eventService.getPendingEvents().subscribe(
+        (events) => {
+          console.log(events);
+          this.events = events;
+        }
+      );
     }
   }
 }
