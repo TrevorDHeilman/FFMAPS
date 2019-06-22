@@ -62,7 +62,7 @@ public class PlaceableHibernate implements PlaceableDAO{
 	@Override
 	public List<Placeable> getPlaceables() {
 		Session s = hu.getSession();
-		String query = "FROM Placeable";
+		String query = "FROM Placeable p order by p.id ASC";
 		Query<Placeable> q = s.createQuery(query, Placeable.class);
 		List<Placeable> placeableList = q.getResultList();
 		List<Placeable> placeableAList = new ArrayList<Placeable>();

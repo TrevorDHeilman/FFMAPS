@@ -48,6 +48,7 @@ import { AttendantViewComponent } from './attendants/attendant-view/attendant-vi
 import {MatDialogModule, MatFormFieldModule} from '@angular/material';
 import { DialogOverviewPurchaseComponent } from './dialog-overview-purchase/dialog-overview-purchase.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { PendingClientViewComponent } from './pending-client-view/pending-client-view.component';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
     EventListComponent,
     DialogOverviewPurchaseComponent,
     AboutUsComponent,
+    PendingClientViewComponent,
   ],
 
   imports: [

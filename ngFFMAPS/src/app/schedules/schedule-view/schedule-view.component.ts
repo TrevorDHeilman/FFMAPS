@@ -71,18 +71,18 @@ export class ScheduleViewComponent implements OnInit {
     }
   }
 
-  submit2(){
-    this.scheduleService.addSchedule(this.newSchedule).subscribe(
-      schedule => {
-        this.schedules.push(schedule);      
-        console.log(this.newSchedule);
-        this.newSchedule = new Schedule();
-        this.newSchedule.event = new Event();
-        this.newSchedule.user = new User();
-        this.newSchedule.placeable = new Placeable();
-      }
-    );
-  }
+  // submit2(){
+  //   this.scheduleService.addSchedule(this.newSchedule).subscribe(
+  //     schedule => {
+  //       this.schedules.push(schedule);      
+  //       console.log(this.newSchedule);
+  //       this.newSchedule = new Schedule();
+  //       this.newSchedule.event = new Event();
+  //       this.newSchedule.user = new User();
+  //       this.newSchedule.placeable = new Placeable();
+  //     }
+  //   );
+  // }
 
   emittedSchedule(schedulez: Schedule[]){
     this.schedules = schedulez;

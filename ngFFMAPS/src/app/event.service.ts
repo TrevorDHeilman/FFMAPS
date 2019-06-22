@@ -27,8 +27,8 @@ export class EventService {
     const body = JSON.stringify(event);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post('http://localhost:8080/FFMAPS/event',
-        body, {headers, withCredentials: true}).pipe(
-          map((resp) => resp as Event)
+        body, {headers: headers, withCredentials: true}).pipe(
+          map(resp => resp as Event)
     );
   }
 }
