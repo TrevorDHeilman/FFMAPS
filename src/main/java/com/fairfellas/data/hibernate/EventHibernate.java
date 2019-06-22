@@ -25,6 +25,7 @@ public class EventHibernate implements EventDAO{
 		Transaction tx = null;
 		try {
 			tx = s.beginTransaction();
+			System.out.println("newEvent");
 			System.out.println(newEvent);
 //			s.save(newEvent);
 			tx.commit();

@@ -10,11 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fairfellas.beans.Contact;
 import com.fairfellas.beans.Event;
+import com.fairfellas.beans.Location;
 import com.fairfellas.data.ContactDAO;
 import com.fairfellas.data.LocationDAO;
 import com.fairfellas.data.hibernate.EventHibernate;
@@ -53,9 +56,15 @@ public class EventController {
 	}
 	
 	@PostMapping
-	public void addEvent(Event e) {
-		int c = cd.addContact(e.getContact());
-		cd.getContactById(c);
+	public void addEvent(@RequestBody Event e) {
+		System.out.println(e);
+		System.out.println(e.getContact());
+		int contactId = cd.addContact(e.getContact());
+		Contact c = cd.getContactById(contactId);
+		e.setContact(c);
+		int locationId = ld.addLocation(e.getLocation());
+		Location l = ld.getLocationById(locationId);
+		e.setLocation(l);
 		eh.addEvent(e);
 	}
 }

@@ -29,7 +29,11 @@ export class AboutUsComponent implements OnInit {
     newDate.setDate(newDate.getDate() + 2);
     let dateStr = newDate.toISOString().substring(0,10);
     this.newEvent.endDate = dateStr;
-    console.log(this.newEvent.endDate)
+    // this.eventService.addEvent(this.newEvent).subscribe(
+    //   newEvent => {
+    //     this.newEvent = newEvent;
+    //   }
+    // );
     
   }
 }
