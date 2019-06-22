@@ -23,17 +23,19 @@ export class AboutUsComponent implements OnInit {
   }
 
   public apply() {
+    // New events are always pending
     this.newEvent.eventStatus.id = 1;
     this.newEvent.eventStatus.status = 'Pending';
+    // creating enddate string
     let newDate = new Date(this.newEvent.startDate);
     newDate.setDate(newDate.getDate() + 2);
     let dateStr = newDate.toISOString().substring(0,10);
     this.newEvent.endDate = dateStr;
-    // this.eventService.addEvent(this.newEvent).subscribe(
-    //   newEvent => {
-    //     this.newEvent = newEvent;
-    //   }
-    // );
+    this.eventService.addEvent(this.newEvent).subscribe(
+      newEvent => {
+        console.log(newEvent);    
+      }
+    );
     
   }
 }

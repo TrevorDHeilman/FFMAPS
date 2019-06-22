@@ -57,14 +57,6 @@ public class EventController {
 	
 	@PostMapping
 	public void addEvent(@RequestBody Event e) {
-		System.out.println(e);
-		System.out.println(e.getContact());
-		int contactId = cd.addContact(e.getContact());
-		Contact c = cd.getContactById(contactId);
-		e.setContact(c);
-		int locationId = ld.addLocation(e.getLocation());
-		Location l = ld.getLocationById(locationId);
-		e.setLocation(l);
 		eh.addEvent(e);
 	}
 }
