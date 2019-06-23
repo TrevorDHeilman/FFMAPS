@@ -1,10 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { EventService } from '../event.service';
 import { Map } from '../map';
-import { Event } from '../classfolder/event';
-import { Placeable } from '../placeable';
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
-//import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 @Component({
   selector: 'app-drag-drop-event',

@@ -1,10 +1,6 @@
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { EventService } from '../event.service';
 import { Map } from '../map';
-import { Event } from '../classfolder/event';
-import { Placeable } from '../placeable';
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
-//import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 @Component({
   selector: 'app-draglayout',
@@ -17,6 +13,7 @@ export class DraglayoutComponent implements OnInit, AfterViewInit {
   public maps : Map[];
   public size1
   public rootElem : HTMLElement;
+
   constructor(private eventService: EventService) { }
   public dynamic: number;
   @Input() editable : number;
