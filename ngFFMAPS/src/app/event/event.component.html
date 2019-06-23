@@ -1,17 +1,17 @@
 
-<div class="card mt-3">
+<div class="card mt-3 partition bottomCut rounded">
   <a *ngIf="acceptString!='Accept'" (click)="openDialog()" class="btn btn-info">Fantastic Fair {{ event.id }}</a>
   <a *ngIf="acceptString=='Accept'" (click)="accept()" class="btn btn-success text-center">Fantastic Fair {{ event.id }}</a>
   <a *ngIf="acceptString=='Accept'" (click)="decline()" class="btn btn-danger text-center">Decline</a>
-<div class="card mt-0">
+<div class="card mt-0 partition ">
   <!-- <a (click)="openDialog()" class="btn btn-info">Fantastic Fair {{ event.id }}</a> -->
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
+  <div class="card-body partition p-0 bottomCut">
+    <blockquote class="blockquote mb-0 pt-1 pl-3  partition bottomCut">
       <p>Arrive to enjoy all the latest attractions!</p>
-      <footer class="blockquote-footer">
+      <footer class="blockquote-footer partition bottomCut">
         At {{event.location.addressLine1}}. {{event.location.city}}, {{event.location.state}} {{event.location.postalCode}}
       </footer>
-      <footer class="blockquote-footer">
+      <footer class="blockquote-footer p-3  partition bottomCut">
           <cite title="Source Title">from  {{event.startDate}} - {{event.endDate}}</cite>
       </footer>
     </blockquote>

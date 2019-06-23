@@ -1,7 +1,7 @@
 <ng-container *ngIf="(editable > 0); else display">
   <ng-container *ngIf="(editable == 1);">
     <div id="dragDropContainer" class="mat-app-background basic-container white pl-0 pr-0 pb-0">
-      <div id="layoutReaction" class="example-boundary rounded">
+      <div id="layoutReaction" class="example-boundary rounded partition">
         <div *ngFor="let map of maps" 
           [ngClass]="setDragableClass(map)"            
           [ngStyle]="setDragableStyle(map)"
@@ -16,7 +16,7 @@
   </ng-container>
   <ng-container *ngIf="(editable == 2);">
     <div id="dragDropContainer" class="mat-app-background basic-container white pl-0 pr-0 pb-0">
-      <div id="layoutAction" class="example-boundary rounded">
+      <div id="layoutAction" class="example-boundary rounded partition">
         <div [cdkDragData]="map" *ngFor="let map of maps" 
         [ngClass]="setDragableClass(map)"            
         [ngStyle]="setDragableStyle(map)"
@@ -35,7 +35,7 @@
 
 <ng-template #display>
   <div id="dragDropContainer" class="mat-app-background basic-container white pl-0 pr-0 pb-0">
-    <div id="layoutReaction" class="example-boundary rounded">
+    <div id="layoutReaction" class="example-boundary rounded partition">
     <div *ngFor="let map of maps" 
     [ngClass]="setDragableClass(map)"            
     [ngStyle]="setDragableStyle(map)"
