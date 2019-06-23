@@ -9,11 +9,16 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fairfellas.beans.Event;
+import com.fairfellas.data.ContactDAO;
+import com.fairfellas.data.LocationDAO;
 import com.fairfellas.data.hibernate.EventHibernate;
 
 @RestController
@@ -22,6 +27,8 @@ import com.fairfellas.data.hibernate.EventHibernate;
 public class EventController {
 	@Autowired
 	private EventHibernate eh;
+	private ContactDAO cd;
+	private LocationDAO ld;
 	private Logger log;
 	
 //	@RequestParam(defaultValue = "test") String id
@@ -45,5 +52,19 @@ public class EventController {
 		}
 		log.trace(eventList);
 		return eventList;
+	}
+	
+	@PostMapping
+	public void addEvent(@RequestBody Event e) {
+		eh.addEvent(e);
+	}
+	
+	@PutMapping
+	public Event updateEvent(@RequestBody Event e, HttpSession session) {
+		if(session.getAttribute("user")!=null) {	
+			int id = eh.updateEvent(e);
+			return eh.getEventById(id);
+		}
+		return null;
 	}
 }

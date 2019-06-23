@@ -31,8 +31,6 @@ export class StockListComponent implements OnInit {
   }
   submit(): void {
     this.newStock = this.stocks[this.identity-1];
-    console.log(this.newStock);
-    console.log(this.addedStock);
     this.newStock.stockAvailable = this.newStock.stockAvailable + this.addedStock;
     this.stockService.updateStock(this.newStock).subscribe(
       newStock => {

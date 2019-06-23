@@ -1,6 +1,18 @@
-<div>
-  Stock ID: {{stock.id}} <br>
-  Stock Available: {{stock.stockAvailable}} <br>
-  Placeable ID: {{stock.placeableId}} <br>
+
+<!-- <th scope="row">{{stock.id}}</th>
+<td>
   <app-item [item]="stock.item"></app-item>
+</td>
+<td>{{stock.stockAvailable}} </td> -->
+
+<div class="row">
+  <div class="col-md th text-center">{{stock.id}}</div>
+  <div class="col-md td text-center"><app-item [item]="stock.item"></app-item></div>
+  <div class="col-md td text-center">{{stock.stockAvailable}}</div>
 </div>
+
+<!-- <div>
+  Stock ID: {{stock.id}} <br>
+  <app-item [item]="stock.item"></app-item>
+  Stock Available: {{stock.stockAvailable}}  <br> <br>
+</div> -->

@@ -1,6 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {ReceiptService} from '../services/receipt.service';
 import {Receipt} from '../classfolder/receipt';
+import {PurchaseService} from '../services/purchase.service';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+
+export interface DialogData {
+  email: string;
+}
 
 @Component({
   selector: 'app-receipt',
@@ -16,21 +22,25 @@ export class ReceiptComponent implements OnInit {
   @Input() eventId: number;
   @Input() dateOfPurchase: Date;
 
-  private receipt: Receipt;
+  private receipts: Receipt[];
 
-  constructor(private receiptService: ReceiptService) { }
-
-  ngOnInit() {
-    this.receipt = this.getReceipt(this.email);
+  constructor(private receiptService: ReceiptService, public dialogRef: MatDialogRef<ReceiptComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    this.email = data.email;
   }
 
-  getReceipt(email: string): Receipt {
-    this.receipt = new Receipt();
+  ngOnInit() {
+    this.receipts = this.getDummyReceipt(this.email);
+  }
+
+  getDummyReceipt(email: string): Receipt[] {
     return this.receiptService.getDummyReceipt(email);
-    // return this.receiptService.getDummyReceipt(email).subscribe(
-    //   receipt => {
-    //     this.receipt = receipt;
-    //   }
-    // );
+  }
+
+  getReceipt($event: any): void {
+    console.log($event);
+    this.receiptService.getReceipt($event).subscribe( resp => {
+      this.receipts = resp;
+    });
   }
 }

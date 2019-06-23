@@ -1,0 +1,25 @@
+
+<div class="container mt-5 pt-2 backpanel">
+    <div class="jumbotron pt-3 white">
+      <div class="row">
+
+      <div class="col-md-12 appPadding">
+        <div class="card schBack " style="">
+            <div class="card-body text-center pl-1">
+                <h4 class="ml-4" *ngIf="loggedUser != null && loggedUser.userType.id ==3" >
+                    <div class="text-center">
+                      <h1 class="display-4 mb-3">Your Schedule: </h1>
+                    </div>
+                </h4>
+                <h4 class="ml-4" *ngIf="loggedUser != null && loggedUser.userType.id < 3" >
+                    <div class="text-center">
+                        <h1 class="display-4 mb-3">Schedules: </h1>
+                      </div>
+                </h4>
+                <app-schedule-list></app-schedule-list>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

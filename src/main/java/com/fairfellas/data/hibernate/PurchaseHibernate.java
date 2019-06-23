@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import com.fairfellas.beans.Purchase;
 import com.fairfellas.data.PurchaseDAO;
 import com.fairfellas.utils.HibernateUtil;
+import com.fairfellas.utils.LogUtil;
 
 @Component
 public class PurchaseHibernate implements PurchaseDAO {
@@ -25,6 +26,7 @@ public class PurchaseHibernate implements PurchaseDAO {
 			session.save(purchase);
 			transaction.commit();
 		} catch (Exception e) {
+			LogUtil.logException(e, this.getClass());
 			if (null != transaction) {
 				transaction.rollback();
 			}

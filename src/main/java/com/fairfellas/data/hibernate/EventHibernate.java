@@ -25,6 +25,8 @@ public class EventHibernate implements EventDAO{
 		Transaction tx = null;
 		try {
 			tx = s.beginTransaction();
+//			System.out.println("newEvent");
+//			System.out.println(newEvent);
 			s.save(newEvent);
 			tx.commit();
 		} catch(Exception e) {
@@ -59,7 +61,7 @@ public class EventHibernate implements EventDAO{
 		return eventAList;
 	}
 	
-	public void updateEvent(Event event) {
+	public int updateEvent(Event event) {
 		System.out.println(event);
 		Session s = hu.getSession();
 		Transaction tx = null;
@@ -75,6 +77,7 @@ public class EventHibernate implements EventDAO{
 		} finally {
 			s.close();
 		}
+		return event.getId();
 	}
 	
 	@Override

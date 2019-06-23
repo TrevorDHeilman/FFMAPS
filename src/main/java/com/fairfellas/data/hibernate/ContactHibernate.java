@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.fairfellas.beans.Contact;
-import com.fairfellas.beans.Event;
 import com.fairfellas.data.ContactDAO;
 import com.fairfellas.utils.HibernateUtil;
 import com.fairfellas.utils.LogUtil;
@@ -20,12 +19,12 @@ public class ContactHibernate implements ContactDAO{
 	@Autowired
 	private HibernateUtil hu;
 	
-	public int addContact(Contact newContact) {
+	public int addContact(Contact c) {
 		Session s = hu.getSession();
 		Transaction tx = null;
 		try {
 			tx = s.beginTransaction();
-			s.save(newContact);
+			s.save(c);
 			tx.commit();
 		} catch(Exception e) {
 			if (tx != null) {
@@ -35,7 +34,7 @@ public class ContactHibernate implements ContactDAO{
 		} finally {
 			s.close();
 		}
-		return newContact.getId();
+		return c.getId();
 	}
 	public Contact getContactById(int id) {
 		Contact contact;

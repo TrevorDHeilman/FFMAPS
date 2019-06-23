@@ -1,0 +1,14 @@
+.button1 {
+    background-color: rgba(255, 255, 255, 0.305);
+    border: 0ex;
+}
+
+.button1:hover {
+    background-color: rgba(127, 145, 145, 0.153);
+    color: rgb(103, 136, 255);
+}
+
+.bgdiv {
+    background-color: rgba(187, 236, 255, 0.493);
+    border-radius: 15px;
+}

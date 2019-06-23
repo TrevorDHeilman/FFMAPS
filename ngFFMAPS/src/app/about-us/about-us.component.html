@@ -1,0 +1,73 @@
+<br>
+<div class="mt-5 container backpanel">
+    <div class="text-center pt-3">
+      <h1 class="display-4">Fantastic Fair:</h1>
+    </div>
+  <div class="text-center"></div><br>
+
+  <div class="container text-center">
+      <p class="lead">Fantastic fair is a fabulous three day event.</p>
+      <p class="lead mb-4">Want to employ our services?</p>
+    
+  </div>
+  <div class="container partition rounded pb-3">
+    <div class="row">
+      <div class="col-md">
+          <p class="lead">Enter when and where:</p>
+        <div>
+          Start Date (YYYY-MM-DD):
+          <input class="form-control " type="text" [(ngModel)]="newEvent.startDate" />
+        </div>
+        <div>
+          Address:
+          <input class="form-control " type="text" [(ngModel)]="newEvent.location.addressLine1" />
+        </div>
+        <div>
+          Address 2:
+          <input class="form-control " type="text" [(ngModel)]="newEvent.location.addressLine2" />
+        </div>
+        <div>
+          City:
+          <input class="form-control " type="text" [(ngModel)]="newEvent.location.city" />
+        </div>
+        <div>
+          State:
+          <input class="form-control " type="text" [(ngModel)]="newEvent.location.state" />
+        </div>
+        <div>
+          Postal Code:
+          <input class="form-control " type="number" [(ngModel)]="newEvent.location.postalCode" />
+        </div>
+      </div>
+      <br><br>
+      <div class="col-md">
+          <p class="lead">Enter your contact info:</p>
+        <div>
+          First Name:
+          <input class="form-control " type="text" [(ngModel)]="newEvent.contact.firstName" />
+        </div>
+        <div>
+          Last Name:
+          <input class="form-control " type="text" [(ngModel)]="newEvent.contact.lastName" />
+        </div>
+        <div>
+          Email:
+          <input class="form-control " type="text" [(ngModel)]="newEvent.contact.email" />
+        </div>
+        <div>
+          Phone Number:
+          <input class="form-control " type="text" [(ngModel)]="newEvent.contact.phoneNumber" />
+        </div>
+        <div>
+          <br>
+          <button type="submit" class="btn btn-light btn-block button1" (click)="apply()">Apply!</button>
+        </div>
+        <div>
+          <br>
+          <button type="button" class="btn btn-light btn-block button1" routerLink="/home">Home</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+</div>

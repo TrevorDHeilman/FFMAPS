@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Event } from '../classfolder/event';
 import { EventService } from '../event.service';
 import { Location } from '../classfolder/location';
 import { Contact } from '../classfolder/contact';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-event-list',
@@ -11,18 +12,41 @@ import { Contact } from '../classfolder/contact';
 })
 
 export class EventListComponent implements OnInit {
-  public newEvent :Event;
+  public newEvent: Event;
   public events: Array<Event> = new Array<Event>();
+  @Input() public initString : String = "";
+  @Input() public acceptButton : String = "";
 
-  constructor(private eventService : EventService) { }
+  constructor(private eventService: EventService, ) { }
 
   ngOnInit() {
     this.newEvent = new Event();
     this.newEvent.location = new Location();
     this.newEvent.contact = new Contact();
-    this.eventService.getEvents().subscribe(
-      (events) =>{
-        console.log(events)
+    if(this.initString.indexOf("ccept") > 0 ){
+      console.log("Accept");
+      this.eventService.getEvents().subscribe(
+        (events) => {
+          console.log(events);
+          this.events = events;
+        }
+      );
+    }
+    else if(this.initString.indexOf("ending") > 0 ){
+      console.log("Pending");
+      this.eventService.getPendingEvents().subscribe(
+        (events) => {
+          console.log(events);
+          this.events = events;
+        }
+      );
+    }
+  }
+
+  reGetEvents(zero: number) {
+    this.eventService.getPendingEvents().subscribe(
+      (events) => {
+        console.log(events);
         this.events = events;
       }
     );

@@ -1,0 +1,25 @@
+.bottomLine{
+    padding: 1px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.tableBack{
+    background-color: rgb(174, 194, 255);
+}
+
+.td{
+    padding-left: 0px;
+
+}
+
+.div{
+    margin: 0px;
+}
+
+.stock{
+    margin-left: 25%;
+}
+
+.button1{
+    padding: 5px 100px;
+}

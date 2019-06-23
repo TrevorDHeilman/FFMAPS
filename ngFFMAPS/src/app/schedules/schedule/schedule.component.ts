@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Schedule } from './../schedule';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-schedule',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./schedule.component.css']
 })
 export class ScheduleComponent implements OnInit {
-
+  @Input() public schedule: Schedule;
   constructor() { }
 
   ngOnInit() {

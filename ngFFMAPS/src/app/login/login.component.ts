@@ -45,6 +45,13 @@ export class LoginComponent implements OnInit {
     this.username = null;
     this.password = null;
     this.onloggedUser.emit(this.loggedUser);
+    this.router.navigateByUrl('/portal');
   }
+
+  // import { Router } from '@angular/router';
+
+  // btnClick= function () {
+  //         this.router.navigateByUrl('/user');
+  // };
 
 }

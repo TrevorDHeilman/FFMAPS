@@ -1,0 +1,90 @@
+<div class="mt-5 container backpanel">
+    <div class="text-center">
+        <h1 class="display-4 mt-3 pt-5">Employee Scheduling:</h1>
+    </div>
+<div class="row pb-4 ">
+    <div class="col-md-1 pt-4"></div>
+<div class="col-md-10 appPadding">
+    <div class="card schBack " style="">
+        <div class="card-body text-center pl-1">
+            <h4 class="ml-4">Schedules</h4>
+            <app-schedule-list (emittedSchedule)="emittedSchedule($event)"></app-schedule-list>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="col-md-12 row">
+        <div class="col-md-1 pt-4"></div>
+        <div class="col-md-5 appPadding">
+            <div class="card schBack" style="">
+                <div class="card-body text-center pl-1">
+                    <h4 class="ml-4">Available Placeables</h4>
+                    <app-placeable-list class=""></app-placeable-list>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 appPadding">
+            <div class="card schBack" style="">
+                <div class="card-body text-center container">
+                    <h4 class="ml-4">Attendants</h4>
+                    <app-attendant-list class=""></app-attendant-list>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-event-list [initString]="acceptString"></app-event-list>
+    <br>
+    <div class="text-center">
+    <h1 class="pl-3 pr-3">Attendant Designation</h1><br>
+    <table class="pl-3 pr-3 marginLeftBuff w-75">
+        <tr>
+            <th class="text-center">Employee ID</th>
+            <th class="text-center">Event ID</th>
+            <!-- <th class="text-center">First Name</th>
+            <th class="text-center">Last Name</th> -->
+            <th class="text-center">Event Day</th>
+            <th class="text-center">Designation</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    <input class="form-control " type="number" [(ngModel)]="newSchedule.user.id" name="empID" />
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input class="form-control" type="number" [(ngModel)]="newSchedule.event.id" name="eventID" />
+                </div>
+            </td>
+            <!-- <td>
+                <div>
+                    <input class="form-control" type="text" [(ngModel)]="first" name="first" />
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input class="form-control" type="text" [(ngModel)]="last" name="last" />
+                </div>
+            </td> -->
+            <td>
+                <div>
+                    <input class="form-control" type="number" [(ngModel)]="newSchedule.scheduleDay" name="schDay" />
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input class="form-control" type="number" [(ngModel)]="newSchedule.placeable.id" name="placeable" />
+                </div>
+            </td>
+            <td></td>
+            <td>
+                <button type="submit" class="btn btn-primary" (click)="submit()">Assign</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+</div>
+</div>

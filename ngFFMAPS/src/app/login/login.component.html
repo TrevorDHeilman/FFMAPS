@@ -1,12 +1,12 @@
 
 <ng-container *ngIf="urlString != 'home' || loggedUser">
-<ng-container *ngIf="(!loggedUser); else display">
-  <form class="form-inline my-2 my-lg-0" name="loginForm">
-    <input class="form-control mr-sm-2" type="text" [(ngModel)]="username" name="username" placeholder="Login" aria-label="">
-    <input class="form-control mr-sm-2" type="password" [(ngModel)]="password" name="password" (keyup.enter)="login()" placeholder="Password" aria-label="">
-    <button class="btn btn-outline-success my-2 my-sm-0" (click)="login()">Login</button>
-  </form>
-</ng-container>
+  <ng-container *ngIf="(!loggedUser); else display">
+    <form class="form-inline my-2 my-lg-0" name="loginForm">
+      <input class="form-control mr-sm-2" type="text" [(ngModel)]="username" name="username" placeholder="Login" aria-label="">
+      <input class="form-control mr-sm-2" type="password" [(ngModel)]="password" name="password" (keyup.enter)="login()" placeholder="Password" aria-label="">
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="login()">Login</button>
+    </form>
+  </ng-container>
 </ng-container>
 
 <ng-template #display>

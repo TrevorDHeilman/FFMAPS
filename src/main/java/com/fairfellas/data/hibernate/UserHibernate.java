@@ -7,6 +7,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.fairfellas.beans.Schedule;
 import com.fairfellas.beans.User;
 import com.fairfellas.data.UserDAO;
 import com.fairfellas.utils.HibernateUtil;
@@ -30,11 +31,20 @@ public class UserHibernate implements UserDAO {
 	@Override
 	public List<User> getAttendants() {
 		Session s = hu.getSession();
-		String query = "from userinfo u where u.usertypeid=3";
+		String query = "from User u where u.userType.id=3";
 		Query<User> q = s.createQuery(query, User.class);
 		List<User> attendants = q.getResultList();
 		System.out.println(attendants);
 		return attendants;
+	}
+	
+	@Override
+	public User getEmployeeById(int id) {
+		User u;
+		Session s = hu.getSession();
+		u = s.get(User.class, id);
+		s.close();
+		return u;
 	}
 
 }
