@@ -3,7 +3,6 @@ import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
 import 'hammerjs';
 import 'web-animations-js';
-/////////
 
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -44,6 +43,8 @@ import { AttendantListComponent } from './attendants/attendant-list/attendant-li
 import { ScheduleService } from './schedules/schedule.service';
 import { AttendantService } from './attendants/attendant.service';
 import { ReceiptService } from './services/receipt.service';
+import { PlaceableAddComponent } from './placeable-add/placeable-add.component';
+import { PlaceableTypeService } from './placeable-type.service';
 import { AttendantViewComponent } from './attendants/attendant-view/attendant-view.component';
 import {MatDialogModule, MatFormFieldModule} from '@angular/material';
 import { DialogOverviewPurchaseComponent } from './dialog-overview-purchase/dialog-overview-purchase.component';
@@ -74,6 +75,7 @@ import { PendingClientViewComponent } from './pending-client-view/pending-client
     AttendantListComponent,
     EventComponent,
     EventListComponent,
+    PlaceableAddComponent,
     DragDropEventComponent,
     AttendantViewComponent,
     EventListComponent,
@@ -106,7 +108,8 @@ import { PendingClientViewComponent } from './pending-client-view/pending-client
     ScheduleService,
     AttendantService,
     EventService,
-    DialogOverviewPurchaseComponent,
+    PlaceableTypeService,
+    DialogOverviewPurchaseComponent
   ],
 
   bootstrap: [AppComponent],

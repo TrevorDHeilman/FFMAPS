@@ -35,11 +35,14 @@ public class PlaceableController {
 	}
 	
 	@PostMapping
-	public void addPlaceable(@RequestBody Placeable placeable, HttpSession session) {
+	public int addPlaceable(@RequestBody Placeable placeable, HttpSession session) {
 		
 		log = Logger.getLogger(PlaceableController.class);
 		if(session.getAttribute("user")!=null) {
 			ph.addPlaceable(placeable);
+			return 1;
 		}
+		
+		return 0;
 	}
 }
