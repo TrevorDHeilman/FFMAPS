@@ -18,18 +18,18 @@ export class EventService {
     );
   }
 
-  public getEventMapById(id:number): Observable<Map[]>{
-    return this.http.get('http://localhost:8080/FFMAPS/map/'+id, {}).pipe(
-      map( (resp) => resp as Map[] )
-    );
-  }
-
   public updateEventMaps(maps:Map[]): Observable<Map[]>{
     const body = JSON.stringify(maps);
     // console.log(body);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.put('http://localhost:8080/FFMAPS/map/',
     body, {headers, withCredentials: true}).pipe(
+      map( (resp) => resp as Map[] )
+    );
+  }
+
+  public getEventMapById(id:number): Observable<Map[]>{
+    return this.http.get('http://localhost:8080/FFMAPS/map/'+id, {}).pipe(
       map( (resp) => resp as Map[] )
     );
   }
