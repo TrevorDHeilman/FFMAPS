@@ -1,0 +1,11 @@
+<table>
+  <tr>
+    <th>Location ID</th>
+    <th>Sold tickets</th>
+  </tr>
+  <tr *ngFor="let receipt of this.receiptsByLocation">
+    <td>{{receipt.locationId}}</td>
+    <td>{{receipt.numberOfTickets}}</td>
+  </tr>
+</table>
+

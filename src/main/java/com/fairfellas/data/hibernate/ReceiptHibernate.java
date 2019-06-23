@@ -1,6 +1,7 @@
 package com.fairfellas.data.hibernate;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -48,5 +49,35 @@ public class ReceiptHibernate implements ReceiptDAO {
 			return receipts;
 		}
 		return null;
+	}
+
+	@Override
+	public List<Receipt> getReceipts() {
+		log = Logger.getLogger(this.getClass());
+
+		Session session = hibernateUtil.getSession();
+		
+		Query query = session.createQuery("SELECT locationId, count(locationId) FROM Receipt r GROUP BY locationId");
+//		Query query = session.createQuery("FROM Receipt r");
+		
+		List receipts = new ArrayList();// = query.getResultList();
+		
+//		if (null != receipts && receipts.isEmpty() == false) {
+		for (Iterator it = query.iterate(); it.hasNext();) {
+				Object[] row = (Object[]) it.next();
+				Receipt receipt = new Receipt();
+				receipt.setLocationId(Integer.valueOf(row[0].toString()));
+				receipt.setNumberOfTickets(Integer.valueOf(row[1].toString()));
+
+				receipts.add(receipt);
+					 
+//					 System.out.println("Invested Amount: " + row[0]);
+//					 System.out.println("Insurance Name: " + row[1]);
+					  }
+//			log.trace(receipts.get(0).toString());
+
+			return receipts;
+//		}
+//		return null;
 	}
 }
