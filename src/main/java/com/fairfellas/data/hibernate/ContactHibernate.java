@@ -19,12 +19,12 @@ public class ContactHibernate implements ContactDAO{
 	@Autowired
 	private HibernateUtil hu;
 	
-	public int addContact(Contact newContact) {
+	public int addContact(Contact c) {
 		Session s = hu.getSession();
 		Transaction tx = null;
 		try {
 			tx = s.beginTransaction();
-			s.save(newContact);
+			s.save(c);
 			tx.commit();
 		} catch(Exception e) {
 			if (tx != null) {
@@ -34,7 +34,7 @@ public class ContactHibernate implements ContactDAO{
 		} finally {
 			s.close();
 		}
-		return newContact.getId();
+		return c.getId();
 	}
 	public Contact getContactById(int id) {
 		Contact contact;

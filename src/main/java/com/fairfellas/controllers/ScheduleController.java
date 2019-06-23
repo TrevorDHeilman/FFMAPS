@@ -43,7 +43,7 @@ public class ScheduleController {
 	}
 	
 	@PutMapping
-	public void updateStock(@RequestBody Schedule s, HttpSession session) {
+	public void updateSchedule(@RequestBody Schedule s, HttpSession session) {
 		if(session.getAttribute("user")!=null) {
 			sd.updateSchedule(s);
 		}

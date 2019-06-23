@@ -47,21 +47,18 @@ export class ScheduleViewComponent implements OnInit {
         i++;
       }
     }
-    console.log('this.schedule');      
-    console.log(this.newSchedule);
-    console.log(this.updatedSchedule.user);
+    // if nothing is needed to update, add new schedule
     if(i == 0){
-      console.log(this.newSchedule);
       this.scheduleService.addSchedule(this.newSchedule).subscribe(
         schedule => {
-          this.schedules.push(schedule);      
-          console.log(this.newSchedule);
+          this.schedules.push(schedule);  
           this.newSchedule = new Schedule();
           this.newSchedule.event = new Event();
           this.newSchedule.user = new User();
           this.newSchedule.placeable = new Placeable();
         }
       );
+    // else update that schedule
     } else {
       this.scheduleService.updateSchedule(this.updatedSchedule).subscribe(
         updatedSchedule => {

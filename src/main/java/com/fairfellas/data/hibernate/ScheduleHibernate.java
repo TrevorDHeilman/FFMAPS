@@ -41,7 +41,7 @@ public class ScheduleHibernate implements ScheduleDAO {
 			if (tx != null) {
 				tx.rollback();
 			}
-			LogUtil.logException(e, StockHibernate.class);
+			LogUtil.logException(e, ScheduleHibernate.class);
 		} finally {
 			s.close();
 		}
