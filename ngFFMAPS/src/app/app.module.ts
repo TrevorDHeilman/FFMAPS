@@ -52,6 +52,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { PendingClientViewComponent } from './pending-client-view/pending-client-view.component';
 import { DraglayoutComponent } from './draglayout/draglayout.component';
 import { DialogOverviewSearchReceiptComponent } from './dialog-overview-search-receipt/dialog-overview-search-receipt.component';
+import {SalesComponent} from './sales/sales.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { DialogOverviewSearchReceiptComponent } from './dialog-overview-search-r
     PendingClientViewComponent,
     DraglayoutComponent,
     DialogOverviewSearchReceiptComponent,
+    SalesComponent,
   ],
 
   imports: [
@@ -119,6 +121,7 @@ import { DialogOverviewSearchReceiptComponent } from './dialog-overview-search-r
   entryComponents: [
     PurchaseComponent,
     DialogOverviewPurchaseComponent,
+    DialogOverviewSearchReceiptComponent,
   ],
 })
 export class AppModule { }

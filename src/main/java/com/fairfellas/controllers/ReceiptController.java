@@ -37,5 +37,15 @@ public class ReceiptController {
 		log.trace(receipts);
 		return receipts;
 	}
+	
+	@GetMapping
+	public List<Receipt> getAllReceipts() {
+		log = Logger.getLogger(this.getClass());
+
+		List<Receipt> allReceipts = receiptDAO.getReceipts();
+		
+		log.trace(allReceipts);
+		return allReceipts;
+	}
 
 }
