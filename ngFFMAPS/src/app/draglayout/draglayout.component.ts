@@ -41,15 +41,6 @@ export class DraglayoutComponent implements OnInit, AfterViewInit {
       }
     }
   }
-
-  searchOne(){
-    this.eventService.getEventMapById(1).subscribe(
-      (maps) => {
-        console.log(maps);
-        this.maps = maps;
-      } 
-    );
-  }
   
   searchMapId(id:number){
     this.eventService.getEventMapById(id).subscribe(
