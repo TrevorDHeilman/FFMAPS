@@ -1,2 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+body, html {
+background-image: url("https://i.pinimg.com/originals/3b/3b/6d/3b3b6dace4559f6e48021202b743d157.jpg"), url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/JrbItQz/light-blue-circles-loopable-abstract-background-4k-4096x2304_4xvni540l__F0000.png");
+/* background-position: center,center; Center the image */
+background-size: cover,cover; /* Resize the background image to cover the entire container */
+opacity: 0.7,1;
+filter: alpha(opacity=50), alpha(opacity=100);
+mix-blend-mode: multiply, multiply;
+background-color: #cccccc;
+}
+
+
+.white{
+    background-color: #fff;
+}
+
+.backpanel{
+    width: 69%;
+    min-width: 1300px;
+    border-radius: 15px;
+    background-color: #fff;
+    position: absolute;
+    margin-left: 15%;
+}
