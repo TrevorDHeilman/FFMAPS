@@ -1,50 +1,29 @@
-<div class="mat-app-background basic-container white">
+<div id="dragDropContainer" class="mat-app-background basic-container white">
   <div id="layoutAction" class="example-boundary">
-  <div class="example example-box" cdkDragBoundary=".example-boundary" cdkDrag (mouseleave)="fireEvent($event)">
-    small
-  </div>
-  <div class="example example-box-long-hor" cdkDragBoundary=".example-boundary " cdkDrag (mouseleave)="fireEvent($event)">
-    long
-  </div>
-  <div class="example example-box-long-vert" cdkDragBoundary=".example-boundary" cdkDrag (mouseleave)="fireEvent($event)">
-    long
-  </div>
-  <div class="example example-box-longer-hor" cdkDragBoundary=".example-boundary" cdkDrag (mouseleave)="fireEvent($event)">
-    longer
-  </div>
-  <div class="example example-box-longer-vert" cdkDragBoundary=".example-boundary" cdkDrag (mouseleave)="fireEvent($event)">
-    longer
-  </div>
-  <div class="example example-box-big" cdkDragBoundary=".example-boundary" cdkDrag (mouseleave)="fireEvent($event)">
-    big
+  <div [cdkDragData]="map" *ngFor="let map of maps" 
+  [ngClass]="setDragableClass(map)"            
+  [ngStyle]="setDragableStyle(map)"
+  class="example example-box" cdkDragBoundary=".example-boundary" cdkDrag>
+    {{map.placeable.name}}
   </div>
   </div>
 </div>
 
 <div class="example" style="width:150px; height:50px; border: 2px; border-color:aqua" cdkDrag (click)="processLayout()"> look at me now</div>
+<div class="example" style="width:150px; height:50px; border: 2px; border-color:aqua" cdkDrag (click)="processActiveLayout()"> Process Active Layout</div>
 
-<div class="mat-app-background basic-container white">
+<div id="dragDropContainer" class="mat-app-background basic-container white">
   <div id="layoutReaction" class="example-boundary">
-  <div class="example example-box" cdkDragBoundary=".example-boundary" >
-    small
-  </div>
-  <div class="example example-box-long-hor" cdkDragBoundary=".example-boundary "  >
-    long
-  </div>
-  <div class="example example-box-long-vert" cdkDragBoundary=".example-boundary" >
-    long
-  </div>
-  <div class="example example-box-longer-hor" cdkDragBoundary=".example-boundary" >
-    longer
-  </div>
-  <div class="example example-box-longer-vert" cdkDragBoundary=".example-boundary">
-    longer
-  </div>
-  <div class="example example-box-big" cdkDragBoundary=".example-boundary" >
-    big
+  <div *ngFor="let map of maps" 
+  [ngClass]="setDragableClass(map)"            
+  [ngStyle]="setDragableStyle(map)"
+  class="example example-box" cdkDragBoundary=".example-boundary">
+    {{map.placeable.name}}
   </div>
   </div>
 </div>
+
+
 <div class="container">
   <span id="transforms"></span>
 </div>
