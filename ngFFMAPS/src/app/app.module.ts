@@ -51,6 +51,7 @@ import { DialogOverviewPurchaseComponent } from './dialog-overview-purchase/dial
 import { AboutUsComponent } from './about-us/about-us.component';
 import { PendingClientViewComponent } from './pending-client-view/pending-client-view.component';
 import { DraglayoutComponent } from './draglayout/draglayout.component';
+import { DialogOverviewSearchReceiptComponent } from './dialog-overview-search-receipt/dialog-overview-search-receipt.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { DraglayoutComponent } from './draglayout/draglayout.component';
     AboutUsComponent,
     PendingClientViewComponent,
     DraglayoutComponent,
+    DialogOverviewSearchReceiptComponent,
   ],
 
   imports: [
