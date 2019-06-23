@@ -1,5 +1,6 @@
 package com.fairfellas.controllers;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -46,9 +47,30 @@ public class MapController {
 	@RequestMapping(value="/map", method=RequestMethod.POST)
 	public void addMap(@RequestBody Map map, HttpSession session) {
 		
-		log = Logger.getLogger(PlaceableController.class);
+		log = Logger.getLogger(MapController.class);
 		if(session.getAttribute("user")!=null) {
 			mh.addMap(map);
 		}
+	}
+	
+	@RequestMapping(value="/map", method=RequestMethod.PUT)
+	public List<Map> updateMaps(@RequestBody List<Map> maps, HttpSession session) {
+		
+		log = Logger.getLogger(MapController.class);
+		log.trace("updating maps");
+		log.trace(maps);
+//		if(session.getAttribute("user")!=null) {
+			if(maps.size()>0) {
+				for(Map map : maps) {
+					if(map.getId()>0) {
+						mh.updateMap(map);
+					}else {
+						mh.addMap(map);
+					}
+				}
+			}
+//		}
+		List<Map> mapReturn = new LinkedList<Map>();
+		return mapReturn;
 	}
 }
