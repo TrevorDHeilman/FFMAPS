@@ -1,11 +1,11 @@
-<div class="mt-5 backpanel">
+<div class="mt-5 container backpanel">
     <h1 class="display-4 mt-3 pl-4 pt-5">Upcoming Events:</h1>
 <div class="row ml-3">
   <div class="ml-3 mb-0">
       <!-- <img src="https://www.datefest.org/portals/0/Facilities/Fair-Layout---blank.png" width="100%" height="100%" class="d-inline-block align-top" alt=""> -->
       <app-draglayout [editable]="0"></app-draglayout>
   </div>
-  <div class="col-md-7 mt-3">
+  <div class="col-md-6 mt-3">
   <app-dialog-overview-purchase></app-dialog-overview-purchase>
 
     <app-event-list  [initString]="acceptString">
