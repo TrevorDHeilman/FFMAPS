@@ -18,6 +18,7 @@ export class ScheduleViewComponent implements OnInit {
   public empID: number;
   public schDay: string;
   public placeable: number;
+  public acceptString = 'Accept';
 
   constructor(
     private scheduleService: ScheduleService

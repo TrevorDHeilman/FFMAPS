@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Event } from '../classfolder/event';
 import {DialogOverviewPurchaseComponent} from '../dialog-overview-purchase/dialog-overview-purchase.component';
 import { EventService } from '../event.service';
@@ -11,6 +11,8 @@ import { EventService } from '../event.service';
 export class EventComponent implements OnInit {
   @Input() public event: Event;
   @Input() public acceptString: String = "";
+  @Output() public emittedEvent: EventEmitter<number> = new EventEmitter();
+
   constructor(
     private dialogOverviewPurchase: DialogOverviewPurchaseComponent,
     private eventService: EventService
@@ -27,6 +29,7 @@ export class EventComponent implements OnInit {
     this.eventService.updateEvent(this.event).subscribe(
       (event) => {
         this.event = event;
+        this.emittedEvent.emit(0);
       }
     );
   }
@@ -36,6 +39,7 @@ export class EventComponent implements OnInit {
     this.eventService.updateEvent(this.event).subscribe(
       (event) => {
         this.event = event;
+        this.emittedEvent.emit(0);
       }
     );
   }

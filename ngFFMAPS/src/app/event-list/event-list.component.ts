@@ -3,6 +3,7 @@ import { Event } from '../classfolder/event';
 import { EventService } from '../event.service';
 import { Location } from '../classfolder/location';
 import { Contact } from '../classfolder/contact';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-event-list',
@@ -40,5 +41,14 @@ export class EventListComponent implements OnInit {
         }
       );
     }
+  }
+
+  reGetEvents(zero: number) {
+    this.eventService.getPendingEvents().subscribe(
+      (events) => {
+        console.log(events);
+        this.events = events;
+      }
+    );
   }
 }
