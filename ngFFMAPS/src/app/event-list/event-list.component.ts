@@ -16,6 +16,7 @@ export class EventListComponent implements OnInit {
   public events: Array<Event> = new Array<Event>();
   @Input() public initString : String = "";
   @Input() public acceptButton : String = "";
+  @Input() public minify:number = 0;
 
   constructor(private eventService: EventService, ) { }
 

@@ -1,3 +1,7 @@
-<div>
+<div *ngIf="minify>0" >
+    <app-event *ngFor="let e of events" [event]="e" class="w-100" [acceptString]="acceptButton" [minify]="1" [event]="event" (emittedEvent)="reGetEvents()"> </app-event>
+</div>
+
+<div *ngIf="minify==0">
   <app-event *ngFor="let e of events" [event]="e" class="w-100" [acceptString]="acceptButton" [event]="event" (emittedEvent)="reGetEvents()"> </app-event>
 </div>
