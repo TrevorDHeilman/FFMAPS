@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Placeable } from '../placeable';
 import { PlaceableType } from '../placeabletype';
 import { PlaceableService } from '../placeable.service';
@@ -11,6 +11,7 @@ import { PlaceableService } from '../placeable.service';
 export class PlaceableListComponent implements OnInit {
   public placeables: Array<Placeable> = new Array<Placeable>();
   public newPlaceable: Placeable;
+  @Input() public minify:number = 0;
 
   constructor(private placeableService: PlaceableService) { }
 
