@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { EventService } from '../event.service';
 import { Map } from '../map';
 import { Event } from '../classfolder/event';
@@ -7,11 +7,11 @@ import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 //import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 @Component({
-  selector: 'app-drag-drop-event',
-  templateUrl: './drag-drop-event.component.html',
-  styleUrls: ['./drag-drop-event.component.css']
+  selector: 'app-draglayout',
+  templateUrl: './draglayout.component.html',
+  styleUrls: ['./draglayout.component.css']
 })
-export class DragDropEventComponent implements OnInit, AfterViewInit {
+export class DraglayoutComponent implements OnInit, AfterViewInit {
 
   public newMap : Map;
   public maps : Map[];
@@ -19,6 +19,7 @@ export class DragDropEventComponent implements OnInit, AfterViewInit {
   public rootElem : HTMLElement;
   constructor(private eventService: EventService) { }
   public dynamic: number;
+  @Input() editable : number;
 
   ngOnInit() {
     this.dynamic = 1;
@@ -52,6 +53,10 @@ export class DragDropEventComponent implements OnInit, AfterViewInit {
     'example-box-longer-vert': size6};
     }
 
+    swapToEdit(){
+      this.editable = 2;
+    }
+
     setDragableStyle(map:Map){
       let hasTransform = (map.transform != null && map.transform.length>0)
       if(hasTransform)
@@ -76,16 +81,10 @@ export class DragDropEventComponent implements OnInit, AfterViewInit {
     console.log(document.getElementById("layoutAction").children);
     let actionTags = document.getElementById("layoutAction").children;
     actionTags = actionTags;
-    let reactionTags = document.getElementById("layoutReaction").children;
-    let transformList = document.getElementById("transforms");
-    transformList.innerHTML=""
     for(let i :number = 0; i<actionTags.length; i++){
       let transform = (<HTMLInputElement>actionTags[i]).style.transform;
       let xdim = "" + (<HTMLInputElement>actionTags[i]).style.transform.substr(12);
       xdim = xdim.substring(0, xdim.search("p"));
-      // console.log(xdim);
-      (<HTMLInputElement>reactionTags[i]).style.transform = transform;
-      transformList.innerHTML += "<p>"+transform + "</p>";
     }
     this.saveActiveLayout()
   }
@@ -125,9 +124,7 @@ export class DragDropEventComponent implements OnInit, AfterViewInit {
         transform = "translate3d(" + transformX + "px, " + transformY  +"px, 0px)";
       }
       console.log(transform);
-      this.maps[i].transform = transform;
-
-      
+      this.maps[i].transform = transform;      
       // (<HTMLInputElement>reactionTags[i]).style.transform = transform;
       // transformList.innerHTML += "<p>"+transform + "</p>";
     }
@@ -137,6 +134,7 @@ export class DragDropEventComponent implements OnInit, AfterViewInit {
       (maps) => {
         console.log("updated, maybe?");
         console.log(maps);
+        this.editable = 1;
       } 
     );
   }

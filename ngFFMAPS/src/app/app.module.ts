@@ -50,7 +50,7 @@ import {MatDialogModule, MatFormFieldModule} from '@angular/material';
 import { DialogOverviewPurchaseComponent } from './dialog-overview-purchase/dialog-overview-purchase.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { PendingClientViewComponent } from './pending-client-view/pending-client-view.component';
-
+import { DraglayoutComponent } from './draglayout/draglayout.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +82,7 @@ import { PendingClientViewComponent } from './pending-client-view/pending-client
     DialogOverviewPurchaseComponent,
     AboutUsComponent,
     PendingClientViewComponent,
+    DraglayoutComponent,
   ],
 
   imports: [
@@ -109,7 +110,7 @@ import { PendingClientViewComponent } from './pending-client-view/pending-client
     AttendantService,
     EventService,
     PlaceableTypeService,
-    DialogOverviewPurchaseComponent
+    DialogOverviewPurchaseComponent,
   ],
 
   bootstrap: [AppComponent],
