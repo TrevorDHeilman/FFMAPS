@@ -15,12 +15,21 @@ export class PlaceableListComponent implements OnInit {
   constructor(private placeableService: PlaceableService) { }
 
   ngOnInit() {
+    this.onStartUp();
+  }
+
+  updateAttractions(){
+    this.onStartUp;
+  }
+
+  onStartUp(){
     this.newPlaceable = new Placeable();
     this.newPlaceable.placeableType = new PlaceableType();
     this.placeableService.getPlaceables().subscribe(
       (placeables) => {
         console.log(placeables);
         this.placeables = placeables;
-      });
+      }
+    );
   }
 }

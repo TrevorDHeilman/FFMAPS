@@ -13,7 +13,7 @@
             <div class="card" style="">
                 <div class="card-body text-center pl-1">
                     <h4 class="ml-4">Available Attractions</h4>
-                    <app-placeable-list class=""></app-placeable-list>
+                    <app-placeable-list class="" ></app-placeable-list>
                 </div>
               </div>
         </div>
@@ -22,7 +22,7 @@
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                   <h4 class="ml-4 mb-4">Create Attraction</h4>
-                  <app-placeable-add></app-placeable-add>
+                  <app-placeable-add (onNewAttraction)="updateAttractions()"></app-placeable-add>
                 </div>
               </div>
         </div>

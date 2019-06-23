@@ -34,11 +34,11 @@ export class DragDropEventComponent implements OnInit {
     let transformList = document.getElementById("transforms");
     transformList.innerHTML=""
     for(let i :number = 0; i<actionTags.length; i++){
-      let transform = actionTags[i].style.transform;
-      let xdim = "" + actionTags[i].style.transform.substr(12);
+       let transform = (<HTMLInputElement>actionTags[i]).style.transform;
+      let xdim = "" + (<HTMLInputElement>actionTags[i]).style.transform.substr(12);
       xdim = xdim.substring(0, xdim.search("p"));
       console.log(xdim);
-      reactionTags[i].style.transform = transform;
+      (<HTMLInputElement>reactionTags[i]).style.transform = transform;
       transformList.innerHTML += "<p>"+transform + "</p>";
     }
   }

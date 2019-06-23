@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { PlaceableService } from '../placeable.service';
 import { Placeable } from '../placeable';
 import { PlaceableType } from '../placeabletype';
 import { PlaceableTypeService } from '../placeable-type.service';
+
 
 @Component({
   selector: 'app-placeable-add',
@@ -17,7 +18,7 @@ export class PlaceableAddComponent implements OnInit {
   public placeableValues : number;
   public sizeValues : number;
   public indexInt: number;
-  //public employeeCapacity: number;
+  @Output() onNewAttraction: EventEmitter<number> = new EventEmitter();
 
   constructor(private placeableService: PlaceableService, private placeableTypeService: PlaceableTypeService) { }
    
@@ -40,18 +41,17 @@ export class PlaceableAddComponent implements OnInit {
       }
     }
 
-    console.log('New Placeable ' + newType);
-    //console.log('Employee Capacity ' + this.employeeCapacity);
     let capacityInput: number = +(<HTMLInputElement>document.getElementById("capacityInput")).value;
     let nameInput: string = (<HTMLInputElement>document.getElementById("nameInput")).value;
     let sizeInput: number = +(<HTMLInputElement>document.getElementById("sizeList")).value;
-    console.log("Capacity Test " + capacityInput)
     this.placeableService.addPlaceable(newType, capacityInput, sizeInput, nameInput).subscribe(
       (placeable) => {
-        console.log(placeable);
-        this.newPlaceable = placeable;
-        console.log(this.newPlaceable);
+        this.onNewAttraction.emit(1); 
+        (<HTMLInputElement>document.getElementById("capacityInput")).value = "";
+        (<HTMLInputElement>document.getElementById("nameInput")).value = "";
+        (<HTMLInputElement>document.getElementById("sizeList")).value = "";
     });
+
   }
 
   onStartUp(){
@@ -59,9 +59,10 @@ export class PlaceableAddComponent implements OnInit {
     this.newPlaceableType = new PlaceableType();
     this.placeableTypeService.getPlaceableTypes().subscribe(
       (placeableTypes) => {
-        console.log(placeableTypes);
         this.placeableTypes = placeableTypes;
+        console.log(placeableTypes);
     });
+    
   }
 }
 

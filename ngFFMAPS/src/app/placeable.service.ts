@@ -32,8 +32,6 @@ export class PlaceableService {
       placeable.name = name;
       placeable.size = size;
       placeable.ownerId = 1;
-      console.log("placeable service Placeable ");
-      console.log(placeable);
       const body = JSON.stringify(placeable);
       const headers = new HttpHeaders({'Content-Type': 'application/json'});
       return this.http.post('http://localhost:8080/FFMAPS/layout',
