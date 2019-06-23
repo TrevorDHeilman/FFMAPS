@@ -24,6 +24,16 @@ export class EventService {
     );
   }
 
+  public updateEventMaps(maps:Map[]): Observable<Map[]>{
+    const body = JSON.stringify(maps);
+    // console.log(body);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.put('http://localhost:8080/FFMAPS/map/',
+    body, {headers, withCredentials: true}).pipe(
+      map( (resp) => resp as Map[] )
+    );
+  }
+
   public getPendingEvents(): Observable<Event[]> {
     return this.http.get('http://localhost:8080/FFMAPS/event?status=Pending', {}).pipe(
       map( (resp) => resp as Event[] )
