@@ -6,14 +6,15 @@
 
     <div class="row">
         <div class="col-md-5">
-            <img src="https://www.datefest.org/portals/0/Facilities/Fair-Layout---blank.png" width="100%" height="100%" class="d-inline-block align-top" alt="">
+            <!-- <img src="https://www.datefest.org/portals/0/Facilities/Fair-Layout---blank.png" width="100%" height="100%" class="d-inline-block align-top" alt=""> -->
+            <app-draglayout [editable]="1"></app-draglayout>
         </div>
 
         <div class="col-md-4">
             <div class="card" style="">
                 <div class="card-body text-center pl-1">
                     <h4 class="ml-4">Available Attractions</h4>
-                    <app-placeable-list class=""></app-placeable-list>
+                    <app-placeable-list class="" ></app-placeable-list>
                 </div>
               </div>
         </div>
@@ -22,17 +23,7 @@
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                   <h4 class="ml-4 mb-4">Create Attraction</h4>
-                  <form>
-                      <select class="selectpicker mb-5" [(ngModel)]="attractionType">
-                        <option>Ride</option>
-                        <option>Concession</option>
-                        <option>Game</option>
-                    </select>
-                    
-                    <br>Employee Capacity:<br>
-                    <input type="number" value="1" class="mb-5" [(ngModel)]="employeeCapacity"><br>
-                  </form>
-                  <a class="btn btn-primary mb-3" (click)="addPlaceable()">Submit</a>
+                  <app-placeable-add (onNewAttraction)="updateAttractions()"></app-placeable-add>
                 </div>
               </div>
         </div>

@@ -65,13 +65,22 @@ CREATE TABLE Placeable
 (
     PlaceableId NUMBER PRIMARY KEY NOT NULL,
     PlaceableTypeId NUMBER NOT NULL,
-    EmployeeCapacity NUMBER NOT NULL 
+    EmployeeCapacity NUMBER NOT NULL,
+    PlaceableName VARCHAR2(25) NOT NULL,
+    OwnerId NUMBER NOT NULL,
+    PlaceableSize NUMBER NOT NULL
 );
 
 CREATE TABLE PlaceableType
 (
     PlaceableTypeId NUMBER PRIMARY KEY NOT NULL,
     PlaceableType VARCHAR2(25) NOT NULL
+);
+
+CREATE TABLE OwnerInfo
+(
+    OwnerId NUMBER PRIMARY KEY NOT NULL,
+    OwnerName VARCHAR2(25) NOT NULL
 );
 
 CREATE TABLE VendorStocks
@@ -86,6 +95,13 @@ CREATE TABLE ItemInfo
 (
     ItemId NUMBER PRIMARY KEY NOT NULL,
     ItemName VARCHAR2(25) NOT NULL
+);
+
+CREATE TABLE StockOrder
+(
+    OrderId NUMBER PRIMARY KEY NOT NULL,
+    ItemId NUMBER NOT NULL,
+    Amount NUMBER NOT NULL
 );
 
 CREATE TABLE Event
@@ -144,6 +160,17 @@ CREATE TABLE Receipt
     DateofPurchase VARCHAR2(25) NOT NULL
 );
 
+CREATE TABLE Maps
+(
+    MapEntryId NUMBER PRIMARY KEY NOT NULL,
+    MapId NUMBER NOT NULL,
+    EventId NUMBER NOT NULL,
+    PlaceableId NUMBER NOT NULL,
+    Transform VARCHAR2(50)
+);
+
+
+
 /*******************************************************************************
    Create Foreign Keys
 ********************************************************************************/
@@ -151,7 +178,10 @@ ALTER TABLE UserInfo ADD CONSTRAINT FK_UserTypeId
     FOREIGN KEY (UserTypeId) REFERENCES UserType (UserTypeId) ON DELETE CASCADE;
 
 ALTER TABLE Placeable ADD CONSTRAINT FK_PlaceableId
-    FOREIGN KEY (PlaceableTypeId) REFERENCES PlaceableType (PlaceableTypeId) ON DELETE CASCADE; 
+    FOREIGN KEY (PlaceableTypeId) REFERENCES PlaceableType (PlaceableTypeId) ON DELETE CASCADE;
+    
+ALTER TABLE Placeable ADD CONSTRAINT FK_OwnerId
+    FOREIGN KEY (OwnerId) REFERENCES OwnerInfo (OwnerId) ON DELETE CASCADE;    
     
 ALTER TABLE VendorStocks ADD CONSTRAINT FK_VendorStocksPlaceableId
     FOREIGN KEY (PlaceableId) REFERENCES Placeable (PlaceableId) ON DELETE CASCADE;    
@@ -182,14 +212,21 @@ ALTER TABLE Receipt ADD CONSTRAINT FK_ReceiptLocationId
  
 ALTER TABLE Receipt ADD CONSTRAINT FK_ReceiptEventId
     FOREIGN KEY (EventId) REFERENCES Event (EventId) ON DELETE CASCADE;    
-           
+
+ALTER TABLE Maps ADD CONSTRAINT FK_MapEventId
+    FOREIGN KEY (EventId) REFERENCES Event (EventId) ON DELETE CASCADE;
+    
+ALTER TABLE Maps ADD CONSTRAINT FK_MapPlaceableId
+    FOREIGN KEY (PlaceableId) REFERENCES Placeable (PlaceableId) ON DELETE CASCADE;
+        
 /*******************************************************************************
    Create Sequences
 ********************************************************************************/           
 CREATE SEQUENCE userinfo_seq START WITH 10 INCREMENT BY 1;    
 CREATE SEQUENCE usertype_seq START WITH 4 INCREMENT BY 1;  
 CREATE SEQUENCE placeable_seq START WITH 6 INCREMENT BY 1;  
-CREATE SEQUENCE placeabletype_seq START WITH 4 INCREMENT BY 1;  
+CREATE SEQUENCE placeabletype_seq START WITH 4 INCREMENT BY 1;
+CREATE SEQUENCE owner_seq START WITH 2 INCREMENT BY 1;  
 CREATE SEQUENCE vendorstock_seq START WITH 5 INCREMENT BY 1;  
 CREATE SEQUENCE iteminfo_seq START WITH 5 INCREMENT BY 1;  
 CREATE SEQUENCE event_seq START WITH 4 INCREMENT BY 1;  
@@ -197,7 +234,8 @@ CREATE SEQUENCE location_seq START WITH 5 INCREMENT BY 1;
 CREATE SEQUENCE contact_seq START WITH 4 INCREMENT BY 1;  
 CREATE SEQUENCE eventStatus_seq START WITH 5 INCREMENT BY 1;  
 CREATE SEQUENCE schedule_seq START WITH 1 INCREMENT BY 1;  
-CREATE SEQUENCE receipt_seq START WITH 4 INCREMENT BY 1;  
+CREATE SEQUENCE receipt_seq START WITH 4 INCREMENT BY 1;
+CREATE SEQUENCE map_seq START WITH 6 INCREMENT BY 1;  
 
 /*******************************************************************************
    Populate Tables
@@ -205,6 +243,8 @@ CREATE SEQUENCE receipt_seq START WITH 4 INCREMENT BY 1;
 INSERT INTO UserType (UserTypeId, UserType) VALUES (1, 'Owner');  
 INSERT INTO UserType (UserTypeId, UserType) VALUES (2, 'Manager');     
 INSERT INTO UserType (UserTypeId, UserType) VALUES (3, 'Attendant');    
+
+INSERT INTO OwnerInfo (OwnerId, OwnerName) VALUES (1, 'Fantastic Fair');
 
 INSERT INTO PlaceableType (PlaceableTypeId, PlaceableType) VALUES (1, 'Ride');
 INSERT INTO PlaceableType (PlaceableTypeId, PlaceableType) VALUES (2, 'Concession');
@@ -220,11 +260,11 @@ INSERT INTO EventStatusInfo (StatusId, Status) VALUES (2, 'Accepted');
 INSERT INTO EventStatusInfo (StatusId, Status) VALUES (3, 'Declined');
 INSERT INTO EventStatusInfo (StatusId, Status) VALUES (4, 'Completed');
 
-INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (1, 2, 2);
-INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (2, 2, 2);
-INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (3, 1, 1);
-INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (4, 1, 1);
-INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity) VALUES (5, 3, 1);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity, PlaceableName, OwnerId, PlaceableSize) VALUES (1, 2, 2, 'My Cabbages', 1, 1);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity, PlaceableName, OwnerId, PlaceableSize) VALUES (2, 2, 2, 'All Dogs', 1, 1);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity, PlaceableName, OwnerId, PlaceableSize) VALUES (3, 1, 1, 'Scrambler', 1, 4);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity, PlaceableName, OwnerId, PlaceableSize) VALUES (4, 1, 1, 'Zero Gravity', 1, 4);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity, PlaceableName, OwnerId, PlaceableSize) VALUES (5, 3, 1, 'Quarters', 1, 2);
 
 INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (1, 1, 1, 10);
 INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (2, 2, 1, 17);
@@ -257,6 +297,12 @@ INSERT INTO Event (EventId, StartDate, EndDate, LocationId, ContactId, StatusId)
 INSERT INTO Receipt (ReceiptId, FirstName, LastName, Email, NumberofTickets, LocationId, EventId, DateofPurchase) VALUES (1, 'Ed', 'Ted', 'edted@yahoo.com', 62, 1, 1, '2019-06-17');
 INSERT INTO Receipt (ReceiptId, FirstName, LastName, Email, NumberofTickets, LocationId, EventId, DateofPurchase) VALUES (2, 'Jack', 'Jill', 'jackjill@hill.com', 2, 1, 1, '2019-06-16');
 INSERT INTO Receipt (ReceiptId, FirstName, LastName, Email, NumberofTickets, LocationId, EventId, DateofPurchase) VALUES (3, 'Mitch', 'Miller', 'mitchmiller@yahoo.com', 1, 1, 1, '2019-06-15');
+
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (1, 1, 1, 1);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (2, 1, 1, 2);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (3, 1, 1, 3);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (4, 1, 1, 4);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (5, 1, 1, 5);
 
 commit;
 exit;

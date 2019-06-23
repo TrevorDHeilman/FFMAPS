@@ -23,6 +23,7 @@ export class EventListComponent implements OnInit {
     this.newEvent.location = new Location();
     this.newEvent.contact = new Contact();
     if(this.initString.indexOf("ccept") > 0 ){
+      console.log("Accept");
       this.eventService.getEvents().subscribe(
         (events) => {
           console.log(events);
@@ -31,6 +32,7 @@ export class EventListComponent implements OnInit {
       );
     }
     else if(this.initString.indexOf("ending") > 0 ){
+      console.log("Pending");
       this.eventService.getPendingEvents().subscribe(
         (events) => {
           console.log(events);
