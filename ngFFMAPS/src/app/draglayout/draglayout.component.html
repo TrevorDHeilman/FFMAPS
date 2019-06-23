@@ -1,6 +1,6 @@
 <ng-container *ngIf="(editable > 0); else display">
   <ng-container *ngIf="(editable == 1);">
-    <div id="dragDropContainer" class="mat-app-background basic-container white">
+    <div id="dragDropContainer" class="mat-app-background basic-container white pl-0 pr-0">
       <div id="layoutReaction" class="example-boundary">
         <div *ngFor="let map of maps" 
           [ngClass]="setDragableClass(map)"            
@@ -10,10 +10,10 @@
         </div>
       </div>
     </div>
-    <div class="btn btn-info" (click)="swapToEdit()">Edit the Layout</div>
+    <div class="btn btn-info " (click)="swapToEdit()">Edit the Layout</div>
   </ng-container>
   <ng-container *ngIf="(editable == 2);">
-    <div id="dragDropContainer" class="mat-app-background basic-container white">
+    <div id="dragDropContainer" class="mat-app-background basic-container white pl-0 pr-0">
       <div id="layoutAction" class="example-boundary">
         <div [cdkDragData]="map" *ngFor="let map of maps" 
         [ngClass]="setDragableClass(map)"            
@@ -32,7 +32,7 @@
 
 
 <ng-template #display>
-  <div id="dragDropContainer" class="mat-app-background basic-container white">
+  <div id="dragDropContainer" class="mat-app-background basic-container white pl-0 pr-0">
     <div id="layoutReaction" class="example-boundary">
     <div *ngFor="let map of maps" 
     [ngClass]="setDragableClass(map)"            
