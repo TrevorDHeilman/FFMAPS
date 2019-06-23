@@ -1,29 +1,33 @@
+
+
 <div class="container mt-5 pt-2 backpanel">
 <div class="jumbotron pt-3 white">
-    <h1 class="display-4"> Select Location: </h1>
-    <p class="lead">Locations can go here</p>
+    <div class="text-center">
+      <h1 class="display-4">Location and Attraction Panel: </h1>
+    </div>
+
+    <p class="lead">Edit the placement of current attractions, and order new attractions</p>
     <hr class="">
-    <p>Customize this locations layout</p>
 
     <div class="row">
-        <div class="ml-3 mb-0">
+        <div class="ml-3 mb-0 pt-0 pb-0">
             <!-- <img src="https://www.datefest.org/portals/0/Facilities/Fair-Layout---blank.png" width="100%" height="100%" class="d-inline-block align-top" alt=""> -->
             <app-draglayout [editable]="1"></app-draglayout>
         </div>
 
-        <div class="col-md-4 mt-4">
-            <div class="card" style="">
-                <div class="card-body text-center pl-1">
-                    <h4 class="ml-4">Available Attractions</h4>
+        <div class="mt-4 ml-2">
+            <div class="card" style="width: 20rem;">
+                <div class="card-body text-center">
+                    <h5 class="ml-4">Available Attractions</h5>
                     <app-placeable-list class="" ></app-placeable-list>
                 </div>
               </div>
         </div>
 
-        <div class="col-md-2 mt-4">
-            <div class="card" style="width: 18rem;">
+        <div class="mt-4 ml-2">
+            <div class="card" style="width: 14rem;">
                 <div class="card-body">
-                  <h4 class="ml-4 mb-4">Create Attraction</h4>
+                  <h5 class="mb-4">Create Attraction</h5>
                   <app-placeable-add (onNewAttraction)="updateAttractions()"></app-placeable-add>
                 </div>
               </div>

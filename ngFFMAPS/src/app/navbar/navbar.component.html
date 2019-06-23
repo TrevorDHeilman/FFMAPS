@@ -18,12 +18,6 @@
           <li class="nav-item" *ngIf="loggedUser != null && loggedUser.userType.id ==3">
             <a class="nav-link" routerLink="/portal/attendanttimesheet">Time Sheets</a>
           </li>
-          <li class="nav-item" *ngIf="loggedUser != null">
-            <a class="nav-link" routerLink="#">Training and Logs</a>
-          </li>
-          <li class="nav-item" *ngIf="loggedUser != null">
-            <a class="nav-link" routerLink="#">HR</a>
-          </li>
           <!--  -->
           <li class="nav-item" *ngIf="loggedUser != null && loggedUser.userType.id == 1"> 
             <a class="nav-link" routerLink="/portal/layout">Layout</a>

@@ -2,13 +2,12 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 body, html {
-background-image: url("https://i.pinimg.com/originals/3b/3b/6d/3b3b6dace4559f6e48021202b743d157.jpg"), url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/JrbItQz/light-blue-circles-loopable-abstract-background-4k-4096x2304_4xvni540l__F0000.png");
+background-image: url("https://cdn.discordapp.com/attachments/587037548719767553/592361573272780810/ferris.png");
 /* background-position: center,center; Center the image */
-background-size: cover,cover; /* Resize the background image to cover the entire container */
-opacity: 0.7,1;
-filter: alpha(opacity=50), alpha(opacity=100);
-mix-blend-mode: multiply, multiply;
-background-color: #cccccc;
+/* background-size: cover,cover; Resize the background image to cover the entire container */
+background-repeat: no-repeat;
+/* mix-blend-mode: multiply; */
+background-color: #c9e0f6;
 }
 
 
@@ -17,10 +16,19 @@ background-color: #cccccc;
 }
 
 .backpanel{
-    width: 69%;
-    min-width: 1300px;
+    /* width: 69%; */
+    min-width: 1140px;
     border-radius: 15px;
     background-color: #fff;
-    position: absolute;
-    margin-left: 15%;
+    /* position: absolute; */
+    /* margin-left: 15%; */
+    /* margin-right: 15%; */
+}
+
+.card{
+    border: 0px;
+}
+
+.partition{
+    background-color: #dde7f0
 }
