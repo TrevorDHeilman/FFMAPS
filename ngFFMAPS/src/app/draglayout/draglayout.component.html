@@ -11,6 +11,8 @@
       </div>
     </div>
     <div class="btn btn-info mt-3" (click)="swapToEdit()">Edit the Layout</div>
+    <div class="btn btn-info mt-3 ml-3" (click)="searchMapId(1)">Current Event Layout</div>
+    <div class="btn btn-info mt-3 ml-3" (click)="searchMapId(2)">Next Event Layout</div>
   </ng-container>
   <ng-container *ngIf="(editable == 2);">
     <div id="dragDropContainer" class="mat-app-background basic-container white pl-0 pr-0 pb-0">

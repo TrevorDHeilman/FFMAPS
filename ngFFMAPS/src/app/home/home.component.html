@@ -5,17 +5,31 @@
 <div class="row ml-3">
   <div class="ml-3 mb-0">
       <!-- <img src="https://www.datefest.org/portals/0/Facilities/Fair-Layout---blank.png" width="100%" height="100%" class="d-inline-block align-top" alt=""> -->
-      <app-draglayout [editable]="0"></app-draglayout>
+      <app-draglayout [editable]="0" [eventSearch]="1"></app-draglayout>
   </div>
   <div class="col-md-6 mt-3">
-  <app-dialog-overview-purchase></app-dialog-overview-purchase>
+    <app-dialog-overview-purchase></app-dialog-overview-purchase>
 
     <app-event-list  [initString]="acceptString">
     </app-event-list>
-    <app-dialog-overview-search-receipt ></app-dialog-overview-search-receipt>
 
+    
+    <button class="w-100 mt-3 btn btn-info" href="#collapseExample" data-toggle="collapse">More Options</button>
+
+    <!-- <a class="btn btn-primary"   role="button" aria-expanded="false" aria-controls="collapseExample">
+        Link with href
+      </a> -->
+      <div class="collapse" id="collapseExample">
+          <div class="card card-body mt-1">
+            <div class="row">
+              <app-dialog-overview-search-receipt class="col-md-5"></app-dialog-overview-search-receipt>
+              <div class="btn btn-info col-md-3 mr-2 mt-3" (click)="searchMapId(1)">Current Event</div>
+              <div class="btn btn-info col-md-3  ml-3 mt-3" (click)="searchMapId(2)">Next Event</div>
+          </div>
+          </div>
+        </div>
   </div>
-</div>
 
-<button type="button" class="btn btn-link ml-3" routerLink="/aboutus">About Us</button>
+<button type="button" class="btn btn-link ml-2" routerLink="/aboutus">About Us</button>
+
 </div>
