@@ -3,8 +3,8 @@
         <h1 class="display-4 mt-3 pt-5">Employee Scheduling:</h1>
     </div>
 <div class="row pb-4 ">
-    <div class="col-md-1 pt-4"></div>
-<div class="col-md-10 appPadding">
+    <!-- <div class="col-md-1 pt-4 "></div> -->
+<div class="col-md-10 appPadding marginLeftSchedule">
     <div class="card  " style="">
         <div class="card-body text-center pl-1">
             <h4 class="ml-4">Schedules</h4>
@@ -15,16 +15,16 @@
 <div>
     <div class="col-md-12 row">
         <div class="col-md-1 pt-4"></div>
-        <div class="col-md-5 appPadding">
+        <div class="col-md-4 appPadding">
             <div class="card partition mt-3" style="">
                 <div class="card-body text-center pl-1">
                     <h4 class="ml-4">Available Placeables</h4>
-                    <app-placeable-list class=""></app-placeable-list>
+                    <app-placeable-list class="" [minify]="1"></app-placeable-list>
                 </div>
             </div>
         </div>
         <div class="col-md-6 appPadding">
-            <div class="card partition ml-3 mt-3" style="">
+            <div class="card partition ml-5 mt-3" style="">
                 <div class="card-body text-center container">
                     <h4 class="ml-4">Attendants</h4>
                     <app-attendant-list class=""></app-attendant-list>

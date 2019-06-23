@@ -9,6 +9,7 @@ import { Placeable } from '../placeable';
 export class PlaceableComponent implements OnInit {
 
   @Input() public placeable: Placeable;
+  @Input() public minify:number =0;
 
   constructor() { }
 
