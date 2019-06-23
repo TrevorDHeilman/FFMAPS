@@ -20,7 +20,7 @@
           </div>
         </div>
 
-        <br><button class="btn btn-primary" (click)="makePurchase()">Purchase</button>
+        <br><button class="btn btn-primary" (click)="makePurchase()">Purchase for ${{numberOfTickets >= 0 ?numberOfTickets * 25:0}}</button>
 
       </div>
 
