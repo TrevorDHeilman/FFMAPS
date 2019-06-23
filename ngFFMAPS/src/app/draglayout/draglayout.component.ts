@@ -17,20 +17,40 @@ export class DraglayoutComponent implements OnInit, AfterViewInit {
   constructor(private eventService: EventService) { }
   public dynamic: number;
   @Input() editable : number;
+  @Input() eventSearch : number;
 
   ngOnInit() {
     this.dynamic = 1;
     if(this.dynamic > 0){
       this.rootElem = document.getElementById("layoutAction");
 
-      this.eventService.getEventMapById(1).subscribe(
-        (maps) => {
-          console.log(maps);
-          this.maps = maps;
-        } 
-      );
+      if (this.eventSearch<1){
+        this.eventService.getEventMapById(1).subscribe(
+          (maps) => {
+            console.log(maps);
+            this.maps = maps;
+          } 
+        );
+      } else{
+        this.eventService.getEventMapById(this.eventSearch).subscribe(
+          (maps) => {
+            console.log(maps);
+            this.maps = maps;
+          } 
+        );
+      }
     }
   }
+  
+  searchMapId(id:number){
+    this.eventService.getEventMapById(id).subscribe(
+      (maps) => {
+        console.log(maps);
+        this.maps = maps;
+      } 
+    );
+  }
+
   ngAfterViewInit(){
   }
 
