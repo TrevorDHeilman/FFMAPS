@@ -61,7 +61,7 @@ public class EventHibernate implements EventDAO{
 		return eventAList;
 	}
 	
-	public void updateEvent(Event event) {
+	public int updateEvent(Event event) {
 		System.out.println(event);
 		Session s = hu.getSession();
 		Transaction tx = null;
@@ -77,6 +77,7 @@ public class EventHibernate implements EventDAO{
 		} finally {
 			s.close();
 		}
+		return event.getId();
 	}
 	
 	@Override

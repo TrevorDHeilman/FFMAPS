@@ -1,0 +1,23 @@
+.btn-danger {
+    background-color: rgba(253, 80, 80, 0.514) 
+}
+
+.btn-danger:hover {
+    background-color: rgba(210, 109, 109, 0.667)
+}
+
+.btn-success {
+    background-color: rgba(53, 181, 53, 0.549);
+}
+
+.btn-success:hover {
+    background-color: rgba(36, 125, 36, 0.5);
+}
+
+.btn {
+    border: 0px;
+}
+
+.card-body {
+    background-color: rgba(128, 128, 128, 0.118);
+}

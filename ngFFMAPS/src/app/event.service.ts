@@ -8,6 +8,8 @@ import { Event } from './classfolder/event';
   providedIn: 'root'
 })
 export class EventService {
+  private appUrl ='http://localhost:8080/FFMAPS/event';
+  private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
 
@@ -25,10 +27,16 @@ export class EventService {
 
   public addEvent(event: Event): Observable<Event> {
     const body = JSON.stringify(event);
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post('http://localhost:8080/FFMAPS/event',
-        body, {headers: headers, withCredentials: true}).pipe(
+    return this.http.post(this.appUrl,
+        body, {headers: this.headers, withCredentials: true}).pipe(
           map(resp => resp as Event)
     );
+  }
+  
+  public updateEvent(event: Event): Observable<Event> {
+    const body = JSON.stringify(event);
+    return this.http
+    .put(this.appUrl, body, {headers: this.headers, withCredentials: true})
+    .pipe(map(resp => resp as Event));
   }
 }

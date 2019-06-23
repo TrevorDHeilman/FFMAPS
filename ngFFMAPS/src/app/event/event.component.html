@@ -1,5 +1,7 @@
 <div class="card">
-  <a (click)="openDialog()" class="btn btn-info">Fantastic Fair {{ event.id }}</a>
+  <a *ngIf="acceptString!='Accept'" (click)="openDialog()" class="btn btn-info">Fantastic Fair {{ event.id }}</a>
+  <a *ngIf="acceptString=='Accept'" (click)="accept()" class="btn btn-success text-center">Fantastic Fair {{ event.id }}</a>
+  <a *ngIf="acceptString=='Accept'" (click)="decline()" class="btn btn-danger text-center">Decline</a>
   <div class="card-body">
     <blockquote class="blockquote mb-0">
       <p>Arrive to enjoy all the latest attractions!</p>

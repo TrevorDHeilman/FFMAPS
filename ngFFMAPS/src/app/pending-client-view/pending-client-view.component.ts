@@ -12,6 +12,8 @@ import { Eventstatus } from '../eventstatus';
 export class PendingClientViewComponent implements OnInit {
   private newEvent: Event;
   public pendString = "Pending";
+  public acceptString = "Accept";
+  
   constructor() { }
 
   ngOnInit() {

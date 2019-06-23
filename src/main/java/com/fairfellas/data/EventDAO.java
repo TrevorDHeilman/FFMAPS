@@ -9,4 +9,5 @@ public interface EventDAO {
 	public Event getEventById(int id);
 	public List<Event> getEvents();
 	public void removeEvent(int id);
+	public int updateEvent(Event event);
 }
