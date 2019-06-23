@@ -172,3 +172,15 @@ body {
   .white{
     background-color: white;
   }
+
+  .ride{
+    background-color: rgb(231, 201, 197);
+  }
+
+  .concession{
+    background-color: rgb(182, 218, 224);
+  }
+
+  .game{
+    background-color: rgb(181, 219, 181);
+  }
