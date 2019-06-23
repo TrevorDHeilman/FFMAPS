@@ -31,6 +31,9 @@
           <li class="nav-item" *ngIf="loggedUser != null && loggedUser.userType.id <= 2"> 
             <a class="nav-link" routerLink="/portal/inventory">Inventory</a>
           </li>
+          <li class="nav-item" *ngIf="loggedUser != null && loggedUser.userType.id == 1">
+            <a class="nav-link" routerLink="/portal/sales">Sales</a>
+          </li>
         </ul>
       </div>
       <app-login [urlString]="onHome" (onloggedUser)="updateUser($event)"></app-login>
