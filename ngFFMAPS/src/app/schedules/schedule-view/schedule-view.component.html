@@ -5,7 +5,7 @@
 <div class="row pb-4 ">
     <div class="col-md-1 pt-4"></div>
 <div class="col-md-10 appPadding">
-    <div class="card schBack " style="">
+    <div class="card  " style="">
         <div class="card-body text-center pl-1">
             <h4 class="ml-4">Schedules</h4>
             <app-schedule-list (emittedSchedule)="emittedSchedule($event)"></app-schedule-list>
@@ -16,7 +16,7 @@
     <div class="col-md-12 row">
         <div class="col-md-1 pt-4"></div>
         <div class="col-md-5 appPadding">
-            <div class="card schBack" style="">
+            <div class="card partition mt-3" style="">
                 <div class="card-body text-center pl-1">
                     <h4 class="ml-4">Available Placeables</h4>
                     <app-placeable-list class=""></app-placeable-list>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="col-md-6 appPadding">
-            <div class="card schBack" style="">
+            <div class="card partition ml-3 mt-3" style="">
                 <div class="card-body text-center container">
                     <h4 class="ml-4">Attendants</h4>
                     <app-attendant-list class=""></app-attendant-list>
@@ -32,10 +32,12 @@
             </div>
         </div>
     </div>
-    <app-event-list [initString]="acceptString"></app-event-list>
+    <div class="container w-75 partitionColor mt-4 rounded">
+        <app-event-list  [initString]="acceptString" [minify]="1"></app-event-list>
+    </div>
     <br>
     <div class="text-center">
-    <h1 class="pl-3 pr-3">Attendant Designation</h1><br>
+    <h4 class="pl-3 pr-3 pb-3">Attendant Designation</h4>
     <table class="pl-3 pr-3 marginLeftBuff w-75">
         <tr>
             <th class="text-center">Employee ID</th>

@@ -12,6 +12,7 @@ import { AttendantViewComponent } from './attendants/attendant-view/attendant-vi
 import {DialogOverviewPurchaseComponent} from './dialog-overview-purchase/dialog-overview-purchase.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { PendingClientViewComponent } from './pending-client-view/pending-client-view.component';
+import {SalesComponent} from './sales/sales.component';
 
 const routes: Routes = [
   {
@@ -66,7 +67,11 @@ const routes: Routes = [
   {
     path: 'aboutus',
     component: AboutUsComponent
-  }
+  },
+  {
+    path: 'portal/sales',
+    component: SalesComponent,
+  },
 ];
 
 @NgModule({

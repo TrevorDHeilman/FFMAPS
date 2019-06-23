@@ -11,6 +11,7 @@ import { EventService } from '../event.service';
 export class EventComponent implements OnInit {
   @Input() public event: Event;
   @Input() public acceptString: String = "";
+  @Input() public minify:number = 0;
   @Output() public emittedEvent: EventEmitter<number> = new EventEmitter();
 
   constructor(
@@ -29,7 +30,7 @@ export class EventComponent implements OnInit {
     this.eventService.updateEvent(this.event).subscribe(
       (event) => {
         this.event = event;
-        this.emittedEvent.emit(0);
+        this.emittedEvent.emit(0); 
       }
     );
   }

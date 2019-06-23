@@ -8,4 +8,6 @@ public interface ReceiptDAO {
 
 	public List<Receipt> getReceipt(String email);
 
+	public List<Receipt> getReceipts();
+
 }

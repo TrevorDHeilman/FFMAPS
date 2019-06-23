@@ -29,6 +29,29 @@ background-color: #c9e0f6;
     border: 0px;
 }
 
+.partitionColor{
+    background-color: #ebf6ff;
+}
+
 .partition{
-    background-color: #dde7f0
+    background-color: #ebf6ff;
+}
+
+.partition:hover {
+    background-color: #e4eef6;
+    box-shadow: 0 2px 5px -3px rgba(0, 0, 0, 0.068),
+                  0 3px 3px 1px rgba(0, 0, 0, 0.041),
+                  0 1px 4px 2px rgba(0, 0, 0, 0.048);
+}
+
+.bottomCut{
+    border-radius: 0px 0px 5px 5px;
+}
+
+.btn-fair{
+    background-color: rgb(221, 255, 221);
+}
+
+.btn-fair:hover {
+    background-color: rgb(197, 235, 197);
 }
