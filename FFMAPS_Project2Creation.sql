@@ -148,6 +148,8 @@ CREATE TABLE Schedule
     PlaceableId NUMBER NOT NULL
 );
 
+create sequence receipt_seq;
+
 CREATE TABLE Receipt
 (
     ReceiptId VARCHAR(10) PRIMARY KEY NOT NULL,
