@@ -18,6 +18,7 @@ export class ScheduleViewComponent implements OnInit {
   public empID: number;
   public schDay: string;
   public placeable: number;
+  public eventID: number;
   public acceptString = 'Accept';
 
   constructor(
@@ -39,17 +40,18 @@ export class ScheduleViewComponent implements OnInit {
     this.empID = this.newSchedule.user.id;
     this.schDay = this.newSchedule.scheduleDay;
     this.placeable = this.newSchedule.placeable.id;
+    this.eventID = this.newSchedule.event.id;
     let i = 0;
     // if id and day of event match any in the schedule change the placeable they work at
     for (let sche of this.schedules){
-      if (sche.user.id == this.empID && sche.scheduleDay == this.schDay){
+      if (sche.user.id == this.empID && sche.scheduleDay == this.schDay && sche.event.id == this.eventID){
         this.updatedSchedule = sche;
         this.updatedSchedule.placeable.id = this.placeable;
         i++;
       }
     }
     // if nothing is needed to update, add new schedule
-    if(i == 0){
+    if(i == 0 ){
       this.scheduleService.addSchedule(this.newSchedule).subscribe(
         schedule => {
           this.schedules.push(schedule);  
