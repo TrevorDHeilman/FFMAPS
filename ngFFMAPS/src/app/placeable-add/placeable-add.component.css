@@ -1,5 +1,7 @@
-.btn{
-    color: lightseagreen;
-    background-color: lightseagreen;
-    border-color: lightseagreen;
+.button1 {
+    color: white;
+}
+
+.selectdrop {
+    width: 100%
 }
