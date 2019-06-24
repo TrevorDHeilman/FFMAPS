@@ -12,7 +12,7 @@
 
 <div *ngIf="minify==0">
   <div class="card mt-3 partition bottomCut rounded">
-    <a *ngIf="acceptString!='Accept'" (click)="openDialog()" class="btn btn-info">Fantastic Fair {{ event.id }}</a>
+    <div *ngIf="acceptString!='Accept'" (click)="openDialog()" class="btn btn-info">Fantastic Fair {{ event.id }}</div>
     <a *ngIf="acceptString=='Accept'" (click)="accept()" class="btn btn-success text-center">Fantastic Fair {{ event.id }}</a>
     <a *ngIf="acceptString=='Accept'" (click)="decline()" class="btn btn-danger text-center">Decline</a>
   <div class="card mt-0 partition ">
