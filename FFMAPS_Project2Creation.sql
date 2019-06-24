@@ -225,7 +225,7 @@ ALTER TABLE Maps ADD CONSTRAINT FK_MapPlaceableId
    Create Sequences
 ********************************************************************************/           
 CREATE SEQUENCE userinfo_seq START WITH 10 INCREMENT BY 1;    
-CREATE SEQUENCE usertype_seq START WITH 4 INCREMENT BY 1;  
+CREATE SEQUENCE usertype_seq START WITH 4 INCREMENT BY 1; 
 CREATE SEQUENCE placeable_seq START WITH 6 INCREMENT BY 1;  
 CREATE SEQUENCE placeabletype_seq START WITH 4 INCREMENT BY 1;
 CREATE SEQUENCE owner_seq START WITH 2 INCREMENT BY 1;  
