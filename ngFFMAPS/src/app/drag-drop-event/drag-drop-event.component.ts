@@ -32,6 +32,13 @@ export class DragDropEventComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(){
   }
 
+  // <div *ngFor="let map of maps" 
+  //  [ngClass]="setDragableClass(map)"            
+  //  [ngStyle]="setDragableStyle(map)"
+  //  class="example example-box" cdkDragBoundary=".example-boundary">
+  //   {{map.placeable.name}}
+  // </div>
+  
   setDragableClass(map:Map){ // used to set color and size of drag-ables
     let isRide = (map.placeable.placeableType.typeId == 1);
     let isConcession = (map.placeable.placeableType.typeId == 2);
@@ -46,15 +53,64 @@ export class DragDropEventComponent implements OnInit, AfterViewInit {
     'example-box':size1, 'example-box-big':size2, 'example-box-long-hor':size3,
     'example-box-long-vert': size4, 'example-box-longer-hor': size5,
     'example-box-longer-vert': size6};
-    }
+  }
 
-    setDragableStyle(map:Map){
-      let hasTransform = (map.transform != null && map.transform.length>0)
-      if(hasTransform)
-        return {'transform':map.transform}
-      else
-        return{}
+  setDragableStyle(map:Map){
+    let hasTransform = (map.transform != null && map.transform.length>0)
+    if(hasTransform)
+      return {'transform':map.transform}
+    else
+      return{}
+  }
+
+  saveActiveLayout(){
+    let actionTags = document.getElementById("layoutAction").children;
+    // let reactionTags = document.getElementById("layoutReaction").children;
+    for(let i :number = 0; i<actionTags.length; i++){
+      let transform = (<HTMLInputElement>actionTags[i]).style.transform;
+      if(transform.length > 50){
+        let transform1 = transform.substring(0,transform.indexOf(")")+1);
+        let transform2 = transform.substring(transform.indexOf(")")+2);
+        let x1 = transform1.substring(transform1.indexOf("(")+1, transform1.indexOf('p'));
+        let x2 = transform2.substring(transform2.indexOf("(")+1, transform2.indexOf('p'));
+        transform1 = transform1.substring(transform1.indexOf(' ')+1);
+        transform2 = transform2.substring(transform2.indexOf(' ')+1);
+        let y1 = transform1.substring(0,transform1.indexOf('p'));
+        let y2 = transform2.substring(0,transform2.indexOf('p'));
+        let nx1 = parseInt(x1, 10);
+        let nx2 = parseInt(x2, 10);
+        let ny1 = parseInt(y1, 10);
+        let ny2 = parseInt(y2, 10);
+        // console.log(x1 +" " + x2 + " " + y1 +" " + y2)
+        // console.log(nx1 +" " + nx2 + " " + ny1 +" " + ny2)
+        let transformX = nx1 +nx2;
+        let transformY = ny1 +ny2;
+        transform = "translate3d(" + transformX + "px, " + transformY  +"px, 0px)";
+      }
+      console.log(transform);
+      this.maps[i].transform = transform;
+      // (<HTMLInputElement>reactionTags[i]).style.transform = transform;
+      // transformList.innerHTML += "<p>"+transform + "</p>";
     }
+    console.log(this.maps);
+    // updateEventMaps
+    this.eventService.updateEventMaps(this.maps).subscribe(
+      (maps) => {
+        console.log("updated, maybe?");
+        console.log(maps);
+      } 
+    );
+  }
+
+  processActiveLayout(){
+    let actionTags = document.getElementById("layoutAction").children;
+    // let reactionTags = document.getElementById("layoutReaction").children;
+    for(let i :number = 0; i<actionTags.length; i++){
+      let transform = (<HTMLInputElement>actionTags[i]).style.transform = this.maps[i].transform;
+      // (<HTMLInputElement>reactionTags[i]).style.transform = transform;
+      // transformList.innerHTML += "<p>"+transform + "</p>";
+    }
+  }
 
   fireEvent(e){
     // console.log(e)
@@ -84,56 +140,5 @@ export class DragDropEventComponent implements OnInit, AfterViewInit {
       transformList.innerHTML += "<p>"+transform + "</p>";
     }
     this.saveActiveLayout()
-  }
-
-  processActiveLayout(){
-    let actionTags = document.getElementById("layoutAction").children;
-    // let reactionTags = document.getElementById("layoutReaction").children;
-    for(let i :number = 0; i<actionTags.length; i++){
-      let transform = (<HTMLInputElement>actionTags[i]).style.transform = this.maps[i].transform;
-      // (<HTMLInputElement>reactionTags[i]).style.transform = transform;
-      // transformList.innerHTML += "<p>"+transform + "</p>";
-    }
-  }
-
-  saveActiveLayout(){
-    let actionTags = document.getElementById("layoutAction").children;
-    // let reactionTags = document.getElementById("layoutReaction").children;
-    for(let i :number = 0; i<actionTags.length; i++){
-      let transform = (<HTMLInputElement>actionTags[i]).style.transform;
-      if(transform.length > 50){
-        let transform1 = transform.substring(0,transform.indexOf(")")+1);
-        let transform2 = transform.substring(transform.indexOf(")")+2);
-        let x1 = transform1.substring(transform1.indexOf("(")+1, transform1.indexOf('p'));
-        let x2 = transform2.substring(transform2.indexOf("(")+1, transform2.indexOf('p'));
-        transform1 = transform1.substring(transform1.indexOf(' ')+1);
-        transform2 = transform2.substring(transform2.indexOf(' ')+1);
-        let y1 = transform1.substring(0,transform1.indexOf('p'));
-        let y2 = transform2.substring(0,transform2.indexOf('p'));
-        let nx1 = parseInt(x1, 10);
-        let nx2 = parseInt(x2, 10);
-        let ny1 = parseInt(y1, 10);
-        let ny2 = parseInt(y2, 10);
-        // console.log(x1 +" " + x2 + " " + y1 +" " + y2)
-        // console.log(nx1 +" " + nx2 + " " + ny1 +" " + ny2)
-        let transformX = nx1 +nx2;
-        let transformY = ny1 +ny2;
-        transform = "translate3d(" + transformX + "px, " + transformY  +"px, 0px)";
-      }
-      console.log(transform);
-      this.maps[i].transform = transform;
-
-      
-      // (<HTMLInputElement>reactionTags[i]).style.transform = transform;
-      // transformList.innerHTML += "<p>"+transform + "</p>";
-    }
-    console.log(this.maps);
-    // updateEventMaps
-    this.eventService.updateEventMaps(this.maps).subscribe(
-      (maps) => {
-        console.log("updated, maybe?");
-        console.log(maps);
-      } 
-    );
   }
 }

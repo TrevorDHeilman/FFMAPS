@@ -148,6 +148,8 @@ CREATE TABLE Schedule
     PlaceableId NUMBER NOT NULL
 );
 
+create sequence receipt_seq;
+
 CREATE TABLE Receipt
 (
     ReceiptId VARCHAR(10) PRIMARY KEY NOT NULL,
@@ -227,7 +229,7 @@ ALTER TABLE StockOrder ADD CONSTRAINT FK_StockOrderItemId
 ********************************************************************************/           
 CREATE SEQUENCE userinfo_seq START WITH 10 INCREMENT BY 1;    
 CREATE SEQUENCE usertype_seq START WITH 4 INCREMENT BY 1;  
-CREATE SEQUENCE placeable_seq START WITH 11 INCREMENT BY 1;  
+CREATE SEQUENCE placeable_seq START WITH 11 INCREMENT BY 1;   
 CREATE SEQUENCE placeabletype_seq START WITH 4 INCREMENT BY 1;
 CREATE SEQUENCE owner_seq START WITH 2 INCREMENT BY 1;  
 CREATE SEQUENCE vendorstock_seq START WITH 5 INCREMENT BY 1;  

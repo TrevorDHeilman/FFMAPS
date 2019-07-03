@@ -10,7 +10,7 @@
   <div class="">
     <span>Type:</span>
   </div>
-  <select id="placeableTypeList" (click)="optionClicked()" [(ngModel)]="placeableValues" class="mb-2">
+  <select id="placeableTypeList" (click)="optionClicked()" [(ngModel)]="placeableValues" class="mb-2 selectdrop">
     <option *ngFor="let p of placeableTypes" value="{{p.typeId}}"> {{p.typeName}} </option> 
   </select>
 
@@ -24,7 +24,7 @@
   <div class="">
     <span>Size:</span>
   </div>
-  <select id="sizeList" (click)="optionClicked()" [(ngModel)]="sizeValues" class="mb-3">
+  <select id="sizeList" (click)="optionClicked()" [(ngModel)]="sizeValues" class="mb-3 selectdrop">
     <option value="1">(1,1)</option> 
     <option value="2">(2,2)</option> 
     <option value="3">(2,1)</option> 
@@ -34,7 +34,7 @@
   </select>
 
   <div class="mb-1" align="right">
-    <a class="btn btn-primary" (click)="submit()">Submit</a>
+    <div class="btn btn-info button1" (click)="submit()">Submit</div>
   </div>
 
 </div>

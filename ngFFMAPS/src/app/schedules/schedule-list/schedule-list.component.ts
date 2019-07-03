@@ -35,15 +35,20 @@ export class ScheduleListComponent implements OnInit {
             this.emittedSchedule.emit(this.schedules);
           }
           if(this.loggedUser.userType.id == 3){
+            let i = 0;
             for(let sche of schedules){
-              let i = 0;
+              
               if(sche.user.id == this.loggedUser.id){
-                console.log(this.attendantSchedule);
+                console.log(sche);
                 this.attendantSchedule[i] = sche;
+                console.log(this.attendantSchedule[i]);
+                console.log(i);
+                i++;
                 // this.attendantSchedule.push(sche);
               }
-              i++;
+              
             }
+            console.log(this.attendantSchedule);
             this.schedules = this.attendantSchedule;
           }
       });
