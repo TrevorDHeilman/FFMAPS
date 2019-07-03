@@ -218,13 +218,16 @@ ALTER TABLE Maps ADD CONSTRAINT FK_MapEventId
     
 ALTER TABLE Maps ADD CONSTRAINT FK_MapPlaceableId
     FOREIGN KEY (PlaceableId) REFERENCES Placeable (PlaceableId) ON DELETE CASCADE;
+
+ALTER TABLE StockOrder ADD CONSTRAINT FK_StockOrderItemId
+    FOREIGN KEY (ItemId) REFERENCES ItemInfo (ItemId) ON DELETE CASCADE;
         
 /*******************************************************************************
    Create Sequences
 ********************************************************************************/           
 CREATE SEQUENCE userinfo_seq START WITH 10 INCREMENT BY 1;    
 CREATE SEQUENCE usertype_seq START WITH 4 INCREMENT BY 1;  
-CREATE SEQUENCE placeable_seq START WITH 6 INCREMENT BY 1;  
+CREATE SEQUENCE placeable_seq START WITH 11 INCREMENT BY 1;  
 CREATE SEQUENCE placeabletype_seq START WITH 4 INCREMENT BY 1;
 CREATE SEQUENCE owner_seq START WITH 2 INCREMENT BY 1;  
 CREATE SEQUENCE vendorstock_seq START WITH 5 INCREMENT BY 1;  
@@ -235,7 +238,7 @@ CREATE SEQUENCE contact_seq START WITH 4 INCREMENT BY 1;
 CREATE SEQUENCE eventStatus_seq START WITH 5 INCREMENT BY 1;  
 CREATE SEQUENCE schedule_seq START WITH 1 INCREMENT BY 1;  
 CREATE SEQUENCE receipt_seq START WITH 4 INCREMENT BY 1;
-CREATE SEQUENCE map_seq START WITH 6 INCREMENT BY 1;  
+CREATE SEQUENCE map_seq START WITH 21 INCREMENT BY 1;  
 
 /*******************************************************************************
    Populate Tables
@@ -265,6 +268,11 @@ INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity, Placeable
 INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity, PlaceableName, OwnerId, PlaceableSize) VALUES (3, 1, 1, 'Scrambler', 1, 4);
 INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity, PlaceableName, OwnerId, PlaceableSize) VALUES (4, 1, 1, 'Zero Gravity', 1, 4);
 INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity, PlaceableName, OwnerId, PlaceableSize) VALUES (5, 3, 1, 'Quarters', 1, 2);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity, PlaceableName, OwnerId, PlaceableSize) VALUES (6, 3, 1, 'Skee Ball', 1, 3);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity, PlaceableName, OwnerId, PlaceableSize) VALUES (7, 2, 2, 'Churro Yo', 1, 1);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity, PlaceableName, OwnerId, PlaceableSize) VALUES (8, 1, 1, 'Ferris Wheel', 1, 6);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity, PlaceableName, OwnerId, PlaceableSize) VALUES (9, 1, 1, 'Mirror Maze', 1, 2);
+INSERT INTO Placeable (PlaceableId, PlaceableTypeId, EmployeeCapacity, PlaceableName, OwnerId, PlaceableSize) VALUES (10, 1, 1,'Bumper Cars', 1, 2);
 
 INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (1, 1, 1, 10);
 INSERT INTO VendorStocks (VendorStockId, ItemId, PlaceableId, StockAvailable) VALUES (2, 2, 1, 17);
@@ -275,7 +283,7 @@ INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeI
 INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (2, 'manager', 'pass', 'Ronald', 'McDonald', 2);
 INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (3, 'attendant', 'pass', 'Matt', 'Donald', 3);
 INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (4, 'at1', 'pass', 'Vinn', 'Disel', 3);
-INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (5, 'at2', 'pass', 'Arnold', 'Schwarzenegger', 3);
+INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (5, 'at2', 'pass', 'Arnold', 'Smith', 3);
 INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (6, 'at3', 'pass', 'Lucy', 'Lawless', 3);
 INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (7, 'at4', 'pass', 'Beck', 'Hansen', 3);
 INSERT INTO UserInfo (UserId, UserName, Password, FirstName, LastName, UserTypeId) VALUES (8, 'at5', 'pass', 'Alice', 'InChains', 3);
@@ -303,6 +311,21 @@ INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (2, 1, 1, 2);
 INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (3, 1, 1, 3);
 INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (4, 1, 1, 4);
 INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (5, 1, 1, 5);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (6, 1, 1, 6);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (7, 1, 1, 7);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (8, 1, 1, 8);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (9, 1, 1, 9);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (10, 1, 1, 10);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (11, 2, 2, 1);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (12, 2, 2, 2);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (13, 2, 2, 3);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (14, 2, 2, 4);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (15, 2, 2, 5);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (16, 2, 2, 6);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (17, 2, 2, 7);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (18, 2, 2, 8);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (19, 2, 2, 9);
+INSERT INTO Maps (MapEntryId, MapId, EventId, PlaceableId) VALUES (20, 2, 2, 10);
 
 commit;
 exit;
